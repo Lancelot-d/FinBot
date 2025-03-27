@@ -1,0 +1,69 @@
+import dash
+from dash import dcc, html
+import dash_bootstrap_components as dbc
+import dash_mantine_components as dmc
+import ticker_section
+import chatbot_section
+
+# Initialize the Dash app
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,dmc.styles.ALL])
+
+# App layout
+app.layout = dmc.MantineProvider(
+    theme={"colorScheme": "dark"},
+    children=[
+        # Main Container
+        html.Div(
+        style={'display': 'flex', 'flexDirection': 'column', 'height': '95vh',"fontFamily": "Inter, sans-serif"},
+        children=[
+            # Header Section
+           html.Div(
+                style={
+                    "flex": "0 0 auto",
+                    "backgroundColor": "#1E1E1E",  
+                    "padding": "15px",  
+                    "boxShadow": "0 4px 10px rgba(0, 0, 0, 0.3)",  
+                    "textAlign": "center",
+                },
+                children=dmc.Title(
+                    "FinBot",
+                    order=1,
+                    style={
+                        "color": "#F5F5F5", 
+                        "fontSize": "26px",  
+                        "fontWeight": 600, 
+                        "letterSpacing": "1px", 
+                    },
+                ),
+            ),
+            # Main Content Section (Split into two columns)
+            html.Div(
+                style={'flex': 1, 'display': 'flex'},
+                children=[
+                    # Left Column 
+                    html.Div(
+                        style={'flex': 1, 'padding': '10px','margin': '10px' ,'border': '1px solid #ccc'},
+                        children=[
+                        ticker_section.get_content()
+                        ]
+                    ),
+                    # Right Column (Chatbot Interface)
+                    html.Div(
+                        style={'flex': 1, 'padding': '10px','margin': '10px', 'border': '1px solid #ccc'},
+                        children=[
+                            chatbot_section.get_content()
+                        ]
+                    )
+                ]
+            )
+            ]
+        )
+    ],
+)
+    
+    
+    
+    
+
+if __name__ == '__main__':
+    app.run(debug=True)
