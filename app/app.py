@@ -38,6 +38,7 @@ app.index_string = f"""
         {{%app_entry%}}
         <footer>
             {{%config%}}
+            {{%css%}}
             {{%scripts%}}
             {{%renderer%}}
         </footer>
