@@ -6,7 +6,10 @@ import ticker_section
 import chatbot_section
 from dotenv import load_dotenv
 import os
+import openai
 load_dotenv()
+
+openai.api_key = os.getenv("TOGETHER_API_KEY")
 
 # Initialize the Dash app
 app = dash.Dash(
