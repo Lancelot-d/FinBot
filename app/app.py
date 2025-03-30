@@ -7,13 +7,15 @@ import chatbot_section
 
 # Initialize the Dash app
 app = dash.Dash(
-    __name__, 
+    __name__,
     external_stylesheets=[
         dbc.themes.BOOTSTRAP, 
         dmc.styles.ALL, 
         "/assets/styles.css"  # Path to your custom CSS file
     ]
 )
+
+server = app.server
 
 # App layout
 app.layout = dmc.MantineProvider(
