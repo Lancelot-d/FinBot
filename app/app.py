@@ -4,6 +4,9 @@ import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import ticker_section
 import chatbot_section
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Initialize the Dash app
 app = dash.Dash(
@@ -14,6 +17,33 @@ app = dash.Dash(
         "/assets/styles.css"  # Path to your custom CSS file
     ]
 )
+
+# Add Google Tag script
+app.index_string = f"""
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FinBot</title>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={os.getenv("G_TAG")}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){{dataLayer.push(arguments);}}
+          gtag('js', new Date());
+
+          gtag('config', '{os.getenv("G_TAG")}');
+        </script>
+    </head>
+    <body>
+        {{%app_entry%}}
+        <footer>
+            {{%config%}}
+            {{%scripts%}}
+            {{%renderer%}}
+        </footer>
+    </body>
+</html>
+"""
 
 server = app.server
 
