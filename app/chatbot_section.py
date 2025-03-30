@@ -36,7 +36,7 @@ def update_chat(n_clicks, user_input, chat_history):
     
     chat = ChatTogether(
         model="meta-llama/Meta-Llama-3-8B-Instruct-Lite",  # Replace with your preferred model
-        together_api_key=os.getenv("TOGETHER_API_KEY"),
+        api_key=os.getenv("TOGETHER_API_KEY"),
     )
 
     chat_history.append(f"**You:** \n{user_input}\n")

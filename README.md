@@ -4,7 +4,7 @@ LOG791 - Virtual assistant powered by Reddit data to provide personalized financ
 # First thing to do after cloning 
 - uv sync 
 # Init with uv 
-- uv venv .venv --python=3.10
+- uv venv venv --python=3.10
 # Activate venv 
 - .venv\Scripts\activate
 # UV pip freeze 
