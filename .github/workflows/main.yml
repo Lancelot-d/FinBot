@@ -1,0 +1,26 @@
+  name: Deploy to Ampere VM
+  on:
+    push:
+      branches:
+        - main  # Déclenchement à chaque push sur master
+  jobs:
+    deploy-finbot:
+      runs-on: ubuntu-latest
+      timeout-minutes: 5
+      steps:
+      - name: deploy FINBOT app
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: 204.216.109.177
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          command_timeout: 30m
+          script: | 
+            cd FinBot/
+
+            eval "$(ssh-agent -s)"
+            ssh-add ~/.ssh/newssh
+
+            git pull 
+            sudo docker rm -f finbot_app || true && sudo docker build --no-cache -t finbot . && sudo docker run --name finbot_app -d -p 8060:8060 finbot
