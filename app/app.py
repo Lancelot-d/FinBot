@@ -6,7 +6,14 @@ import ticker_section
 import chatbot_section
 
 # Initialize the Dash app
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,dmc.styles.ALL])
+app = dash.Dash(
+    __name__, 
+    external_stylesheets=[
+        dbc.themes.BOOTSTRAP, 
+        dmc.styles.ALL, 
+        "/assets/styles.css"  # Path to your custom CSS file
+    ]
+)
 
 # App layout
 app.layout = dmc.MantineProvider(
@@ -14,7 +21,13 @@ app.layout = dmc.MantineProvider(
     children=[
         # Main Container
         html.Div(
-        style={'display': 'flex', 'flexDirection': 'column', 'height': '95vh',"fontFamily": "Inter, sans-serif"},
+        style={
+            'display': 'flex', 
+            'flexDirection': 'column', 
+            'height': '95vh', 
+            "fontFamily": "Inter, sans-serif", 
+            "overflowY": "hidden"
+        },
         children=[
             # Header Section
            html.Div(
@@ -61,9 +74,5 @@ app.layout = dmc.MantineProvider(
     ],
 )
     
-    
-    
-    
-
 if __name__ == '__main__':
     app.run(debug=True)

@@ -25,27 +25,38 @@ def get_content() -> html.Div:
     ], style={'padding': '20px'})
 
 @dash.callback(
-    Output('ticker-price', 'children'),
-    Output('ticker-graph', 'figure'),
-    Input('ticker-search', 'value'),
+    output={
+        'price': Output('ticker-price', 'children'),
+        'graph': Output('ticker-graph', 'figure')
+    },
+    inputs={
+        'ticker': Input('ticker-search', 'value')
+    },
+    state={},
     prevent_initial_call=True
 )
 def update_ticker(ticker: str):
     if not ticker:
-        return "Enter a valid ticker", go.Figure()
+        return {"price": "Enter a valid ticker", "graph": go.Figure()}
     
     try:
         stock = yf.Ticker(ticker)
         hist = stock.history(period='1mo')
         if hist.empty:
-            return "Invalid ticker", go.Figure()
+            return {"price": "Invalid ticker", "graph": go.Figure()}
         
         price = f"{ticker}: ${hist.tail(1)['Close'].iloc[0]:.2f}"
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=hist.index, y=hist['Close'], mode='lines', name=ticker))
-        fig.update_layout(title=f"{ticker} Price History", xaxis_title="Date", yaxis_title="Price")
+        fig.add_trace(go.Scatter(x=hist.index, y=hist['Close'], mode='lines', name=ticker, line=dict(color='white')))
+        fig.update_layout(
+            title=f"{ticker} Price History",
+            xaxis_title="Date",
+            yaxis_title="Price",
+            template='plotly_dark',  # Enable dark mode
+            height=300  # Make the graph smaller
+        )
         
-        return price, fig
+        return {"price": price, "graph": fig}
     except Exception as e:
-        return "Error fetching data", go.Figure()
+        return {"price": "Error fetching data", "graph": go.Figure()}
     
