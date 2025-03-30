@@ -14,7 +14,7 @@ def get_content() -> html.Div:
         dbc.Container([
             html.H4("Chatbot"),
             html.Div(id="chat-display", style={"border": "1px solid #ddd", "padding": "10px", "height": "60vh", "overflowY": "auto"}),
-            dbc.Input(id="user-input", type="text", placeholder="Type your message...", debounce=True, style={"margin": "10px"}),
+            dbc.Input(id="user-input", type="text", placeholder="Type your message...", debounce=True, style={"margin-top": "10px", "margin-bottom": "10px"}),
             dbc.Button("Send", id="send-btn", color="dark", className="mt-2"), ], className="mt-3", style={"height": "100%"})
     ], style={"height": "100%"})
 
