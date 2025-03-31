@@ -1,9 +1,9 @@
 from langchain_together import ChatTogether
 from dotenv import load_dotenv
 import os
+from . import chromadb_adapter
 
 load_dotenv()
-
 
 def invoke_chat(user_input: str) -> str:
     """
@@ -22,6 +22,8 @@ def invoke_chat(user_input: str) -> str:
         api_key=os.getenv("TOGETHER_API_KEY"),
     )
 
+    print(chromadb_adapter.get_top_k_reddit_posts(user_input=user_input, k=5))
+    
     response = chat.invoke(
         user_input + "\n ###Always format response in markdown format###"
     ).content
