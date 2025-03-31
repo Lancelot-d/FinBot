@@ -8,6 +8,7 @@ except:
 
 import chromadb
 from .dao import DAO
+import os 
 
 COLLECTION_NAME = "reddit_embeddings"
 
