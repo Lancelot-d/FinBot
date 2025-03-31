@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye
+FROM python:3.10.6-slim-bullseye
 
 COPY ./app /app
 COPY ./run.sh /app/run.sh 
