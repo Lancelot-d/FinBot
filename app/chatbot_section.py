@@ -2,11 +2,7 @@ import dash
 from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
-from langchain_together import ChatTogether
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
+import api_adapter.langchain_adapter as langchain_adapter
 
 
 def get_content() -> html.Div:
@@ -45,27 +41,22 @@ def get_content() -> html.Div:
 @dash.callback(
     output={"chat_history": Output("chat-history", "data")},
     inputs={
-        "n_clicks": Input("send-btn", "n_clicks"),
+        "_": Input("send-btn", "n_clicks"),
         "user_input": State("user-input", "value"),
         "chat_history": State("chat-history", "data"),
     },
     state={},
     prevent_initial_call=True,
 )
-def update_chat(n_clicks, user_input, chat_history):
+def update_chat(_, user_input, chat_history):
     if not user_input:
         return {"chat_history": chat_history}
 
-    chat = ChatTogether(
-        model="meta-llama/Meta-Llama-3-8B-Instruct-Lite",  # Replace with your preferred model
-        api_key=os.getenv("TOGETHER_API_KEY"),
-    )
-
     chat_history.append(f"**You:** \n{user_input}\n")
-    response = chat.invoke(
-        user_input + "\n ###Always format response in markdown format###"
-    ).content
-    chat_history.append(f"**Bot:** \n{response}\n")  # Placeholder for bot response
+    response = langchain_adapter.invoke_chat(
+        user_input
+    )  # Call the chat model with user input
+    chat_history.append(f"**Bot:** \n{response}\n")
     return {"chat_history": chat_history}
 
 

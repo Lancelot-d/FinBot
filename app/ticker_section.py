@@ -3,7 +3,7 @@ from dash import dcc, html, Input, Output, State
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import plotly.graph_objs as go
-import yfinance as yf
+import api_adapter.yfinance_adapter as yf_adapter
 
 
 def get_content() -> html.Div:
@@ -42,16 +42,10 @@ def get_content() -> html.Div:
     prevent_initial_call=True,
 )
 def update_ticker(ticker: str):
-    if not ticker:
-        return {"price": "Enter a valid ticker", "graph": go.Figure()}
-
     try:
-        stock = yf.Ticker(ticker)
-        hist = stock.history(period="1mo")
-        if hist.empty:
-            return {"price": "Invalid ticker", "graph": go.Figure()}
+        price = yf_adapter.get_ticker_price(ticker)
+        hist = yf_adapter.get_ticker_history(ticker, period="1mo")
 
-        price = f"{ticker}: ${hist.tail(1)['Close'].iloc[0]:.2f}"
         fig = go.Figure()
         fig.add_trace(
             go.Scatter(
