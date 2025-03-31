@@ -23,4 +23,5 @@
             ssh-add ~/.ssh/newssh
 
             git pull 
-            sudo docker rm -f finbot_app || true && sudo docker build --no-cache -t finbot . && sudo docker run --name finbot_app -d -p 8070:8070 finbot
+            sudo docker-compose down || true
+            sudo docker-compose up --build -d

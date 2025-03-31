@@ -11,3 +11,5 @@ LOG791 - Virtual assistant powered by Reddit data to provide personalized financ
 - uv pip freeze > requirements.txt
 # UV pip install 
 - uv pip install -r requirements.txt
+
+https://docs.trychroma.com/docs/run-chroma/client-server

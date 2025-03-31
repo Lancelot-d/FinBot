@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import api_adapter.langchain_adapter as langchain_adapter
 
+from dao import DAO
 
 def get_content() -> html.Div:
     return html.Div(
