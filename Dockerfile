@@ -8,9 +8,6 @@ WORKDIR /app
 
 RUN pip install --upgrade pip
 
-RUN apt-get update && \
-    apt-get install -y sqlite3 libsqlite3-dev python3-dev gcc
-
 RUN set -ex && \
     chmod +x run.sh && \
     pip install -r requirements.txt

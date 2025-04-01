@@ -1,7 +1,7 @@
 from langchain_together import ChatTogether
 from dotenv import load_dotenv
 import os
-from . import chromadb_adapter
+from . import faiss_adapter
 
 load_dotenv()
 
@@ -21,11 +21,34 @@ def invoke_chat(user_input: str) -> str:
         model="meta-llama/Meta-Llama-3-8B-Instruct-Lite",
         api_key=os.getenv("TOGETHER_API_KEY"),
     )
-
-    print(chromadb_adapter.get_top_k_reddit_posts(user_input=user_input, k=5))
     
-    response = chat.invoke(
-        user_input + "\n ###Always format response in markdown format###"
-    ).content
-
+    context = "\n\n".join(faiss_adapter.get_top_k_reddit_posts(user_input=user_input, k=5))
+    
+    prompt = f"""
+    You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas. 
+    Leverage your expertise and the context provided to deliver accurate, insightful, and actionable advice tailored to the needs of the situation.
+    Use the context to enhance your response, ensuring it is relevant and informative for the user input.
+    Don't structure your response as a conversation; instead, provide a comprehensive answer that directly addresses the user's query.
+    Don't structure your response on the context.
+    
+    Context:
+    ###
+    {context}
+    ###
+    
+    User Input:
+    ###
+    {user_input}
+    ###
+    
+    Response format:
+    ###
+    Provide a detailed, structured response that addresses the user's query.
+    Include relevant examples, explanations, and actionable steps where applicable.
+    Ensure clarity and conciseness in your response.
+    Always format response in markdown format
+    ###
+    """
+    
+    response = chat.invoke(prompt).content
     return response
