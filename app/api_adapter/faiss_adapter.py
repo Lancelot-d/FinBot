@@ -6,13 +6,16 @@ except ImportError:
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
+from concurrent.futures import ThreadPoolExecutor
+import time
 
+MODEL_NAME_EMBEDDING = "paraphrase-MiniLM-L3-v2"
 
 def get_top_k_reddit_posts(user_input: str, k: int = 5) -> list[str]:
     """
     Retrieve the top k Reddit posts from the FAISS index based on user input.
     """
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    model = SentenceTransformer(MODEL_NAME_EMBEDDING)
     # Load FAISS index
     index = faiss.read_index("reddit_faiss.index")
     
@@ -33,15 +36,22 @@ def batch_insert():
     """
     Insert documents into the FAISS index in batches.
     """
-    model = SentenceTransformer('all-MiniLM-L6-v2')
+    start = time.perf_counter()
+    model = SentenceTransformer(MODEL_NAME_EMBEDDING)  
     posts = DAO.get_instance(force_refresh=True).get_reddit_posts()
-    ids = [id[0] for id in posts if id[0] is not None and id[1] is not None]
     documents = [content[1] for content in posts if content[0] is not None and content[1] is not None]
+    end = time.perf_counter()
+    print(f"Time taken to fetch posts: {end - start:.2f} seconds")
     
-    # Convert documents to embeddings 
-    embeddings = [embed_text(doc, model) for doc in documents]  
+    start = time.perf_counter()
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        embeddings = list(executor.map(lambda doc: embed_text(doc, model), documents))
+         
     embeddings = np.array(embeddings, dtype="float32")
+    end = time.perf_counter()
+    print(f"Time taken to embed posts: {end - start:.2f} seconds")
     
+    start = time.perf_counter()
     # Create a FAISS index
     dimension = embeddings.shape[1] 
     index = faiss.IndexFlatL2(dimension)
@@ -51,6 +61,8 @@ def batch_insert():
     
     # Save the index to a file
     faiss.write_index(index, "reddit_faiss.index")
+    end = time.perf_counter()
+    print(f"Time taken to create and save FAISS index: {end - start:.2f} seconds")
 
 def embed_text(text: str, model) -> np.ndarray:
     """
