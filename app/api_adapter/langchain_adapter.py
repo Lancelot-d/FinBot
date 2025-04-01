@@ -1,9 +1,12 @@
 from langchain_together import ChatTogether
+from langchain_core.tools import tool
+from langgraph.prebuilt import create_react_agent
+from langgraph.graph import StateGraph, MessagesState, START
 from dotenv import load_dotenv
 import os
 from . import faiss_adapter
-
 load_dotenv()
+
 
 def invoke_chat(user_input: str) -> str:
     """
@@ -17,12 +20,34 @@ def invoke_chat(user_input: str) -> str:
         str: The response from the chat model, formatted in markdown.
     """
 
-    chat = ChatTogether(
+    llm = ChatTogether(
         model="meta-llama/Meta-Llama-3-8B-Instruct-Lite",
         api_key=os.getenv("TOGETHER_API_KEY"),
     )
     
     context = "\n\n".join(faiss_adapter.get_top_k_reddit_posts(user_input=user_input, k=5))
+    print(f"Context: {context} \n\n")
+    prompt=f"""
+    You are a professional resume specialist, highly skilled at analyzing and condensing information to extract only the most valuable and relevant details.
+    Your role is to summarize the provided context while ensuring that the response aligns perfectly with the user's query. 
+    Focus on clarity, precision, and relevance, eliminating unnecessary or redundant information. 
+    Always prioritize delivering a concise yet comprehensive summary that meets the user's specific needs
+    Ensure to remove any unnecessary information and focus on the most relevant details.
+    Also remove questions from the context.
+    
+    Here is the context you need to summarize, all informations in this section IS NOT THE USER INPUT:
+    ###
+    {context}
+    ###
+    
+    User Input:
+    ###
+    {user_input}
+    ###
+    """
+    
+    context_summary = llm.invoke(prompt).content
+    print(f"Context Summary: {context_summary}")
     
     prompt = f"""
     You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas. 
@@ -33,7 +58,7 @@ def invoke_chat(user_input: str) -> str:
     
     Context:
     ###
-    {context}
+    {context_summary}
     ###
     
     User Input:
@@ -50,5 +75,5 @@ def invoke_chat(user_input: str) -> str:
     ###
     """
     
-    response = chat.invoke(prompt).content
+    response = llm.invoke(prompt).content
     return response
