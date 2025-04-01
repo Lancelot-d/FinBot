@@ -1,5 +1,5 @@
 import dash
-from dash import dcc, html, Input, Output, State
+from dash import dcc, html, Input, Output, State, callback, clientside_callback
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import api_adapter.langchain_adapter as langchain_adapter
@@ -12,14 +12,26 @@ def get_content() -> html.Div:
             dbc.Container(
                 [
                     html.H4("Chatbot"),
-                    html.Div(
-                        id="chat-display",
-                        style={
-                            "border": "1px solid #ddd",
-                            "padding": "10px",
-                            "height": "60vh",
-                            "overflowY": "auto",
-                        },
+                    dmc.Box(
+                        style={"position": "relative"},
+                        children=[
+                            dmc.LoadingOverlay(
+                                visible=False,
+                                id="loading-overlay",
+                                overlayProps={"radius": "sm", "blur": 2},
+                                loaderProps={"color": "black", "type": "bars"},
+                                zIndex=10,
+                            ),
+                            html.Div(
+                                id="chat-display",
+                                style={
+                                    "border": "1px solid #ddd",
+                                    "padding": "10px",
+                                    "height": "60vh",
+                                    "overflowY": "auto",
+                                },
+                            ),
+                        ],
                     ),
                     dbc.Input(
                         id="user-input",
@@ -38,8 +50,24 @@ def get_content() -> html.Div:
     )
 
 
+clientside_callback(
+    """
+    function updateLoadingState(n_clicks) {
+        return true
+    }
+    """,
+    Output("loading-overlay", "visible", allow_duplicate=True),
+    Input("send-btn", "n_clicks"),
+    prevent_initial_call=True,
+)
+
+
 @dash.callback(
-    output={"chat_history": Output("chat-history", "data")},
+    output={
+        "chat_history": Output("chat-history", "data"),
+        "loading_overlay": Output("loading-overlay", "visible"),
+        "new_value": Output("user-input", "value"),
+    },
     inputs={
         "_": Input("send-btn", "n_clicks"),
         "user_input": State("user-input", "value"),
@@ -50,14 +78,14 @@ def get_content() -> html.Div:
 )
 def update_chat(_, user_input, chat_history):
     if not user_input:
-        return {"chat_history": chat_history}
+        return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
     chat_history.append(f"**You:** \n{user_input}\n")
     response = langchain_adapter.invoke_chat(
         user_input
     )  # Call the chat model with user input
     chat_history.append(f"**Bot:** \n{response}\n")
-    return {"chat_history": chat_history}
+    return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
 
 @dash.callback(
