@@ -62,6 +62,7 @@ app.layout = dmc.MantineProvider(
                 "height": "95vh",
                 "fontFamily": "Inter, sans-serif",
                 "overflowY": "hidden",
+                "overflowX": "hidden",
             },
             children=[
                 # Header Section

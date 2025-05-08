@@ -1,8 +1,5 @@
-try:
-    from .dao import DAO
-except ImportError:
-    from dao import DAO
 
+from dao import DAO
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
@@ -35,6 +32,11 @@ def get_top_k_reddit_posts(user_input: str, k: int = 5) -> list[str]:
 
     return top_k_posts
 
+def embed_text(text: str, model) -> np.ndarray:
+    """
+    Convert text into an embedding vector using SentenceTransformers.
+    """
+    return model.encode(text, convert_to_numpy=True, show_progress_bar=False)
 
 def batch_insert():
     """
@@ -71,23 +73,3 @@ def batch_insert():
     faiss.write_index(index, "reddit_faiss.index")
     end = time.perf_counter()
     print(f"Time taken to create and save FAISS index: {end - start:.2f} seconds")
-
-
-def embed_text(text: str, model) -> np.ndarray:
-    """
-    Convert text into an embedding vector using SentenceTransformers.
-    """
-    return model.encode(text, convert_to_numpy=True)
-
-
-def main():
-    """
-    Main function to execute the script.
-    """
-    print("Starting batch insertion of Reddit posts into FAISS index...")
-    batch_insert()
-    print("Batch insertion completed.")
-
-
-if __name__ == "__main__":
-    main()

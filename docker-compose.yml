@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: DockerfileDash
+    ports:
+      - "8070:8070"
+    volumes:
+      - ./finbot_app:/app
+    restart: always
+    networks:
+      - mynetwork
+    depends_on:
+      - api
+
+  api:
+    build: 
+      context: .
+      dockerfile: DockerfileRedditApi
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./api:/app
+    restart: always
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge

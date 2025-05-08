@@ -23,12 +23,22 @@ def get_content() -> html.Div:
                     "fontSize": "24px",
                     "fontWeight": "bold",
                     "marginBottom": "10px",
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "space-between",
                 },
             ),
             # Price graph
             dcc.Graph(id="ticker-graph", config={"displayModeBar": False}),
+            html.Div(
+                id="historic-profit-container",
+                style={
+                    "overflowX": "scroll",
+                    "width": "40vw"
+                },
+            ),
         ],
-        style={"padding": "20px"},
+        style={"padding": "20px","width": "100%"},
     )
 
 
@@ -36,6 +46,9 @@ def get_content() -> html.Div:
     output={
         "price": Output("ticker-price", "children"),
         "graph": Output("ticker-graph", "figure"),
+        "historic-profit-container": Output(
+            "historic-profit-container", "children"
+        ),
     },
     inputs={"ticker": Input("ticker-search", "value")},
     state={},
@@ -43,9 +56,10 @@ def get_content() -> html.Div:
 )
 def update_ticker(ticker: str):
     try:
-        price = yf_adapter.get_ticker_price(ticker)
         hist = yf_adapter.get_ticker_history(ticker, period="1mo")
-
+        profit_data = yf_adapter.get_historic_profit(ticker)
+        profit_data.reverse()
+        
         fig = go.Figure()
         fig.add_trace(
             go.Scatter(
@@ -60,10 +74,31 @@ def update_ticker(ticker: str):
             title=f"{ticker} Price History",
             xaxis_title="Date",
             yaxis_title="Price",
-            template="plotly_dark",  # Enable dark mode
-            height=300,  # Make the graph smaller
+            template="plotly_dark",
+            height=250,
         )
 
-        return {"price": price, "graph": fig}
+        # Create a table for historic profit
+        profit_table = dmc.Table(
+            data={
+                "head": [year[0] for year in profit_data],
+                "body": [[f"{price[1]}%" for price in profit_data]]
+            }
+        )
+
+        ticker_info = [dmc.Text(f"Last price : {yf_adapter.get_ticker_price(ticker=ticker)}$"), 
+                        dmc.Text(f"Annualized return : {yf_adapter.get_mean_profit(ticker=ticker)}%"),
+                        dmc.Text(f"Variance profit : {yf_adapter.get_variance_profit(ticker=ticker)}")]
+        
+        return {
+            "price":ticker_info,
+            "graph": fig,
+            "historic-profit-container": profit_table,
+        }
     except Exception as e:
-        return {"price": "Error fetching data", "graph": go.Figure()}
+        return {
+            "price": "Error fetching data",
+            "graph": go.Figure(),
+            "historic-profit-container": html.Div("Error fetching profit data"),
+        }
+

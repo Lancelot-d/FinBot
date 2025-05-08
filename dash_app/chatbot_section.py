@@ -2,8 +2,7 @@ import dash
 from dash import dcc, html, Input, Output, State, callback, clientside_callback
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
-import api_adapter.langchain_adapter as langchain_adapter
-
+import requests
 
 def get_content() -> html.Div:
     return html.Div(
@@ -81,9 +80,7 @@ def update_chat(_, user_input, chat_history):
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
     chat_history.append(f"**You:** \n{user_input}\n")
-    response = langchain_adapter.invoke_chat(
-        user_input
-    )  # Call the chat model with user input
+    response = requests.get(f"http://mynetwork:8080/complete_message/?input_string={user_input}").get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 

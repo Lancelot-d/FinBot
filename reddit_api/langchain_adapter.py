@@ -1,7 +1,7 @@
 from langchain_together import ChatTogether
 from dotenv import load_dotenv
 import os
-from . import faiss_adapter
+import faiss_adapter
 
 load_dotenv()
 
@@ -24,7 +24,7 @@ def invoke_chat(user_input: str) -> str:
     )
 
     context = "\n\n".join(
-        faiss_adapter.get_top_k_reddit_posts(user_input=user_input, k=5)
+        faiss_adapter.get_top_k_reddit_posts(user_input=user_input, k=3)
     )
     print(f"Context: {context} \n\n")
     prompt = f"""

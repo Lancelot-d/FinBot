@@ -29,15 +29,13 @@ class DAO(Singleton):
 
         self.con = self.engine.connect()
 
-        """
         try:
             self.con.execute(text("CREATE TABLE reddit_posts (id VARCHAR2(100 CHAR) PRIMARY KEY, content_str CLOB, date_insertion TIMESTAMP DEFAULT SYSTIMESTAMP);"))
             self.con.commit()
         except Exception as e:
             print(e)
             self.con.rollback()
-        """
-
+        
         self.con.commit()
 
     def add_reddit_post(self, content_str: str, title: str, author: str):

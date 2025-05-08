@@ -12,4 +12,7 @@ LOG791 - Virtual assistant powered by Reddit data to provide personalized financ
 # UV pip install 
 - uv pip install -r requirements.txt
 
+# pipreqs
+- python -m pipreqs.pipreqs C:\SRC\FinBot --encoding=utf-8 --force --ignore .venv
+
 https://docs.trychroma.com/docs/run-chroma/client-server

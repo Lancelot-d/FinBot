@@ -5,17 +5,22 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "apscheduler>=3.11.0",
     "black>=25.1.0",
+    "cleantext>=1.1.4",
     "dash>=3.0.1",
     "dash-bootstrap-components>=2.0.0",
     "dash-mantine-components>=1.1.0",
     "faiss-cpu>=1.10.0",
+    "fastapi>=0.115.12",
     "gunicorn>=23.0.0",
     "langchain-together>=0.3.0",
     "langgraph>=0.3.21",
     "oracledb>=3.0.0",
     "python-dotenv>=1.1.0",
+    "schedule>=1.2.2",
     "sentence-transformers>=4.0.1",
     "sqlalchemy>=2.0.40",
+    "uvicorn[standard]>=0.34.2",
     "yfinance>=0.2.55",
 ]
