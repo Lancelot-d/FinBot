@@ -64,17 +64,26 @@ class DAO(Singleton):
 
     def get_reddit_posts(self):
         # Fetch all posts from the database
-        result = self.con.execute(text("SELECT * FROM reddit_posts")).fetchall()
-        return result
-
+        try:
+            result = self.con.execute(text("SELECT * FROM reddit_posts")).fetchall()
+            return result
+        except Exception as e:
+            print(e)
+            self.con.rollback()
+            
     def is_reddit_post_in_db(self, post_id: str) -> bool:
         # Query the database to check if the post ID exists
-        result = self.con.execute(
-            text("SELECT 1 FROM reddit_posts WHERE id = :id FETCH FIRST 1 ROWS ONLY"),
-            {"id": post_id},  # Directly checking the ID
-        ).fetchone()
-
-        return result is not None
+        try:
+            result = self.con.execute(
+                text("SELECT 1 FROM reddit_posts WHERE id = :id FETCH FIRST 1 ROWS ONLY"),
+                {"id": post_id},  # Directly checking the ID
+            ).fetchone()
+            return result is not None
+        
+        except Exception as e:
+            print(e)
+            self.con.rollback()
+        
 
     def generate_post_id(self, title: str, author: str) -> str:
         # Generate a unique post ID based on title and author
