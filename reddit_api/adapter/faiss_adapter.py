@@ -4,10 +4,8 @@ import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
 from concurrent.futures import ThreadPoolExecutor
-import time
 
 MODEL_NAME_EMBEDDING = "paraphrase-MiniLM-L3-v2"
-
 
 def get_top_k_reddit_posts(user_input: str, k: int = 5) -> list[str]:
     """
@@ -42,7 +40,6 @@ def batch_insert():
     """
     Insert documents into the FAISS index in batches.
     """
-    start = time.perf_counter()
     model = SentenceTransformer(MODEL_NAME_EMBEDDING)
     posts = DAO.get_instance(force_refresh=True).get_reddit_posts()
     documents = [
@@ -50,26 +47,16 @@ def batch_insert():
         for content in posts
         if content[0] is not None and content[1] is not None
     ]
-    end = time.perf_counter()
-    print(f"Time taken to fetch posts: {end - start:.2f} seconds")
-
-    start = time.perf_counter()
+    
+    # Use ThreadPoolExecutor to parallelize the embedding process
     with ThreadPoolExecutor(max_workers=2) as executor:
         embeddings = list(executor.map(lambda doc: embed_text(doc, model), documents))
 
     embeddings = np.array(embeddings, dtype="float32")
-    end = time.perf_counter()
-    print(f"Time taken to embed posts: {end - start:.2f} seconds")
-
-    start = time.perf_counter()
     # Create a FAISS index
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatL2(dimension)
-
     # Add embeddings to the index
     index.add(embeddings)
-
     # Save the index to a file
     faiss.write_index(index, "reddit_faiss.index")
-    end = time.perf_counter()
-    print(f"Time taken to create and save FAISS index: {end - start:.2f} seconds")

@@ -1,11 +1,11 @@
 from __future__ import annotations
-from sessions import RandomUserAgentSession
+from scrapping.sessions import RandomUserAgentSession
 import time
 import random
 import logging
 import requests
 from requests.adapters import HTTPAdapter
-from proxy_manager import ProxyManager
+from scrapping.proxy_manager import ProxyManager
 
 logger = logging.basicConfig(
     filename="YARS.log",

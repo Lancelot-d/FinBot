@@ -2,10 +2,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pytz import utc
-import background_scrapping
-import faiss_adapter
 import uvicorn
-import langchain_adapter
+from scrapping import background_scrapping
+from adapter import faiss_adapter
+from adapter import langchain_adapter
 
 scheduler = AsyncIOScheduler(timezone=utc)
 

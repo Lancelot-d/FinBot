@@ -1,7 +1,6 @@
-import yars
 from dao import DAO
 from cleantext import clean
-
+from scrapping import yars
 dao = None
 
 def clean_post(post : list[str]):

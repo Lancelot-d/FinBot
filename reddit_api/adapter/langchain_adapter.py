@@ -1,7 +1,7 @@
 from langchain_together import ChatTogether
 from dotenv import load_dotenv
 import os
-import faiss_adapter
+from adapter import faiss_adapter
 
 load_dotenv()
 
@@ -26,7 +26,7 @@ def invoke_chat(user_input: str) -> str:
     context = "\n\n".join(
         faiss_adapter.get_top_k_reddit_posts(user_input=user_input, k=3)
     )
-    print(f"Context: {context} \n\n")
+    
     prompt = f"""
     You are an advanced information extraction agent. 
     Your task is to analyze the provided text and extract only factual information. Remove any questions, personal information, feelings, opinions, or perceptions.
@@ -39,7 +39,6 @@ def invoke_chat(user_input: str) -> str:
     """
 
     context_summary = llm.invoke(prompt).content
-    print(f"Context Summary: {context_summary}")
 
     prompt = f"""
     You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas. 

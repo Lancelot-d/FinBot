@@ -1,5 +1,5 @@
 from requests import Session
-from agents import get_agent
+from scrapping.agents import get_agent
 
 
 class RandomUserAgentSession(Session):
