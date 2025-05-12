@@ -9,9 +9,6 @@ load_dotenv()
 def invoke_chat(user_input: str) -> str:
     """
     Invokes a chat model to process the given user input and returns the response.
-    This function uses the ChatTogether class to interact with a specified language model.
-    The user input is appended with a directive to format the response in markdown format
-    before being sent to the model. The response content is then returned as a string.
     Args:
         user_input (str): The input string provided by the user to be processed by the chat model.
     Returns:
@@ -42,12 +39,12 @@ def invoke_chat(user_input: str) -> str:
 
     prompt = f"""
     You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas. 
-    Leverage your expertise and the context provided to deliver accurate, insightful, and actionable advice tailored to the needs of the situation.
-    Use the context to enhance your response, ensuring it is relevant and informative for the user input.
+    Leverage your expertise and the informations provided to deliver accurate, insightful, and actionable advice tailored to the needs of the situation.
+    Use the informations to enhance your response, ensuring it is relevant and informative for the user input.
     Don't structure your response as a conversation; instead, provide a comprehensive answer that directly addresses the user's query.
-    Don't structure your response on the context.
+    Don't structure your response on the informations received.
     
-    Context:
+    Information you can use for the response:
     ###
     {context_summary}
     ###
