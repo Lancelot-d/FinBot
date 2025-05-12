@@ -56,8 +56,6 @@ def invoke_chat(user_input: str) -> str:
     
     Response format:
     ###
-    Provide a detailed, structured response that addresses the user's query.
-    Include relevant examples, explanations, and actionable steps where applicable.
     Ensure clarity and conciseness in your response.
     Always format response in markdown format
     ###
