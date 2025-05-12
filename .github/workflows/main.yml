@@ -24,4 +24,6 @@
 
             git pull 
 
+            sudo docker image prune -f
+
             sudo docker compose up --build -d

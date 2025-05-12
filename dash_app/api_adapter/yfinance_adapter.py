@@ -18,6 +18,7 @@ def get_ticker_price(ticker: str) -> str:
             return "Invalid ticker"
         return f"{hist.tail(1)['Close'].iloc[0]:.2f}"
     except Exception as e:
+        print(f"Error fetching price: {str(e)}")
         return f"Error fetching data: {str(e)}"
 
 
@@ -28,7 +29,7 @@ def get_ticker_history(ticker: str, period: str = "1mo") -> yf.Ticker:
     Args:
         ticker (str): The ticker symbol to fetch the history for.
         period (str): The period for which to fetch the history.
-
+ 
     Returns:
         yf.Ticker: The yfinance Ticker object containing historical data.
     """
@@ -39,19 +40,18 @@ def get_ticker_history(ticker: str, period: str = "1mo") -> yf.Ticker:
             return None
         return hist
     except Exception as e:
+        print(f"Error fetching history: {str(e)}")
         return None
 
 def get_historic_profit(ticker: str) -> str:
     """
-    Calculate the historic profit of a given ticker, combining dividend and growth.
+    Calculate the historic profit in percentage of a given ticker, combining dividend and growth.
     Args: ticker (str): The ticker symbol to calculate the profit for.
-    Returns: str: A list of tuples with (year, profit) for each year.
+    Returns: str: A list of tuples with (year, profit_percent) for each year.
     """
     try:
         stock = yf.Ticker(ticker)
         hist = stock.history(period="max")
-        if hist.empty:
-            return "Invalid ticker"
 
         hist['Year'] = hist.index.year
         yearly_data = hist.groupby('Year').agg({
@@ -59,37 +59,41 @@ def get_historic_profit(ticker: str) -> str:
             'Dividends': 'sum'
         })
 
-        yearly_data['Profit'] = yearly_data['Close'].diff() + yearly_data['Dividends']
+        yearly_data['CloseWithDividends'] = yearly_data['Close'] + yearly_data['Dividends']
+        yearly_data['ReturnPercentage'] = yearly_data['CloseWithDividends'].pct_change() * 100
         yearly_data = yearly_data.dropna()
 
-        return [(int(year), round(profit, 2)) for year, profit in yearly_data['Profit'].items()]
+        return [(int(year), round(profit_percent, 2)) for year, profit_percent in yearly_data['ReturnPercentage'].items()]
+    
     except Exception as e:
+        print(f"Error calculating historic profit: {str(e)}")
         return f"Error calculating historic profit: {str(e)}"
 
 def get_mean_profit(ticker: str) -> str:
     """
-    Calculate the mean profit of a given ticker.
+    Calculate the mean profit in percentage of a given ticker.
     Args: ticker (str): The ticker symbol to calculate the profit for.
-    Returns: str: The mean profit.
+    Returns: str: The mean profit in percentage.
     """
     try:
         stock = yf.Ticker(ticker)
         hist = stock.history(period="max")
-        if hist.empty:
-            return "Invalid ticker"
-
+        
         hist['Year'] = hist.index.year
         yearly_data = hist.groupby('Year').agg({
             'Close': 'last',
             'Dividends': 'sum'
         })
-
-        yearly_data['Profit'] = yearly_data['Close'].diff() + yearly_data['Dividends']
-        yearly_data = yearly_data.dropna()
-
-        mean_profit = yearly_data['Profit'].mean()
-        return round(mean_profit, 2)
+        
+        yearly_data['CloseWithDividends'] = yearly_data['Close'] + yearly_data['Dividends']
+        yearly_data['ReturnPercentage'] = yearly_data['CloseWithDividends'].pct_change() * 100
+        yearly_data = yearly_data.fillna(0)
+        
+        mean_profit_percent = yearly_data['ReturnPercentage'].mean()
+        return round(mean_profit_percent, 2)
+    
     except Exception as e:
+        print(f"Error calculating mean profit: {str(e)}")
         return f"Error calculating mean profit: {str(e)}"
     
 def get_variance_profit(ticker: str) -> str:
@@ -101,19 +105,21 @@ def get_variance_profit(ticker: str) -> str:
     try:
         stock = yf.Ticker(ticker)
         hist = stock.history(period="max")
-        if hist.empty:
-            return "Invalid ticker"
-
+        
         hist['Year'] = hist.index.year
         yearly_data = hist.groupby('Year').agg({
             'Close': 'last',
             'Dividends': 'sum'
         })
-
-        yearly_data['Profit'] = yearly_data['Close'].diff() + yearly_data['Dividends']
-        yearly_data = yearly_data.dropna()
-
-        variance_profit = yearly_data['Profit'].var()
-        return round(variance_profit, 2)
+        
+        yearly_data['CloseWithDividends'] = yearly_data['Close'] + yearly_data['Dividends']
+        yearly_data['ReturnPercentage'] = yearly_data['CloseWithDividends'].pct_change() * 100
+        yearly_data = yearly_data.fillna(0)
+        yearly_data = yearly_data.iloc[1:]
+        
+        mean_profit_percent = yearly_data['ReturnPercentage'].var()
+        return round(mean_profit_percent, 2)
+    
     except Exception as e:
+        print(f"Error calculating variance profit: {str(e)}")
         return f"Error calculating variance profit: {str(e)}"

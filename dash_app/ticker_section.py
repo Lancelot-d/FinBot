@@ -9,13 +9,16 @@ import api_adapter.yfinance_adapter as yf_adapter
 def get_content() -> html.Div:
     return html.Div(
         [
-            # Search bar
-            dmc.TextInput(
-                id="ticker-search",
-                placeholder="Enter ticker symbol...",
-                debounce=500,
-                style={"marginBottom": "10px"},
-            ),
+            html.Div(children=[
+                html.Label("Ticker Search :", style={"marginRight": "10px"}),
+                # Search bar
+                dmc.TextInput(
+                    id="ticker-search",
+                    placeholder="Enter ticker symbol...",
+                    debounce=500,
+                    style={"marginBottom": "10px"},
+            )],style={"display": "flex", "alignItems": "center", "justifyContent": "flex-start", "border-bottom": "1px solid #ccc", "paddingBottom": "10px"}),
+            
             # Price display
             html.Div(
                 id="ticker-price",
@@ -26,6 +29,8 @@ def get_content() -> html.Div:
                     "display": "flex",
                     "alignItems": "center",
                     "justifyContent": "space-between",
+                    "marginTop": "10px",
+                    
                 },
             ),
             # Price graph
@@ -34,7 +39,8 @@ def get_content() -> html.Div:
                 id="historic-profit-container",
                 style={
                     "overflowX": "scroll",
-                    "width": "40vw"
+                    "width": "40vw",
+                    "marginTop": "10px",	
                 },
             ),
         ],
@@ -88,7 +94,7 @@ def update_ticker(ticker: str):
 
         ticker_info = [dmc.Text(f"Last price : {yf_adapter.get_ticker_price(ticker=ticker)}$"), 
                         dmc.Text(f"Annualized return : {yf_adapter.get_mean_profit(ticker=ticker)}%"),
-                        dmc.Text(f"Variance profit : {yf_adapter.get_variance_profit(ticker=ticker)}")]
+                        dmc.Text(f"Variance anualized return : {yf_adapter.get_variance_profit(ticker=ticker)}")]
         
         return {
             "price":ticker_info,
@@ -96,6 +102,7 @@ def update_ticker(ticker: str):
             "historic-profit-container": profit_table,
         }
     except Exception as e:
+        print(f"Error updating ticker: {str(e)}")
         return {
             "price": "Error fetching data",
             "graph": go.Figure(),
