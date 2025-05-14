@@ -16,7 +16,6 @@ dependencies = [
     "gunicorn>=23.0.0",
     "langchain>=0.3.25",
     "langchain-together>=0.3.0",
-    "langgraph>=0.3.21",
     "oracledb>=3.0.0",
     "python-dotenv>=1.1.0",
     "schedule>=1.2.2",
