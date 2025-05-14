@@ -1,4 +1,3 @@
-
 from dao import DAO
 import numpy as np
 import faiss
@@ -41,7 +40,7 @@ def batch_insert():
     Insert documents into the FAISS index in batches.
     """
     model = SentenceTransformer(MODEL_NAME_EMBEDDING)
-    posts = DAO.get_instance(force_refresh=True).get_reddit_posts()
+    posts = DAO.get_instance(force_refresh=True).get_reddit_posts()[0:100]
     documents = [
         content[1]
         for content in posts
@@ -60,3 +59,4 @@ def batch_insert():
     index.add(embeddings)
     # Save the index to a file
     faiss.write_index(index, "reddit_faiss.index")
+    
