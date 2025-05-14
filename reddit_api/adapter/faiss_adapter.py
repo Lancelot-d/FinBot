@@ -40,7 +40,7 @@ def batch_insert():
     Insert documents into the FAISS index in batches.
     """
     model = SentenceTransformer(MODEL_NAME_EMBEDDING)
-    posts = DAO.get_instance(force_refresh=True).get_reddit_posts()[0:100]
+    posts = DAO.get_instance(force_refresh=True).get_reddit_posts()
     documents = [
         content[1]
         for content in posts
