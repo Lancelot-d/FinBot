@@ -41,7 +41,7 @@ async def scrappe_and_update_faiss():
         background_scrapping.run()
         faiss_adapter.batch_insert()
     except Exception as e:
-        print("Error during background scrapping or FAISS update")
+        print(f"Error during background scrapping or FAISS update : {e}")
     
 
 if __name__ == '__main__':
