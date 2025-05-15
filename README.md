@@ -17,5 +17,3 @@ LOG791 - Virtual assistant powered by Reddit data to provide personalized financ
 
 # Remove all docker files not used 
 - sudo docker system prune -a --volumes -f
-
-https://docs.trychroma.com/docs/run-chroma/client-server

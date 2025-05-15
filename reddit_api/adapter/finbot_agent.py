@@ -120,6 +120,7 @@ class FinBotAgent:
         
         Thought: I now know the final answer
         Final Answer: the final answer to the original question, use tools results only if necessary and answer the question as best as you can.
+        Format the final answer as markdown.
 
         Begin!
 
@@ -158,7 +159,7 @@ class FinBotAgent:
         return AgentExecutor(
             agent=self.agent,
             tools=self.tools,
-            verbose=True,
+            verbose=False,
             return_intermediate_steps=False,
             return_only_outputs=True,
             handle_parsing_errors=True
