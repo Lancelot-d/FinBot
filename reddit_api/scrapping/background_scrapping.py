@@ -43,11 +43,7 @@ def process_subreddit_posts(miner : yars.YARS, category : list, reddit : str = "
             
             joined_post = "\n Next comment : ".join(clean_post(post))
             dao.add_reddit_post(content_str=joined_post,title=post_data["title"], author=post_data["author"])
-            print("Inserted one post")
-        else:
-            pass
-            #print("Already in db")
-            
+     
 def get_replies(comment, post):
     """Function to recursively get all replies (sub-comments)"""
     if "replies" in comment:
@@ -66,9 +62,7 @@ def run():
     dao = DAO.get_instance(force_refresh=True)
     
     for s in sub:
-        print(f"""Scrapping {s}""")
         for category in categories:
-            print(f"""Category {category} starting""")
             process_subreddit_posts(reddit=s, miner=miner, category=category)
             print(f"""Category {category} processed""")
             
