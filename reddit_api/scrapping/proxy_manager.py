@@ -17,7 +17,7 @@ class ProxyManager:
             self.test_proxys()
         
     def read_proxy_file(self) -> list:
-        with open('proxy.txt', 'r') as file:
+        with open('static/proxy.txt', 'r') as file:
             lines = file.readlines()
         return [line.strip() for line in lines]
     
@@ -63,7 +63,7 @@ class ProxyManager:
                     
         print("Initialized CSV with proxies.")
     
-    def update_proxy_count(self, proxy: str, filename: str = "proxy_success.csv"):
+    def update_proxy_count(self, proxy: str, filename: str = "static/proxy_success.csv"):
         data = {}
         
         # Read existing data if file exists
@@ -83,7 +83,7 @@ class ProxyManager:
             for key, value in sorted(data.items(), key=lambda item: item[1], reverse=True):
                 writer.writerow([key, value])
 
-    def get_sorted_proxies(self, filename: str = "proxy_success.csv"):
+    def get_sorted_proxies(self, filename: str = "static/proxy_success.csv"):
         if not os.path.exists(filename):
             return []
         

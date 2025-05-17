@@ -12,6 +12,7 @@ scheduler = AsyncIOScheduler(timezone=utc)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("Starting lifespan")
+    background_scrapping.run()
     faiss_adapter.batch_insert()
     scheduler.start()
     yield
