@@ -34,37 +34,31 @@ class FinBotAgent:
         
         self._build_graph()
         
-    def _create_prompt(self, user_input: str) -> str:
-        """
-        Creates a custom prompt template for the agent.
-        """
-        context = (
-            "You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas.\n"
-            "Leverage your expertise and the information provided to deliver the best possible answer to the user input.\n"
-            "Don't structure your response as a conversation; instead, provide a comprehensive answer that directly addresses the user's query.\n\n"
-            "You can't trust at 100% the information provided, so be careful.\n"
-        )
-        prompt = f"{context} User question: {user_input}\nAnswer:"
-        return prompt
-
+   
     # Node function to process the chat
     def node_process_final_answer(self, state: State):
         """
         Use the response from say_hello as context, but answer the initial user question.
         """
-        # The first message is the user question, the last is the say_hello LLM response
-        messages = state["messages"]
+        # The first message is the user question, the last is the context_response
         user_message = state["messages"][0].content
-        hello_response = state["messages"][-1].content
+        context_response = state["messages"][-1].content
         
-        # Compose a prompt that includes the hello response as context
-        context = (
-            f"Here is a random message to use as context: '{hello_response}'.\n"
-            "Now, answer the following user question as a finance expert:\n"
-            f"{user_message}"
-        )
+        prompt = f"""
+        You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas.
+        Leverage your expertise and the information provided to deliver the best possible answer to the user input.
+        Don't structure your response as a conversation; instead, provide a comprehensive answer that directly addresses the user's query.
         
-        prompt = self._create_prompt(context)
+        Information you can use for the response (if needed):
+        {context_response}
+        Do not structure your response on the information received use it only if necessary.
+        You can't trust at 100% the information provided, so be careful.
+        
+        Retun the final answer to the user question in markdown.
+        
+        User question: {user_message}
+        """
+    
         response = self.llm.invoke([{"role": "user", "content": prompt}])
         return {"messages": [response]}
     
