@@ -54,7 +54,15 @@ class FinBotAgent:
         Do not structure your response on the information received use it only if necessary.
         You can't trust at 100% the information provided, so be careful.
         
-        Retun the final answer to the user question in markdown.
+        Return the response in the following format:
+        ###
+        Markdown format
+        Without any extra text, newlines, or introductory phrases.
+        Never repeat the user question.
+        Be concise and clear.
+        Use bullet points if necessary.
+        Structure well the response with beautiful formatting in markdown.
+        ###
         
         User question: {user_message}
         """
