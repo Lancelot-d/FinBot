@@ -1,0 +1,27 @@
+@startuml
+node "FinBot System" {
+    node "Ubuntu Server" {
+        node "FinBot API"
+        node "Dash Web App"
+        rectangle "Nginx"
+    }
+}
+cloud "Database" {
+        database "SQL DB"
+}
+
+cloud "Reddit"
+cloud "YFinance" 
+
+rectangle "Web Browser"
+actor User
+
+
+"FinBot API" <..> "SQL DB" 
+"User" <..> "Web Browser"
+"Web Browser" <..> "Nginx"
+"Nginx" <..> "Dash Web App"
+"FinBot API" <..> "Dash Web App"
+"FinBot API" <..> "Reddit"
+"Dash Web App" <..> "YFinance"
+@enduml

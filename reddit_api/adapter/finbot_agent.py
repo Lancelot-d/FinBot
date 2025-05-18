@@ -89,7 +89,6 @@ class FinBotAgent:
         ###
         Ensure clarity and conciseness in your response.
         Do not include any extra text, newlines, or introductory phrases.
-        Return only factual information.
         ###
         """
         

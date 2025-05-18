@@ -1,0 +1,64 @@
+@startuml
+package dash_app {
+  class Singleton
+
+  class DAO {
+    +add_reddit_post(content_str, title, author)
+    +get_reddit_posts()
+    +is_reddit_post_in_db(post_id)
+    +generate_post_id(title, author)
+  }
+  
+
+  class YARS {
+    +fetch_subreddit_posts(...)
+    +scrape_post_details(permalink)
+    +_extract_comments(comments)
+  }
+
+  class ProxyManager {
+    +read_proxy_file()
+    +fetch_with_proxy(...)
+    +test_proxys()
+    +init_proxy_csv(...)
+  }
+
+  class RandomUserAgentSession {
+    +request(...)
+  }
+  RandomUserAgentSession --|> Session
+
+  class FinBotAgent {
+    +run(input_text)
+    +node_context(state)
+    +node_process_final_answer(state)
+  }
+
+  class faiss_adapter {
+    +get_top_k_reddit_posts(user_input, k)
+    +embed_text(text, model)
+    +batch_insert()
+  }
+
+  class utils {
+    +Not implemented yet
+  }
+
+  class background_scrapping{
+    +start()
+    +stop()
+    +schedule_scraping()
+    +run_scraping_task()
+  }
+}
+
+DAO <.. faiss_adapter : uses
+DAO <.. FinBotAgent : uses
+YARS ..> ProxyManager : uses
+YARS ..> RandomUserAgentSession : uses
+background_scrapping ..> DAO : uses
+background_scrapping ..> YARS : uses
+FinBotAgent ..> faiss_adapter : uses
+DAO --|> Singleton
+
+@enduml
