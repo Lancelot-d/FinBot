@@ -60,8 +60,6 @@ class FinBotAgent:
         Without any extra text, newlines, or introductory phrases.
         Never repeat the user question.
         Be concise and clear.
-        Use bullet points if necessary.
-        Structure well the response with beautiful formatting in markdown.
         ###
         
         User question: {user_message}
