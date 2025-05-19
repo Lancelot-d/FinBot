@@ -60,6 +60,7 @@ class FinBotAgent:
         Without any extra text, newlines, or introductory phrases.
         Never repeat the user question.
         Be concise and clear.
+        Don't write long answers if not necessary.
         ###
         
         User question is the last message in the conversation.
@@ -74,16 +75,24 @@ class FinBotAgent:
         Node that's extract context from reddit posts stored in FAISS.
         """
         
-        context = "\n\n".join(faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=2))
+        context = "\n\n".join(faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=5))
         prompt = f"""
         You are an advanced information extraction agent. 
         Your task is to analyze the provided text and extract only factual information. Remove any questions, personal information, feelings, opinions, or perceptions.
         Extract only general information always true not specific to the user input.
         Present the extracted facts in a concise and structured manner.
+        Keep only the most relevant information and remove any unnecessary details.
+        Keep only information related to finance, investments, budgeting, financial planning, and wealth management.
+        Keep only information related to the user input.
         
         Here is the the text to analyze:
         ###
         {context}
+        ###
+        
+        Here is the user input:
+        ###
+        {state["messages"][0].content}
         ###
         
         Response format:
@@ -115,4 +124,7 @@ class FinBotAgent:
         initial_state = {"messages": [{"role": "user", "content": f"{input_text}"}]}
         final_state = self.graph.invoke(initial_state)
         return final_state["messages"][-1].content
-
+    
+    
+    def estimate_tokens(self, text):
+        return int(len(text.split()) * 1.2)
