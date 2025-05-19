@@ -80,7 +80,8 @@ def update_chat(_, user_input, chat_history):
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
     chat_history.append(f"**You:** \n{user_input}\n")
-    response = requests.get(f"http://api:8080/complete_message/?input_string={user_input}")
+    user_input_with_history = "\n".join(chat_history[-2:])
+    response = requests.get(f"http://api:8080/complete_message/?input_string={user_input_with_history}")
     response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}

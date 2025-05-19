@@ -62,6 +62,7 @@ class FinBotAgent:
         Be concise and clear.
         ###
         
+        User question is the last message in the conversation.
         User question: {user_message}
         """
     
