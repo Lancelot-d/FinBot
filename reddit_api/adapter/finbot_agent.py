@@ -61,6 +61,7 @@ class FinBotAgent:
         Never repeat the user question.
         Be concise and clear.
         Don't write long answers if not necessary.
+        Do not return all the response in bold markdown ** **.
         ###
         
         User question is the last message in the conversation.
