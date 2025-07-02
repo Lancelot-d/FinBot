@@ -37,35 +37,42 @@ class FinBotAgent:
    
     # Node function to process the chat
     def node_process_final_answer(self, state: State):
+        
         """
         Use the response from say_hello as context, but answer the initial user question.
         """
         # The first message is the user question, the last is the context_response
         user_message = state["messages"][0].content
         context_response = state["messages"][-1].content
-        
         prompt = f"""
-        You are an agent specialized in finance, equipped with expert knowledge in investments, budgeting, financial planning, wealth management, and related areas.
-        Leverage your expertise and the information provided to deliver the best possible answer to the user input.
-        Don't structure your response as a conversation; instead, provide a comprehensive answer that directly addresses the user's query.
-        
-        Information you can use for the response (if needed):
+        # ROLE
+        You are a specialized financial advisor with expert knowledge in investments, budgeting, financial planning, wealth management, and related financial topics.
+
+        # CONTEXT
+        The following information has been extracted from relevant Reddit posts and financial discussions. Use this context ONLY if it's relevant to answer the user's question. This information should be treated as supplementary and may not be 100% accurate:
+
+        ---
         {context_response}
-        Do not structure your response on the information received use it only if necessary.
-        You can't trust at 100% the information provided, so be careful.
-        
-        Return the response in the following format:
-        ###
-        Markdown format
-        Without any extra text, newlines, or introductory phrases.
-        Never repeat the user question.
-        Be concise and clear.
-        Don't write long answers if not necessary.
-        Do not return all the response in bold markdown ** **.
-        ###
-        
-        User question is the last message in the conversation.
-        User question: {user_message}
+        ---
+
+        # INSTRUCTIONS
+        1. Provide a comprehensive, direct answer to the user's question using your financial expertise
+        2. Use the provided context only if it adds value to your response
+        3. Do not structure your response as a conversation
+        4. Be concise and clear - avoid unnecessary length
+        5. Maintain a professional, advisory tone
+        6. Do not repeat the user's question in your response
+        7. Verify information from context before including it in your answer
+
+        # OUTPUT FORMAT
+        - Use markdown formatting for better readability
+        - Structure your response with clear sections if needed
+        - Avoid using bold formatting (**text**) for the entire response
+        - No introductory phrases or extra explanatory text
+        - Focus on actionable insights and practical advice
+
+        # USER QUESTION
+        {user_message}
         """
     
         response = self.llm.invoke([{"role": "user", "content": prompt}])
