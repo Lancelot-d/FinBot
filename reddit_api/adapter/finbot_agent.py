@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from adapter import faiss_adapter
 import yfinance as yf
 import utils
-
+from logger_config import logger
 
 class State(TypedDict):
     messages: Annotated[list, add_messages]
@@ -37,7 +37,6 @@ class FinBotAgent:
    
     # Node function to process the chat
     def node_process_final_answer(self, state: State):
-        
         """
         Use the response from say_hello as context, but answer the initial user question.
         """
@@ -74,7 +73,9 @@ class FinBotAgent:
         # USER QUESTION
         {user_message}
         """
-    
+        
+        logger.debug(f"Prompt for final answer: {prompt}")
+        
         response = self.llm.invoke([{"role": "user", "content": prompt}])
         return {"messages": [response]}
     
@@ -82,8 +83,11 @@ class FinBotAgent:
         """
         Node that's extract context from reddit posts stored in FAISS.
         """
+        top_k_posts = faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=5)
         
-        context = "\n\n".join(faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=5))
+        logger.debug(f"Top K posts: {top_k_posts}")
+        
+        context = "\n\n".join(top_k_posts)
         prompt = f"""
         You are an advanced information extraction agent. 
         Your task is to analyze the provided text and extract only factual information. Remove any questions, personal information, feelings, opinions, or perceptions.
