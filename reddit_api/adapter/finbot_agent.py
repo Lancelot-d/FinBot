@@ -12,6 +12,7 @@ from adapter import faiss_adapter
 import yfinance as yf
 import utils
 from logger_config import logger
+import asyncio
 
 class State(TypedDict):
     messages: Annotated[list, add_messages]
@@ -83,39 +84,76 @@ class FinBotAgent:
         """
         Node that's extract context from reddit posts stored in FAISS.
         """
-        top_k_posts = faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=5)
+        top_k_posts = faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=10)
         
-        logger.debug(f"Top K posts: {top_k_posts}")
-        
-        context = "\n\n".join(top_k_posts)
-        prompt = f"""
-        You are an advanced information extraction agent. 
-        Your task is to analyze the provided text and extract only factual information. Remove any questions, personal information, feelings, opinions, or perceptions.
-        Extract only general information always true not specific to the user input.
-        Present the extracted facts in a concise and structured manner.
-        Keep only the most relevant information and remove any unnecessary details.
-        Keep only information related to finance, investments, budgeting, financial planning, and wealth management.
-        Keep only information related to the user input.
-        
-        Here is the the text to analyze:
-        ###
-        {context}
-        ###
-        
-        Here is the user input:
-        ###
-        {state["messages"][0].content}
-        ###
-        
-        Response format:
-        ###
-        Ensure clarity and conciseness in your response.
-        Do not include any extra text, newlines, or introductory phrases.
-        ###
-        """
-        
-        response = self.llm.invoke([{"role": "user", "content": prompt}])
-        messages = state.get("messages", []) + [response]
+        # Process each post asynchronously
+        async def process_post(post):
+            prompt = f"""
+            You are an advanced information extraction agent. 
+            Your task is to analyze the provided text and extract only factual information. Remove any questions, personal information, feelings, opinions, or perceptions.
+            Extract only general information always true not specific to the user input.
+            Present the extracted facts in a concise and structured manner.
+            Keep only the most relevant information and remove any unnecessary details.
+            Keep only information related to finance, investments, budgeting, financial planning, and wealth management.
+            Keep only information related to the user input.
+            
+            Here is the the text to analyze:
+            ###
+            {post}
+            ###
+            
+            Here is the user input:
+            ###
+            {state["messages"][0].content}
+            ###
+            
+            Response format example:
+            ###
+            - The stock market is influenced by various factors including economic indicators, interest rates, and geopolitical events.
+            - Diversification is a key strategy in investment to mitigate risk.
+            - Budgeting is essential for effective financial planning and achieving long-term financial goals.
+            - Wealth management involves strategic planning to grow and protect assets over time.
+            ###
+            
+            Ensure to strictly follow response format
+            
+            Rules to follow:
+            ###
+            - Extract only factual information
+            - Remove any questions, personal information, feelings, opinions, or perceptions
+            - Return just fact, do not introduce yourself or the task
+            ###
+            """
+            
+            response = self.llm.invoke([{"role": "user", "content": prompt}])
+            return response.content
+
+        async def process_all_posts():
+            tasks = [process_post(post) for post in top_k_posts]
+            return await asyncio.gather(*tasks)
+
+        # Handle async processing in a sync context
+        try:
+            # Try to get the current event loop
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # If event loop is running, create a new thread
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(asyncio.run, process_all_posts())
+                    all_responses = future.result()
+            else:
+                # If no event loop is running, use asyncio.run
+                all_responses = asyncio.run(process_all_posts())
+        except RuntimeError:
+            # No event loop exists, safe to use asyncio.run
+            all_responses = asyncio.run(process_all_posts())
+
+        # Combine all responses
+        all_responses = ["\n".join(response.split("\n")[1:]) for response in all_responses if response.strip()]
+        all_responses = ["\n".join(response.split("Note:")[0:1]) for response in all_responses if response.strip()]
+        combined_response = "\n".join(all_responses)
+        messages = state.get("messages", []) + [{"role": "assistant", "content": combined_response}]
         return {"messages": messages}
 
     def _build_graph(self):
