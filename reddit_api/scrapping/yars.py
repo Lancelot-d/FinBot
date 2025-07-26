@@ -37,10 +37,9 @@ class YARS:
                 self.current_index+=1
                 self.change_user_agent()
                 print(f"""Proxy {self.current_index}/{len(self.proxys)} """)
-                
-            # Reset index if it exceeds the list length
-            if self.current_index >= len(self.proxys)-1:
-                return
+            
+            if self.current_index >= 100:
+                raise Exception("All proxies failed, please check your proxy list or network connection.")
                 
     def fetch_subreddit_posts(
         self, subreddit, limit=10, category="hot", time_filter="all"
