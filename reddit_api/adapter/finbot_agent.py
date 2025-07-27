@@ -99,7 +99,7 @@ class FinBotAgent:
             
             Here is the the text to analyze:
             ###
-            {post}
+            {post[:5000]}
             ###
             
             Here is the user input:
@@ -124,7 +124,7 @@ class FinBotAgent:
             - Return just fact, do not introduce yourself or the task
             ###
             """
-            
+            print(len(prompt))
             response = self.llm.invoke([{"role": "user", "content": prompt}])
             return response.content
 
