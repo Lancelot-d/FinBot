@@ -75,8 +75,6 @@ class FinBotAgent:
         {user_message}
         """
         
-        logger.debug(f"Prompt for final answer: {prompt}")
-        
         response = self.llm.invoke([{"role": "user", "content": prompt}])
         return {"messages": [response]}
     
@@ -124,7 +122,6 @@ class FinBotAgent:
             - Return just fact, do not introduce yourself or the task
             ###
             """
-            print(len(prompt))
             response = self.llm.invoke([{"role": "user", "content": prompt}])
             return response.content
 
