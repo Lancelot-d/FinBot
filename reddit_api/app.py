@@ -3,9 +3,11 @@ from fastapi import FastAPI
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pytz import utc
 import uvicorn
+import time
 from scrapping import background_scrapping
 from adapter import faiss_adapter
 from adapter import finbot_agent
+from logger_config import logger
 
 scheduler = AsyncIOScheduler(timezone=utc)
 
@@ -25,8 +27,11 @@ async def complete_message(input_string: str):
     Example call:
     GET /complete_message/?input_string=Hello
     """
+    start_time = time.time()
     try:
         response = finbot_agent.FinBotAgent().run(input_string)
+        processing_time = time.time() - start_time
+        logger.info(f"Request processed successfully in {processing_time:.3f} seconds")
     except Exception as e:
         print(f"Error during chat invocation: {e}")
         return {"error": "Failed to process the request"}
