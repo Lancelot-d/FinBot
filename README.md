@@ -15,5 +15,5 @@ LOG791 - Virtual assistant powered by Reddit data to provide personalized financ
 # pipreqs
 - python -m pipreqs.pipreqs C:\SRC\FinBot --encoding=utf-8 --force --ignore .venv
 
-## Remove all docker files not used 
+# Remove all docker files not used 
 - sudo docker system prune -a --volumes -f
