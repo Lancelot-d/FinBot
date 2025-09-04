@@ -18,6 +18,7 @@ def get_reddit_posts() -> list[str]:
     Returns a list of tuples (post_id, post_content).
     """
     reddit_posts =  DAO.get_instance().get_reddit_posts()
+    reddit_posts = [(post.id, post.content_str) for post in reddit_posts]
     reddit_posts = [content[1] for content in reddit_posts if content[0] is not None and content[1] is not None]
     return reddit_posts
 
