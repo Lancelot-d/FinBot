@@ -22,8 +22,6 @@ class DAO(Singleton):
         PASSWORD = os.getenv("PASSWORD")
         DSN = "(description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=adb.ca-montreal-1.oraclecloud.com))(connect_data=(service_name=g6e3bf2bdf6f8f6_db2_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))"
         USER = os.getenv("USER")
-        print(PASSWORD)
-        print(USER)
         self.engine = create_engine(
             f"oracle+oracledb://:@",
             connect_args={"user": USER, "password": PASSWORD, "dsn": DSN},
