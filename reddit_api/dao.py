@@ -7,6 +7,7 @@ import hashlib
 
 Base = declarative_base()
 
+
 class Singleton:
     _instances = {}
 
@@ -16,6 +17,7 @@ class Singleton:
         if force_refresh or cls not in cls._instances:
             cls._instances[cls] = cls(*args, **kwargs)
         return cls._instances[cls]
+
 
 class DAO(Singleton):
     load_dotenv()
@@ -36,7 +38,10 @@ class DAO(Singleton):
         try:
             post_id = self.generate_post_id(title=title, author=author)
             from datetime import datetime
-            post = RedditPost(id=post_id, content_str=content_str, date_insertion=datetime.now())
+
+            post = RedditPost(
+                id=post_id, content_str=content_str, date_insertion=datetime.now()
+            )
             session.add(post)
             session.commit()
         except Exception as e:
@@ -55,7 +60,7 @@ class DAO(Singleton):
             session.rollback()
         finally:
             session.close()
-            
+
     def is_reddit_post_in_db(self, post_id: str) -> bool:
         session = self.Session()
         try:
@@ -66,7 +71,7 @@ class DAO(Singleton):
             session.rollback()
         finally:
             session.close()
-        
+
     def generate_post_id(self, title: str, author: str) -> str:
         # Generate a unique post ID based on title and author
         return hashlib.md5(f"{title}{author}".encode("utf-8")).hexdigest()

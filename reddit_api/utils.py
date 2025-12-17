@@ -1,4 +1,5 @@
-import re 
+import re
+
 
 def extract_ticker_from_input(input_text: str) -> str:
     """

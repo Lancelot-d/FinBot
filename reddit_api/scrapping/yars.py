@@ -13,34 +13,51 @@ logger = logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
+
 class YARS:
-    __slots__ = ("headers", "session", "proxys", "timeout","current_index", "proxys_manager")
+    __slots__ = (
+        "headers",
+        "session",
+        "proxys",
+        "timeout",
+        "current_index",
+        "proxys_manager",
+    )
 
     def __init__(self, timeout=5, random_user_agent=True):
-        self.session = RandomUserAgentSession() if random_user_agent else requests.Session()
-        
+        self.session = (
+            RandomUserAgentSession() if random_user_agent else requests.Session()
+        )
+
         self.proxys_manager = ProxyManager(self.session, test_proxy=False)
         self.proxys = self.proxys_manager.get_sorted_proxies()
         self.timeout = timeout
         self.session.mount("https://", HTTPAdapter(max_retries=1))
         self.current_index = 0
-    
+
     def change_user_agent(self):
         self.session = RandomUserAgentSession()
 
     def fetch_sync(self, url, timeout, params=None):
         while True:
-            response = self.proxys_manager.fetch_with_proxy(p=self.proxys[self.current_index],url=url,timeout=timeout,params=params)
+            response = self.proxys_manager.fetch_with_proxy(
+                p=self.proxys[self.current_index],
+                url=url,
+                timeout=timeout,
+                params=params,
+            )
             if response:
                 return response
             else:
-                self.current_index+=1
+                self.current_index += 1
                 self.change_user_agent()
                 print(f"""Proxy {self.current_index}/{len(self.proxys)} """)
-            
+
             if self.current_index >= 100:
-                raise Exception("All proxies failed, please check your proxy list or network connection.")
-                
+                raise Exception(
+                    "All proxies failed, please check your proxy list or network connection."
+                )
+
     def fetch_subreddit_posts(
         self, subreddit, limit=10, category="hot", time_filter="all"
     ):
@@ -52,7 +69,9 @@ class YARS:
             time_filter,
         )
         if category not in ["hot", "top", "new"]:
-            raise ValueError("Category for Subredit must be either 'hot', 'top', or 'new'")
+            raise ValueError(
+                "Category for Subredit must be either 'hot', 'top', or 'new'"
+            )
 
         batch_size = min(100, limit)
         total_fetched = 0
@@ -128,7 +147,7 @@ class YARS:
         url = f"https://www.reddit.com{permalink}.json"
 
         try:
-            response =self.fetch_sync(url=url, timeout=5)
+            response = self.fetch_sync(url=url, timeout=5)
             response.raise_for_status()
             logging.info("Post details request successful : %s", url)
         except Exception as e:
@@ -150,7 +169,7 @@ class YARS:
         comments = self._extract_comments(post_data[1]["data"]["children"])
         logging.info("Successfully scraped post: %s", title)
         return {"title": title, "body": body, "comments": comments}
-    
+
     def _extract_comments(self, comments):
         logging.info("Extracting comments")
         extracted_comments = []
@@ -160,7 +179,7 @@ class YARS:
                 extracted_comment = {
                     "author": comment_data.get("author", ""),
                     "body": comment_data.get("body", ""),
-                    "score": comment_data.get("score",""),
+                    "score": comment_data.get("score", ""),
                     "replies": [],
                 }
 

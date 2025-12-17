@@ -5,9 +5,7 @@ logger.setLevel(logging.DEBUG)
 
 # Create formatter
 formatter = logging.Formatter(
-    fmt="{asctime} - {levelname} - {message}",
-    style="{",
-    datefmt="%Y-%m-%d %H:%M"
+    fmt="{asctime} - {levelname} - {message}", style="{", datefmt="%Y-%m-%d %H:%M"
 )
 
 # File handler

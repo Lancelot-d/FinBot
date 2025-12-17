@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import requests
 
+
 def get_content() -> html.Div:
     return html.Div(
         [
@@ -80,11 +81,13 @@ def update_chat(_, user_input, chat_history):
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
     chat_history.append(f"**You:** \n{user_input}\n")
-    
+
     chat_history_only_user = "\n".join(
         [msg for msg in chat_history if "**You:**" in msg][-5:]
     )
-    response = requests.get(f"http://api:8080/complete_message/?input_string={chat_history_only_user}")
+    response = requests.get(
+        f"http://api:8080/complete_message/?input_string={chat_history_only_user}"
+    )
     response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}

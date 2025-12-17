@@ -113,7 +113,7 @@ app.layout = dmc.MantineProvider(
                 ),
             ],
         )
-    ],  
+    ],
 )
 
 if __name__ == "__main__":

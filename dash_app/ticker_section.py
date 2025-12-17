@@ -9,16 +9,25 @@ import api_adapter.yfinance_adapter as yf_adapter
 def get_content() -> html.Div:
     return html.Div(
         [
-            html.Div(children=[
-                html.Label("Ticker Search :", style={"marginRight": "10px"}),
-                # Search bar
-                dmc.TextInput(
-                    id="ticker-search",
-                    placeholder="Enter ticker symbol...",
-                    debounce=500,
-                    style={"marginBottom": "10px"},
-            )],style={"display": "flex", "alignItems": "center", "justifyContent": "flex-start", "border-bottom": "1px solid #ccc", "paddingBottom": "10px"}),
-            
+            html.Div(
+                children=[
+                    html.Label("Ticker Search :", style={"marginRight": "10px"}),
+                    # Search bar
+                    dmc.TextInput(
+                        id="ticker-search",
+                        placeholder="Enter ticker symbol...",
+                        debounce=500,
+                        style={"marginBottom": "10px"},
+                    ),
+                ],
+                style={
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start",
+                    "border-bottom": "1px solid #ccc",
+                    "paddingBottom": "10px",
+                },
+            ),
             # Price display
             html.Div(
                 id="ticker-price",
@@ -30,7 +39,6 @@ def get_content() -> html.Div:
                     "alignItems": "center",
                     "justifyContent": "space-between",
                     "marginTop": "10px",
-                    
                 },
             ),
             # Price graph
@@ -40,11 +48,11 @@ def get_content() -> html.Div:
                 style={
                     "overflowX": "scroll",
                     "width": "40vw",
-                    "marginTop": "10px",	
+                    "marginTop": "10px",
                 },
             ),
         ],
-        style={"padding": "20px","width": "100%"},
+        style={"padding": "20px", "width": "100%"},
     )
 
 
@@ -52,9 +60,7 @@ def get_content() -> html.Div:
     output={
         "price": Output("ticker-price", "children"),
         "graph": Output("ticker-graph", "figure"),
-        "historic-profit-container": Output(
-            "historic-profit-container", "children"
-        ),
+        "historic-profit-container": Output("historic-profit-container", "children"),
     },
     inputs={"ticker": Input("ticker-search", "value")},
     state={},
@@ -65,7 +71,7 @@ def update_ticker(ticker: str):
         hist = yf_adapter.get_ticker_history(ticker, period="1mo")
         profit_data = yf_adapter.get_historic_profit(ticker)
         profit_data.reverse()
-        
+
         fig = go.Figure()
         fig.add_trace(
             go.Scatter(
@@ -88,16 +94,22 @@ def update_ticker(ticker: str):
         profit_table = dmc.Table(
             data={
                 "head": [year[0] for year in profit_data],
-                "body": [[f"{price[1]}%" for price in profit_data]]
+                "body": [[f"{price[1]}%" for price in profit_data]],
             }
         )
 
-        ticker_info = [dmc.Text(f"Last price : {yf_adapter.get_ticker_price(ticker=ticker)}$"), 
-                        dmc.Text(f"Annualized return : {yf_adapter.get_mean_profit(ticker=ticker)}%"),
-                        dmc.Text(f"Variance anualized return : {yf_adapter.get_variance_profit(ticker=ticker)}")]
-        
+        ticker_info = [
+            dmc.Text(f"Last price : {yf_adapter.get_ticker_price(ticker=ticker)}$"),
+            dmc.Text(
+                f"Annualized return : {yf_adapter.get_mean_profit(ticker=ticker)}%"
+            ),
+            dmc.Text(
+                f"Variance anualized return : {yf_adapter.get_variance_profit(ticker=ticker)}"
+            ),
+        ]
+
         return {
-            "price":ticker_info,
+            "price": ticker_info,
             "graph": fig,
             "historic-profit-container": profit_table,
         }
@@ -108,4 +120,3 @@ def update_ticker(ticker: str):
             "graph": go.Figure(),
             "historic-profit-container": html.Div("Error fetching profit data"),
         }
-

@@ -9,8 +9,10 @@ from adapter import faiss_adapter
 from logger_config import logger
 import asyncio
 
+
 class State(TypedDict):
     messages: Annotated[list, add_messages]
+
 
 class FinBotAgent:
     """
@@ -18,19 +20,25 @@ class FinBotAgent:
     with custom tools and prompt, using the Together LLM API.
     """
 
-    def __init__(self, api_key: str = None, model: str = "meta-llama/Meta-Llama-3-8B-Instruct-Lite", temperature: float = 0.0):
+    def __init__(
+        self,
+        api_key: str = None,
+        model: str = "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+        temperature: float = 0.0,
+    ):
         load_dotenv()
         self.api_key = api_key or os.getenv("TOGETHER_API_KEY")
         self.model = model
         self.temperature = temperature
-        
+
         self.graph_builder = StateGraph(State)
-        self.llm = ChatTogether(model=model, api_key=self.api_key, temperature=temperature)
+        self.llm = ChatTogether(
+            model=model, api_key=self.api_key, temperature=temperature
+        )
         self.graph = None
-        
+
         self._build_graph()
-        
-   
+
     # Node function to process the chat
     def node_process_final_answer(self, state: State):
         """
@@ -69,16 +77,18 @@ class FinBotAgent:
         # USER QUESTION
         {user_message}
         """
-        
+
         response = self.llm.invoke([{"role": "user", "content": prompt}])
         return {"messages": [response]}
-    
+
     def node_context(self, state: State):
         """
         Node that's extract context from reddit posts stored in FAISS.
         """
-        top_k_posts = faiss_adapter.get_top_k_reddit_posts(user_input=state["messages"][0].content, k=10)
-        
+        top_k_posts = faiss_adapter.get_top_k_reddit_posts(
+            user_input=state["messages"][0].content, k=10
+        )
+
         # Process each post asynchronously
         async def process_post(post):
             prompt = f"""
@@ -131,6 +141,7 @@ class FinBotAgent:
             if loop.is_running():
                 # If event loop is running, create a new thread
                 import concurrent.futures
+
                 with concurrent.futures.ThreadPoolExecutor() as executor:
                     future = executor.submit(asyncio.run, process_all_posts())
                     all_responses = future.result()
@@ -142,10 +153,20 @@ class FinBotAgent:
             all_responses = asyncio.run(process_all_posts())
 
         # Combine all responses
-        all_responses = ["\n".join(response.split("\n")[1:]) for response in all_responses if response.strip()]
-        all_responses = ["\n".join(response.split("Note:")[0:1]) for response in all_responses if response.strip()]
+        all_responses = [
+            "\n".join(response.split("\n")[1:])
+            for response in all_responses
+            if response.strip()
+        ]
+        all_responses = [
+            "\n".join(response.split("Note:")[0:1])
+            for response in all_responses
+            if response.strip()
+        ]
         combined_response = "\n".join(all_responses)
-        messages = state.get("messages", []) + [{"role": "assistant", "content": combined_response}]
+        messages = state.get("messages", []) + [
+            {"role": "assistant", "content": combined_response}
+        ]
         return {"messages": messages}
 
     def _build_graph(self):
@@ -154,19 +175,19 @@ class FinBotAgent:
         """
         # Nodes of the graph
         self.graph_builder.add_node("node_context", self.node_context)
-        self.graph_builder.add_node("node_process_final_answer", self.node_process_final_answer)
+        self.graph_builder.add_node(
+            "node_process_final_answer", self.node_process_final_answer
+        )
         # Path of the graph
         self.graph_builder.add_edge(START, "node_context")
         self.graph_builder.add_edge("node_context", "node_process_final_answer")
         # Compile the graph
         self.graph = self.graph_builder.compile()
-        
-        
+
     def run(self, input_text: str):
         initial_state = {"messages": [{"role": "user", "content": f"{input_text}"}]}
         final_state = self.graph.invoke(initial_state)
         return final_state["messages"][-1].content
-    
-    
+
     def estimate_tokens(self, text):
         return int(len(text.split()) * 1.2)

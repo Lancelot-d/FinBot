@@ -11,6 +11,7 @@ from logger_config import logger
 
 scheduler = AsyncIOScheduler(timezone=utc)
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("Starting lifespan")
@@ -19,7 +20,9 @@ async def lifespan(app: FastAPI):
     yield
     scheduler.shutdown()
 
+
 app = FastAPI(lifespan=lifespan)
+
 
 @app.get("/complete_message/")
 async def complete_message(input_string: str):
@@ -35,11 +38,12 @@ async def complete_message(input_string: str):
     except Exception as e:
         print(f"Error during chat invocation: {e}")
         return {"error": "Failed to process the request"}
-    
+
     return {"completed_message": f"{response}"}
 
+
 # every 10 hours
-@scheduler.scheduled_job('interval', seconds=36000)
+@scheduler.scheduled_job("interval", seconds=36000)
 async def scrappe_and_update_faiss():
     print("Background scrapping started")
     try:
@@ -47,8 +51,7 @@ async def scrappe_and_update_faiss():
         faiss_adapter.batch_insert()
     except Exception as e:
         print(f"Error during background scrapping or FAISS update : {e}")
-    
 
-if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8080)
-    
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=8080)
