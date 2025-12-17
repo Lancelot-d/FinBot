@@ -1,16 +1,11 @@
 from langchain_together import ChatTogether
-
 from typing import Annotated
-from langchain.chat_models import init_chat_model
 from typing_extensions import TypedDict
 from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
-
 import os
 from dotenv import load_dotenv
 from adapter import faiss_adapter
-import yfinance as yf
-import utils
 from logger_config import logger
 import asyncio
 
