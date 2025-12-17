@@ -1,16 +1,26 @@
-from langchain_together import ChatTogether
+"""FinBot agent using LangChain and Together API for financial advice."""
+
+import os
+import asyncio
+import concurrent.futures
 from typing import Annotated
+
 from typing_extensions import TypedDict
+from langchain_together import ChatTogether
 from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
-import os
 from dotenv import load_dotenv
+
 from adapter import faiss_adapter
-from logger_config import logger
-import asyncio
 
 
 class State(TypedDict):
+    """State type for the agent graph.
+
+    Attributes:
+        messages: List of messages with add_messages reducer.
+    """
+
     messages: Annotated[list, add_messages]
 
 
@@ -140,8 +150,6 @@ class FinBotAgent:
             loop = asyncio.get_event_loop()
             if loop.is_running():
                 # If event loop is running, create a new thread
-                import concurrent.futures
-
                 with concurrent.futures.ThreadPoolExecutor() as executor:
                     future = executor.submit(asyncio.run, process_all_posts())
                     all_responses = future.result()
@@ -185,9 +193,25 @@ class FinBotAgent:
         self.graph = self.graph_builder.compile()
 
     def run(self, input_text: str):
+        """Run the agent with the given input text.
+
+        Args:
+            input_text: The user's input question or message.
+
+        Returns:
+            The agent's response as a string.
+        """
         initial_state = {"messages": [{"role": "user", "content": f"{input_text}"}]}
         final_state = self.graph.invoke(initial_state)
         return final_state["messages"][-1].content
 
     def estimate_tokens(self, text):
+        """Estimate the number of tokens in the given text.
+
+        Args:
+            text: The text to estimate tokens for.
+
+        Returns:
+            Estimated token count.
+        """
         return int(len(text.split()) * 1.2)

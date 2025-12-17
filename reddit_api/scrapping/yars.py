@@ -1,20 +1,36 @@
+"""YARS (Yet Another Reddit Scraper) - Reddit scraping with proxy support."""
+
 from __future__ import annotations
-from scrapping.sessions import RandomUserAgentSession
 import time
 import random
 import logging
+
 import requests
 from requests.adapters import HTTPAdapter
+
+from scrapping.sessions import RandomUserAgentSession
 from scrapping.proxy_manager import ProxyManager
 
-logger = logging.basicConfig(
+# Configure logging
+logging.basicConfig(
     filename="YARS.log",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
+LOGGER = logging.getLogger(__name__)
 
 
 class YARS:
+    """Reddit scraper with proxy rotation and user agent randomization.
+
+    Attributes:
+        session: HTTP session for making requests.
+        proxys_manager: Manager for proxy rotation.
+        proxys: List of available proxies.
+        timeout: Request timeout in seconds.
+        current_index: Current proxy index.
+    """
+
     __slots__ = (
         "headers",
         "session",
@@ -36,9 +52,23 @@ class YARS:
         self.current_index = 0
 
     def change_user_agent(self):
+        """Change to a new random user agent."""
         self.session = RandomUserAgentSession()
 
     def fetch_sync(self, url, timeout, params=None):
+        """Fetch URL synchronously with proxy rotation.
+
+        Args:
+            url: URL to fetch.
+            timeout: Request timeout in seconds.
+            params: Query parameters.
+
+        Returns:
+            Response object if successful.
+
+        Raises:
+            RuntimeError: If all proxies fail.
+        """
         while True:
             response = self.proxys_manager.fetch_with_proxy(
                 p=self.proxys[self.current_index],
@@ -48,21 +78,36 @@ class YARS:
             )
             if response:
                 return response
-            else:
-                self.current_index += 1
-                self.change_user_agent()
-                print(f"""Proxy {self.current_index}/{len(self.proxys)} """)
+
+            self.current_index += 1
+            self.change_user_agent()
+            print(f"""Proxy {self.current_index}/{len(self.proxys)} """)
 
             if self.current_index >= 100:
-                raise Exception(
+                raise RuntimeError(
                     "All proxies failed, please check your proxy list or network connection."
                 )
 
-    def fetch_subreddit_posts(
+    def fetch_subreddit_posts(  # pylint: disable=too-many-locals,too-many-branches
         self, subreddit, limit=10, category="hot", time_filter="all"
     ):
-        logging.info(
-            "Fetching subreddit/user posts for %s, limit: %d, category: %s, time_filter: %s",
+        """Fetch posts from a subreddit.
+
+        Args:
+            subreddit: Name of the subreddit.
+            limit: Maximum number of posts to fetch.
+            category: Post category ('hot', 'top', or 'new').
+            time_filter: Time filter for posts.
+
+        Returns:
+            List of post dictionaries.
+
+        Raises:
+            ValueError: If category is not 'hot', 'top', or 'new'.
+        """
+        LOGGER.info(
+            "Fetching subreddit/user posts for %s, limit: %d, category: %s, "
+            "time_filter: %s",
             subreddit,
             limit,
             category,
@@ -77,6 +122,7 @@ class YARS:
         total_fetched = 0
         after = None
         all_posts = []
+        url = ""  # Initialize to avoid possibly-used-before-assignment
 
         while total_fetched < limit:
             if category == "hot":
@@ -92,15 +138,17 @@ class YARS:
                 "raw_json": 1,
                 "t": time_filter,
             }
+            response = None
             try:
                 response = self.fetch_sync(url=url, timeout=5, params=params)
                 response.raise_for_status()
-                logging.info("Subreddit/user posts request successful")
-            except Exception as e:
-                logging.info("Subreddit/user posts request unsuccessful: %s", e)
-                if response.status_code != 200:
+                LOGGER.info("Subreddit/user posts request successful")
+            except (ValueError, RuntimeError, requests.RequestException) as e:
+                LOGGER.info("Subreddit/user posts request unsuccessful: %s", e)
+                if response and response.status_code != 200:
                     print(
-                        f"Failed to fetch posts for subreddit/user {subreddit}: {response.status_code}"
+                        f"Failed to fetch posts for subreddit/user {subreddit}: "
+                        f"{response.status_code}"
                     )
                     break
 
@@ -138,21 +186,30 @@ class YARS:
                 break
 
             time.sleep(random.uniform(1, 2))
-            logging.info("Sleeping for random time")
+            LOGGER.info("Sleeping for random time")
 
-        logging.info("Successfully fetched subreddit posts for %s", subreddit)
+        LOGGER.info("Successfully fetched subreddit posts for %s", subreddit)
         return all_posts
 
     def scrape_post_details(self, permalink):
+        """Scrape detailed information from a specific post.
+
+        Args:
+            permalink: Post permalink path.
+
+        Returns:
+            Dictionary with post title, body, and comments, or None if failed.
+        """
         url = f"https://www.reddit.com{permalink}.json"
+        response = None
 
         try:
             response = self.fetch_sync(url=url, timeout=5)
             response.raise_for_status()
-            logging.info("Post details request successful : %s", url)
-        except Exception as e:
-            logging.info("Post details request unsccessful: %e", e)
-            if response.status_code != 200:
+            LOGGER.info("Post details request successful : %s", url)
+        except (ValueError, RuntimeError, requests.RequestException) as e:
+            LOGGER.info("Post details request unsuccessful: %s", e)
+            if response and response.status_code != 200:
                 print(f"Failed to fetch post data: {response.status_code}")
                 return None
 
@@ -167,11 +224,19 @@ class YARS:
         body = main_post.get("selftext", "")
 
         comments = self._extract_comments(post_data[1]["data"]["children"])
-        logging.info("Successfully scraped post: %s", title)
+        LOGGER.info("Successfully scraped post: %s", title)
         return {"title": title, "body": body, "comments": comments}
 
     def _extract_comments(self, comments):
-        logging.info("Extracting comments")
+        """Extract comments and replies recursively.
+
+        Args:
+            comments: List of comment data from Reddit API.
+
+        Returns:
+            List of extracted comment dictionaries with nested replies.
+        """
+        LOGGER.info("Extracting comments")
         extracted_comments = []
         for comment in comments:
             if isinstance(comment, dict) and comment.get("kind") == "t1":
@@ -189,5 +254,5 @@ class YARS:
                         replies.get("data", {}).get("children", [])
                     )
                 extracted_comments.append(extracted_comment)
-        logging.info("Successfully extracted comments")
+        LOGGER.info("Successfully extracted comments")
         return extracted_comments

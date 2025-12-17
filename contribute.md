@@ -16,3 +16,8 @@
 
 # Remove all docker files not used 
 - sudo docker system prune -a --volumes -f
+
+# Code smells
+- black . 
+- pylint .\dash_app\
+- pylint .\reddit_api\

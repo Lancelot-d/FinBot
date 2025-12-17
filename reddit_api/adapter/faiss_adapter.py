@@ -1,8 +1,9 @@
-from dao import DAO
+"""FAISS adapter for vector similarity search on Reddit posts."""
+
 import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
-from concurrent.futures import ThreadPoolExecutor
+from dao import DAO
 
 MODEL_NAME_EMBEDDING = "paraphrase-MiniLM-L3-v2"
 
@@ -41,7 +42,7 @@ def get_top_k_reddit_posts(user_input: str, k: int = 5) -> list[str]:
     user_input_vector = np.array([user_input_vector], dtype="float32")
 
     # Search for the top-k similar vectors
-    distances, indices = index.search(user_input_vector, k)
+    _, indices = index.search(user_input_vector, k)
 
     # Retrieve the corresponding Reddit posts
     posts = get_reddit_posts()
@@ -68,6 +69,6 @@ def batch_insert():
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatL2(dimension)
     # Add embeddings to the index
-    index.add(embeddings)
+    index.add(embeddings)  # pylint: disable=no-value-for-parameter
     # Save the index to a file
     faiss.write_index(index, "reddit_faiss.index")

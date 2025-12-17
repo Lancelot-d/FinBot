@@ -1,12 +1,18 @@
+"""Ticker section module for displaying stock information and charts."""
+
 import dash
-from dash import dcc, html, Input, Output, State
-import dash_bootstrap_components as dbc
+from dash import dcc, html, Input, Output
 import dash_mantine_components as dmc
 import plotly.graph_objs as go
 import api_adapter.yfinance_adapter as yf_adapter
 
 
 def get_content() -> html.Div:
+    """Create and return the ticker section layout.
+
+    Returns:
+        html.Div: The ticker section layout with search, price display, and chart.
+    """
     return html.Div(
         [
             html.Div(
@@ -67,6 +73,14 @@ def get_content() -> html.Div:
     prevent_initial_call=True,
 )
 def update_ticker(ticker: str):
+    """Update ticker information including price, chart, and historical profit.
+
+    Args:
+        ticker: The stock ticker symbol to fetch information for.
+
+    Returns:
+        dict: Contains price info, chart figure, and historic profit table.
+    """
     try:
         hist = yf_adapter.get_ticker_history(ticker, period="1mo")
         profit_data = yf_adapter.get_historic_profit(ticker)
@@ -79,7 +93,7 @@ def update_ticker(ticker: str):
                 y=hist["Close"],
                 mode="lines",
                 name=ticker,
-                line=dict(color="white"),
+                line={"color": "white"},
             )
         )
         fig.update_layout(
@@ -113,7 +127,7 @@ def update_ticker(ticker: str):
             "graph": fig,
             "historic-profit-container": profit_table,
         }
-    except Exception as e:
+    except (ValueError, KeyError, AttributeError) as e:
         print(f"Error updating ticker: {str(e)}")
         return {
             "price": "Error fetching data",

@@ -1,11 +1,22 @@
+"""Background scraping module for collecting Reddit posts."""
+
 from dao import DAO
 from cleantext import clean
 from scrapping import yars
 
-dao = None
+# Module-level DAO instance (initialized in run())
+DAO_INSTANCE = None  # pylint: disable=invalid-name
 
 
 def clean_post(post: list[str]):
+    """Clean and filter Reddit posts.
+
+    Args:
+        post: List of post text strings.
+
+    Returns:
+        List of cleaned post strings.
+    """
     # pip Clean-text
     clear_post = [clean(text=p, extra_spaces=True) for p in post]
     # Remove one word post
@@ -19,22 +30,38 @@ def clean_post(post: list[str]):
 
 
 def fetch_post_details(miner: yars.YARS, permalink: str):
-    """Récupère les détails d'un post."""
+    """Fetch details for a specific post.
+
+    Args:
+        miner: YARS instance for scraping.
+        permalink: The post permalink.
+
+    Returns:
+        Post details dictionary.
+    """
     return miner.scrape_post_details(permalink)
 
 
 def process_subreddit_posts(
     miner: yars.YARS, category: list, reddit: str = "JustBuyXEQT"
 ):
-    """Traite les posts d'une catégorie."""
+    """Process posts from a subreddit category.
+
+    Args:
+        miner: YARS instance for scraping.
+        category: List of category types to scrape.
+        reddit: Subreddit name.
+    """
     miner.change_user_agent()
     subreddit_posts = miner.fetch_subreddit_posts(
         reddit, limit=100, category=category, time_filter="all"
     )
 
     for post_data in subreddit_posts:
-        if not dao.is_reddit_post_in_db(
-            dao.generate_post_id(title=post_data["title"], author=post_data["author"])
+        if not DAO_INSTANCE.is_reddit_post_in_db(
+            DAO_INSTANCE.generate_post_id(
+                title=post_data["title"], author=post_data["author"]
+            )
         ):
             post_details = fetch_post_details(miner, post_data["permalink"])
             post = []
@@ -51,7 +78,7 @@ def process_subreddit_posts(
                     get_replies(comment, post)
 
             joined_post = "\n Next comment : ".join(clean_post(post))
-            dao.add_reddit_post(
+            DAO_INSTANCE.add_reddit_post(
                 content_str=joined_post,
                 title=post_data["title"],
                 author=post_data["author"],
@@ -59,7 +86,12 @@ def process_subreddit_posts(
 
 
 def get_replies(comment, post):
-    """Function to recursively get all replies (sub-comments)"""
+    """Recursively extract all replies (sub-comments) from a comment.
+
+    Args:
+        comment: Comment dictionary containing replies.
+        post: List to append reply bodies to.
+    """
     if "replies" in comment:
         for rep in comment["replies"]:
             post.append(rep["body"])
@@ -68,7 +100,7 @@ def get_replies(comment, post):
 
 
 def run():
-    """Lance le traitement des catégories."""
+    """Run the background scraping process for all configured subreddits."""
     categories = ["hot", "top"]
     sub = [
         "PersonalFinanceCanada",
@@ -82,8 +114,8 @@ def run():
     ]
     miner = yars.YARS()
 
-    global dao
-    dao = DAO.get_instance(force_refresh=True)
+    global DAO_INSTANCE  # pylint: disable=global-statement
+    DAO_INSTANCE = DAO.get_instance(force_refresh=True)
 
     for s in sub:
         for category in categories:

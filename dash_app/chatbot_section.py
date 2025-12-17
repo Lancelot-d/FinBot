@@ -1,11 +1,18 @@
+"""Chatbot section module for the FinBot dashboard."""
+
 import dash
-from dash import dcc, html, Input, Output, State, callback, clientside_callback
+from dash import dcc, html, Input, Output, State, clientside_callback
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 import requests
 
 
 def get_content() -> html.Div:
+    """Create and return the chatbot section layout.
+
+    Returns:
+        html.Div: The chatbot section layout with input, display, and controls.
+    """
     return html.Div(
         [
             dcc.Store(id="chat-history", data=[]),
@@ -77,6 +84,16 @@ clientside_callback(
     prevent_initial_call=True,
 )
 def update_chat(_, user_input, chat_history):
+    """Update the chat history with user input and bot response.
+
+    Args:
+        _: Unused click event trigger.
+        user_input: The user's input message.
+        chat_history: List of previous chat messages.
+
+    Returns:
+        dict: Updated chat history, loading state, and cleared input value.
+    """
     if not user_input:
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
@@ -86,7 +103,8 @@ def update_chat(_, user_input, chat_history):
         [msg for msg in chat_history if "**You:**" in msg][-5:]
     )
     response = requests.get(
-        f"http://api:8080/complete_message/?input_string={chat_history_only_user}"
+        f"http://api:8080/complete_message/?input_string={chat_history_only_user}",
+        timeout=30,
     )
     response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
@@ -100,6 +118,14 @@ def update_chat(_, user_input, chat_history):
     prevent_initial_call=True,
 )
 def display_chat(chat_history):
+    """Display the chat messages with proper formatting.
+
+    Args:
+        chat_history: List of chat messages to display.
+
+    Returns:
+        dict: Formatted chat display.
+    """
     return {
         "chat_display": html.Div(
             [

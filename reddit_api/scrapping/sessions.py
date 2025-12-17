@@ -1,3 +1,5 @@
+"""Custom session classes for web scraping with random user agents."""
+
 from requests import Session
 from scrapping.agents import get_agent
 

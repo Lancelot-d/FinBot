@@ -1,3 +1,5 @@
+"""Logger configuration for the Reddit API service."""
+
 import logging
 
 logger = logging.getLogger("stream_logger")

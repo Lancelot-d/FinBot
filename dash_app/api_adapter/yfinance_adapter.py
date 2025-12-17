@@ -1,3 +1,5 @@
+"""Yahoo Finance adapter for fetching stock data and calculating metrics."""
+
 import yfinance as yf
 
 
@@ -17,7 +19,7 @@ def get_ticker_price(ticker: str) -> str:
         if hist.empty:
             return "Invalid ticker"
         return f"{hist.tail(1)['Close'].iloc[0]:.2f}"
-    except Exception as e:
+    except (ValueError, KeyError, IndexError) as e:
         print(f"Error fetching price: {str(e)}")
         return f"Error fetching data: {str(e)}"
 
@@ -39,7 +41,7 @@ def get_ticker_history(ticker: str, period: str = "1mo") -> yf.Ticker:
         if hist.empty:
             return None
         return hist
-    except Exception as e:
+    except (ValueError, KeyError, AttributeError) as e:
         print(f"Error fetching history: {str(e)}")
         return None
 
@@ -70,7 +72,7 @@ def get_historic_profit(ticker: str) -> str:
             for year, profit_percent in yearly_data["ReturnPercentage"].items()
         ]
 
-    except Exception as e:
+    except (ValueError, KeyError, AttributeError) as e:
         print(f"Error calculating historic profit: {str(e)}")
         return f"Error calculating historic profit: {str(e)}"
 
@@ -99,7 +101,7 @@ def get_mean_profit(ticker: str) -> str:
         mean_profit_percent = yearly_data["ReturnPercentage"].mean()
         return round(mean_profit_percent, 2)
 
-    except Exception as e:
+    except (ValueError, KeyError, AttributeError) as e:
         print(f"Error calculating mean profit: {str(e)}")
         return f"Error calculating mean profit: {str(e)}"
 
@@ -129,6 +131,6 @@ def get_variance_profit(ticker: str) -> str:
         mean_profit_percent = yearly_data["ReturnPercentage"].var()
         return round(mean_profit_percent, 2)
 
-    except Exception as e:
+    except (ValueError, KeyError, AttributeError) as e:
         print(f"Error calculating variance profit: {str(e)}")
         return f"Error calculating variance profit: {str(e)}"
