@@ -86,7 +86,7 @@ app.layout = dmc.MantineProvider(
                         html.Div(
                             className="header-logo-section",
                             children=[
-                                html.Div("💼", className="header-logo-icon"),
+                                html.Div("💲", className="header-logo-icon"),
                                 dmc.Title("FinBot", order=1, className="header-title"),
                             ],
                         ),

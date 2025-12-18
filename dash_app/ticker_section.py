@@ -44,20 +44,7 @@ def get_content() -> html.Div:
             ),
             # Price display with cards
             html.Div(id="ticker-price", className="ticker-price-grid"),
-            # Price graph with professional container
-            html.Div(
-                className="chart-container",
-                children=[
-                    html.H4("📈 Price History", className="chart-title"),
-                    dcc.Graph(
-                        id="ticker-graph",
-                        config={
-                            "displayModeBar": False,
-                            "responsive": True,
-                        },
-                    ),
-                ],
-            ),
+           
             # Historic profit container
             html.Div(
                 className="history-container",
@@ -74,7 +61,6 @@ def get_content() -> html.Div:
 @dash.callback(
     output={
         "price": Output("ticker-price", "children"),
-        "graph": Output("ticker-graph", "figure"),
         "historic-profit-container": Output("historic-profit-container", "children"),
     },
     inputs={"ticker": Input("ticker-search", "value")},
@@ -91,50 +77,10 @@ def update_ticker(ticker: str):
         dict: Contains price info, chart figure, and historic profit table.
     """
     try:
-        hist = yf_adapter.get_ticker_history(ticker, period="1mo")
         profit_data = yf_adapter.get_historic_profit(ticker)
         profit_data.reverse()
 
-        fig = go.Figure()
-        fig.add_trace(
-            go.Scatter(
-                x=hist.index,
-                y=hist["Close"],
-                mode="lines",
-                name=ticker,
-                line={"color": "#667eea", "width": 3},
-                fill="tozeroy",
-                fillcolor="rgba(102, 126, 234, 0.1)",
-            )
-        )
-        fig.update_layout(
-            xaxis_title="Date",
-            yaxis_title="Price (USD)",
-            template="plotly_dark",
-            height=400,
-            margin={"l": 50, "r": 20, "t": 20, "b": 50},
-            plot_bgcolor="rgba(0, 0, 0, 0)",
-            paper_bgcolor="rgba(0, 0, 0, 0)",
-            font={"color": "#cbd5e1", "family": "Inter, sans-serif", "size": 12},
-            xaxis={
-                "gridcolor": "rgba(148, 163, 184, 0.1)",
-                "zerolinecolor": "rgba(148, 163, 184, 0.2)",
-                "showgrid": True,
-            },
-            yaxis={
-                "gridcolor": "rgba(148, 163, 184, 0.1)",
-                "zerolinecolor": "rgba(148, 163, 184, 0.2)",
-                "showgrid": True,
-            },
-            hovermode="x unified",
-            hoverlabel={
-                "bgcolor": "rgba(30, 41, 59, 0.95)",
-                "bordercolor": "rgba(102, 126, 234, 0.5)",
-                "font": {"color": "#f8fafc", "size": 13},
-            },
-        )
-
-        # Create a professional table for historic profit
+        # Create a table for historic profit
         profit_table = dmc.Table(
             data={
                 "head": [year[0] for year in profit_data],
@@ -183,13 +129,11 @@ def update_ticker(ticker: str):
 
         return {
             "price": ticker_info,
-            "graph": fig,
             "historic-profit-container": profit_table,
         }
-    except (ValueError, KeyError, AttributeError) as e:
+    except Exception as e:
         print(f"Error updating ticker: {str(e)}")
         return {
             "price": "Error fetching data",
-            "graph": go.Figure(),
             "historic-profit-container": html.Div("Error fetching profit data"),
         }

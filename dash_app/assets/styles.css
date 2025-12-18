@@ -361,7 +361,7 @@
     border-spacing: 0;
     border-radius: 12px;
     overflow: hidden;
-    background: rgba(15, 23, 42, 0.5);
+    background: transparent;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -382,18 +382,18 @@
 
 #historic-profit-container td {
     padding: 12px 20px !important;
-    color: #94a3b8 !important;
+    color: #cbd5e1 !important;
     font-size: 14px !important;
     font-weight: 500;
     border: 1px solid rgba(148, 163, 184, 0.15) !important;
-    background: rgba(30, 41, 59, 0.2) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
     text-align: center !important;
     transition: all 0.2s ease;
 }
 
 #historic-profit-container tbody tr:hover td {
-    background: rgba(102, 126, 234, 0.08) !important;
-    color: #cbd5e1 !important;
+    background: rgba(30, 41, 59, 0.8) !important;
+    color: #e2e8f0 !important;
 }
 
 #historic-profit-container tbody tr td:first-child {
@@ -494,6 +494,19 @@
     margin-bottom: 12px !important;
 }
 
+.chat-input::placeholder {
+    color: #f8fafc;
+    opacity: 1;
+}
+
+.chat-input::-ms-input-placeholder {
+    color: #f8fafc;
+}
+
+.chat-input::-webkit-input-placeholder {
+    color: #f8fafc;
+}
+
 .chat-send-button {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     border: none !important;
@@ -581,10 +594,10 @@
 
 .header-logo-icon {
     font-size: 32px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     padding: 8px 16px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
 }
 
 .header-title {
