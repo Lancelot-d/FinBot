@@ -80,100 +80,39 @@ app.layout = dmc.MantineProvider(
             children=[
                 # Header Section with Gradient and Professional Look
                 html.Div(
-                    style={
-                        "flex": "0 0 auto",
-                        "background": "linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)",
-                        "backdropFilter": "blur(10px)",
-                        "padding": "20px 40px",
-                        "boxShadow": "0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(102, 126, 234, 0.2)",
-                        "borderBottom": "1px solid rgba(148, 163, 184, 0.2)",
-                        "display": "flex",
-                        "alignItems": "center",
-                        "justifyContent": "space-between",
-                    },
+                    className="app-header",
                     children=[
                         # Logo and Title
                         html.Div(
-                            style={"display": "flex", "alignItems": "center", "gap": "15px"},
+                            className="header-logo-section",
                             children=[
-                                html.Div(
-                                    "💼",
-                                    style={
-                                        "fontSize": "32px",
-                                        "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                                        "padding": "8px 16px",
-                                        "borderRadius": "12px",
-                                        "boxShadow": "0 4px 12px rgba(102, 126, 234, 0.3)",
-                                    },
-                                ),
-                                dmc.Title(
-                                    "FinBot",
-                                    order=1,
-                                    style={
-                                        "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                                        "WebkitBackgroundClip": "text",
-                                        "WebkitTextFillColor": "transparent",
-                                        "backgroundClip": "text",
-                                        "fontSize": "32px",
-                                        "fontWeight": 700,
-                                        "letterSpacing": "0.5px",
-                                    },
-                                ),
+                                html.Div("💼", className="header-logo-icon"),
+                                dmc.Title("FinBot", order=1, className="header-title"),
                             ],
                         ),
                         # Subtitle
                         html.Div(
                             "Financial Intelligence Platform",
-                            style={
-                                "color": "#94a3b8",
-                                "fontSize": "14px",
-                                "fontWeight": 500,
-                                "letterSpacing": "0.5px",
-                                "textTransform": "uppercase",
-                            },
+                            className="header-subtitle",
                         ),
                     ],
                 ),
                 # Main Content Section with Professional Cards
                 html.Div(
-                    style={
-                        "flex": 1,
-                        "display": "flex",
-                        "gap": "20px",
-                        "padding": "20px",
-                        "overflowY": "hidden",
-                    },
+                    className="main-content",
                     children=[
                         # Left Column - Market Analytics
                         html.Div(
-                            className="professional-card fade-in",
-                            style={
-                                "flex": 1,
-                                "padding": "24px",
-                                "overflowY": "auto",
-                                "animation": "fadeIn 0.5s ease-out",
-                            },
+                            className="professional-card content-column content-column-left",
                             children=[
                                 html.Div(
-                                    style={
-                                        "marginBottom": "20px",
-                                        "paddingBottom": "16px",
-                                        "borderBottom": "2px solid rgba(148, 163, 184, 0.2)",
-                                    },
+                                    className="section-header",
                                     children=[
                                         html.Div(
-                                            style={"display": "flex", "alignItems": "center", "gap": "10px"},
+                                            className="section-header-content",
                                             children=[
-                                                html.Span("📊", style={"fontSize": "24px"}),
-                                                html.H3(
-                                                    "Market Analytics",
-                                                    style={
-                                                        "margin": 0,
-                                                        "color": "#f8fafc",
-                                                        "fontSize": "20px",
-                                                        "fontWeight": 600,
-                                                    },
-                                                ),
+                                                html.Span("📊", className="section-icon"),
+                                                html.H3("Market Analytics", className="section-title"),
                                             ],
                                         ),
                                     ],
@@ -183,34 +122,16 @@ app.layout = dmc.MantineProvider(
                         ),
                         # Right Column - AI Assistant
                         html.Div(
-                            className="professional-card fade-in",
-                            style={
-                                "flex": 1,
-                                "padding": "24px",
-                                "animation": "fadeIn 0.5s ease-out 0.1s",
-                                "animationFillMode": "backwards",
-                            },
+                            className="professional-card content-column content-column-right",
                             children=[
                                 html.Div(
-                                    style={
-                                        "marginBottom": "20px",
-                                        "paddingBottom": "16px",
-                                        "borderBottom": "2px solid rgba(148, 163, 184, 0.2)",
-                                    },
+                                    className="section-header",
                                     children=[
                                         html.Div(
-                                            style={"display": "flex", "alignItems": "center", "gap": "10px"},
+                                            className="section-header-content",
                                             children=[
-                                                html.Span("🤖", style={"fontSize": "24px"}),
-                                                html.H3(
-                                                    "AI Assistant",
-                                                    style={
-                                                        "margin": 0,
-                                                        "color": "#f8fafc",
-                                                        "fontSize": "20px",
-                                                        "fontWeight": 600,
-                                                    },
-                                                ),
+                                                html.Span("🤖", className="section-icon"),
+                                                html.H3("AI Assistant", className="section-title"),
                                             ],
                                         ),
                                     ],

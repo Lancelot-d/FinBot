@@ -14,22 +14,16 @@ def get_content() -> html.Div:
         html.Div: The chatbot section layout with input, display, and controls.
     """
     return html.Div(
-        [
+        className="chat-container",
+        style={"height": "90%"},
+        children=[
             dcc.Store(id="chat-history", data=[]),
             html.Div(
-                style={"height": "100%", "display": "flex", "flexDirection": "column"},
+                className="chat-container",
                 children=[
                     # Chat Display with Professional Container
                     dmc.Box(
-                        style={
-                            "position": "relative",
-                            "flex": 1,
-                            "marginBottom": "16px",
-                            "background": "rgba(15, 23, 42, 0.3)",
-                            "borderRadius": "12px",
-                            "border": "1px solid rgba(148, 163, 184, 0.2)",
-                            "overflow": "hidden",
-                        },
+                        className="chat-display-box",
                         children=[
                             dmc.LoadingOverlay(
                                 visible=False,
@@ -38,65 +32,33 @@ def get_content() -> html.Div:
                                 loaderProps={"color": "#667eea", "type": "bars"},
                                 zIndex=10,
                             ),
-                            html.Div(
-                                id="chat-display",
-                                style={
-                                    "padding": "20px",
-                                    "height": "calc(100vh - 350px)",
-                                    "overflowY": "auto",
-                                    "overflowX": "hidden",
-                                },
-                            ),
+                            html.Div(id="chat-display", className="chat-display-inner"),
                         ],
                     ),
                     # Input Section with Professional Styling
                     html.Div(
-                        style={
-                            "background": "rgba(30, 41, 59, 0.4)",
-                            "borderRadius": "12px",
-                            "padding": "16px",
-                            "border": "1px solid rgba(148, 163, 184, 0.2)",
-                        },
+                        className="chat-input-section",
                         children=[
                             dbc.Input(
                                 id="user-input",
                                 type="text",
                                 placeholder="Ask me anything about finance...",
                                 debounce=True,
-                                style={
-                                    "backgroundColor": "rgba(15, 23, 42, 0.5)",
-                                    "border": "1px solid rgba(148, 163, 184, 0.3)",
-                                    "borderRadius": "8px",
-                                    "padding": "12px 16px",
-                                    "color": "#f8fafc",
-                                    "fontSize": "14px",
-                                    "marginBottom": "12px",
-                                },
+                                className="chat-input",
                             ),
                             dbc.Button(
                                 [
-                                    html.Span("✨", style={"marginRight": "8px"}),
+                                    html.Span("✨", className="button-icon"),
                                     "Send Message",
                                 ],
                                 id="send-btn",
-                                style={
-                                    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                                    "border": "none",
-                                    "borderRadius": "8px",
-                                    "padding": "10px 24px",
-                                    "fontWeight": 600,
-                                    "fontSize": "14px",
-                                    "width": "100%",
-                                    "boxShadow": "0 4px 12px rgba(102, 126, 234, 0.3)",
-                                    "transition": "all 0.3s ease",
-                                },
+                                className="chat-send-button",
                             ),
                         ],
                     ),
                 ],
             ),
         ],
-        style={"height": "90%"},
     )
 
 
@@ -177,56 +139,22 @@ def display_chat(chat_history):
     """
     return {
         "chat_display": html.Div(
-            [
+            className="chat-messages",
+            children=[
                 html.Div(
-                    [
+                    className=f"message-wrapper {'message-wrapper-user' if '**You:**' in msg else 'message-wrapper-bot'}",
+                    children=[
                         # Message bubble with professional styling
                         html.Div(
-                            [
+                            className=f"message-bubble {'message-bubble-user' if '**You:**' in msg else 'message-bubble-bot'} markdown-container",
+                            children=[
                                 dcc.Markdown(msg.strip(), dangerously_allow_html=True),
                             ],
-                            style={
-                                "background": (
-                                    "linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%)"
-                                    if "**You:**" in msg
-                                    else "linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%)"
-                                ),
-                                "borderRadius": "12px",
-                                "padding": "14px 18px",
-                                "margin": "8px 0",
-                                "maxWidth": "85%",
-                                "width": "fit-content",
-                                "alignSelf": "flex-end" if "**You:**" in msg else "flex-start",
-                                "boxShadow": (
-                                    "0 4px 12px rgba(102, 126, 234, 0.2)"
-                                    if "**You:**" in msg
-                                    else "0 4px 12px rgba(0, 0, 0, 0.3)"
-                                ),
-                                "border": (
-                                    "1px solid rgba(102, 126, 234, 0.3)"
-                                    if "**You:**" in msg
-                                    else "1px solid rgba(148, 163, 184, 0.2)"
-                                ),
-                                "wordWrap": "break-word",
-                                "animation": "fadeIn 0.3s ease-out",
-                            },
-                            className="markdown-container",
                         ),
                     ],
-                    style={
-                        "display": "flex",
-                        "justifyContent": "flex-end" if "**You:**" in msg else "flex-start",
-                        "width": "100%",
-                    },
                 )
                 for msg in chat_history
                 if "**You:**" in msg or "**Bot:**" in msg
             ],
-            style={
-                "display": "flex",
-                "flexDirection": "column",
-                "gap": "4px",
-                "overflowX": "hidden",
-            },
         )
     }
