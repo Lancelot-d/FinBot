@@ -16,44 +16,87 @@ def get_content() -> html.Div:
     return html.Div(
         [
             dcc.Store(id="chat-history", data=[]),
-            dbc.Container(
-                [
-                    html.H4("Chatbot"),
+            html.Div(
+                style={"height": "100%", "display": "flex", "flexDirection": "column"},
+                children=[
+                    # Chat Display with Professional Container
                     dmc.Box(
-                        style={"position": "relative"},
+                        style={
+                            "position": "relative",
+                            "flex": 1,
+                            "marginBottom": "16px",
+                            "background": "rgba(15, 23, 42, 0.3)",
+                            "borderRadius": "12px",
+                            "border": "1px solid rgba(148, 163, 184, 0.2)",
+                            "overflow": "hidden",
+                        },
                         children=[
                             dmc.LoadingOverlay(
                                 visible=False,
                                 id="loading-overlay",
                                 overlayProps={"radius": "sm", "blur": 2},
-                                loaderProps={"color": "black", "type": "bars"},
+                                loaderProps={"color": "#667eea", "type": "bars"},
                                 zIndex=10,
                             ),
                             html.Div(
                                 id="chat-display",
                                 style={
-                                    "border": "1px solid #ddd",
-                                    "padding": "10px",
-                                    "height": "60vh",
+                                    "padding": "20px",
+                                    "height": "calc(100vh - 350px)",
                                     "overflowY": "auto",
+                                    "overflowX": "hidden",
                                 },
                             ),
                         ],
                     ),
-                    dbc.Input(
-                        id="user-input",
-                        type="text",
-                        placeholder="Type your message...",
-                        debounce=True,
-                        style={"margin-top": "10px", "margin-bottom": "10px"},
+                    # Input Section with Professional Styling
+                    html.Div(
+                        style={
+                            "background": "rgba(30, 41, 59, 0.4)",
+                            "borderRadius": "12px",
+                            "padding": "16px",
+                            "border": "1px solid rgba(148, 163, 184, 0.2)",
+                        },
+                        children=[
+                            dbc.Input(
+                                id="user-input",
+                                type="text",
+                                placeholder="Ask me anything about finance...",
+                                debounce=True,
+                                style={
+                                    "backgroundColor": "rgba(15, 23, 42, 0.5)",
+                                    "border": "1px solid rgba(148, 163, 184, 0.3)",
+                                    "borderRadius": "8px",
+                                    "padding": "12px 16px",
+                                    "color": "#f8fafc",
+                                    "fontSize": "14px",
+                                    "marginBottom": "12px",
+                                },
+                            ),
+                            dbc.Button(
+                                [
+                                    html.Span("✨", style={"marginRight": "8px"}),
+                                    "Send Message",
+                                ],
+                                id="send-btn",
+                                style={
+                                    "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                    "border": "none",
+                                    "borderRadius": "8px",
+                                    "padding": "10px 24px",
+                                    "fontWeight": 600,
+                                    "fontSize": "14px",
+                                    "width": "100%",
+                                    "boxShadow": "0 4px 12px rgba(102, 126, 234, 0.3)",
+                                    "transition": "all 0.3s ease",
+                                },
+                            ),
+                        ],
                     ),
-                    dbc.Button("Send", id="send-btn", color="dark", className="mt-2"),
                 ],
-                className="mt-3",
-                style={"height": "100%"},
             ),
         ],
-        style={"height": "100%"},
+        style={"height": "90%"},
     )
 
 
@@ -136,23 +179,45 @@ def display_chat(chat_history):
         "chat_display": html.Div(
             [
                 html.Div(
-                    dcc.Markdown(msg.strip(), dangerously_allow_html=True),
-                    style={
-                        "backgroundColor": (
-                            "#f9f9f9" if "**You:**" in msg else "#333333"
+                    [
+                        # Message bubble with professional styling
+                        html.Div(
+                            [
+                                dcc.Markdown(msg.strip(), dangerously_allow_html=True),
+                            ],
+                            style={
+                                "background": (
+                                    "linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%)"
+                                    if "**You:**" in msg
+                                    else "linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%)"
+                                ),
+                                "borderRadius": "12px",
+                                "padding": "14px 18px",
+                                "margin": "8px 0",
+                                "maxWidth": "85%",
+                                "width": "fit-content",
+                                "alignSelf": "flex-end" if "**You:**" in msg else "flex-start",
+                                "boxShadow": (
+                                    "0 4px 12px rgba(102, 126, 234, 0.2)"
+                                    if "**You:**" in msg
+                                    else "0 4px 12px rgba(0, 0, 0, 0.3)"
+                                ),
+                                "border": (
+                                    "1px solid rgba(102, 126, 234, 0.3)"
+                                    if "**You:**" in msg
+                                    else "1px solid rgba(148, 163, 184, 0.2)"
+                                ),
+                                "wordWrap": "break-word",
+                                "animation": "fadeIn 0.3s ease-out",
+                            },
+                            className="markdown-container",
                         ),
-                        "borderRadius": "10px",
-                        "padding": "10px",
-                        "margin": "5px 0",
-                        "maxWidth": "90%",
-                        "width": "fit-content",
-                        "alignSelf": "flex-end" if "**You:**" in msg else "flex-start",
-                        "boxShadow": "0 2px 4px rgba(0, 0, 0, 0.1)",
-                        "color": "#333333" if "**You:**" in msg else "#ffffff",
-                        "border": "1px solid #dddddd",
-                        "wordWrap": "break-word",
+                    ],
+                    style={
+                        "display": "flex",
+                        "justifyContent": "flex-end" if "**You:**" in msg else "flex-start",
+                        "width": "100%",
                     },
-                    className="markdown-container",
                 )
                 for msg in chat_history
                 if "**You:**" in msg or "**Bot:**" in msg
@@ -160,7 +225,8 @@ def display_chat(chat_history):
             style={
                 "display": "flex",
                 "flexDirection": "column",
-                "overflowX": "hidden",  # Prevent horizontal overflow
+                "gap": "4px",
+                "overflowX": "hidden",
             },
         )
     }

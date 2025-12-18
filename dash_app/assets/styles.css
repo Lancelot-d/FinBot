@@ -1,85 +1,256 @@
+/* ===========================
+   PROFESSIONAL FINBOT STYLES
+   =========================== */
+
+/* Root Variables for Consistent Theming */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --border-color: rgba(148, 163, 184, 0.2);
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+}
+
 /* General container styling */
 .markdown-container {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    color: var(--text-primary);
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+    background-color: transparent;
+    border-radius: 12px;
 }
 
 /* Universal font size for all elements */
 .markdown-container * {
-    font-size: 1em;
+    font-size: 0.95em;
 }
 
 /* Lists */
 .markdown-container ul {
     list-style-type: disc;
     padding-left: 40px;
+    margin: 12px 0;
 }
 
 .markdown-container ol {
     list-style-type: decimal;
     padding-left: 40px;
+    margin: 12px 0;
 }
 
 .markdown-container li {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
+    color: var(--text-secondary);
 }
 
 /* Blockquotes */
 .markdown-container blockquote {
-    border-left: 4px solid #3498db;
-    padding-left: 15px;
-    color: #555;
+    border-left: 4px solid #667eea;
+    padding-left: 20px;
+    color: var(--text-secondary);
     font-style: italic;
-    background-color: #f0f8ff;
+    background-color: rgba(102, 126, 234, 0.1);
+    margin: 16px 0;
+    border-radius: 4px;
+    padding: 12px 20px;
 }
 
 /* Code blocks */
 .markdown-container pre {
-    background-color: #272822;
+    background-color: #1a1a2e;
     color: #f8f8f2;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 16px;
+    border-radius: 8px;
     overflow-x: auto;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: var(--shadow-md);
+    margin: 12px 0;
 }
 
 .markdown-container code {
-    background-color: #f4f4f4;
-    color: #c7254e;
-    padding: 2px 4px;
-    border-radius: 3px;
+    background-color: rgba(102, 126, 234, 0.15);
+    color: #a78bfa;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9em;
 }
 
 /* Links */
 .markdown-container a {
-    color: #3498db;
+    color: #818cf8;
     text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .markdown-container a:hover {
-    text-decoration: underline;
+    color: #a78bfa;
+    border-bottom: 1px solid #a78bfa;
 }
 
 /* Horizontal Rule */
 .markdown-container hr {
-    border-top: 1px solid #ddd;
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 24px 0;
 }
 
 /* Tables */
 .markdown-container table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 16px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
 }
 
 .markdown-container th, 
 .markdown-container td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid var(--border-color);
+    padding: 12px 16px;
+    text-align: left;
 }
 
 .markdown-container th {
-    background-color: #f2f2f2;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.markdown-container td {
+    background-color: rgba(30, 41, 59, 0.5);
+    color: var(--text-secondary);
+}
+
+.markdown-container tr:hover td {
+    background-color: rgba(30, 41, 59, 0.8);
+}
+
+/* Professional Card Styling */
+.professional-card {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+}
+
+.professional-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.4), 0 15px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Pulse Animation for Loading */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.success {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.status-badge.danger {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+
+/* Button Enhancements */
+.btn-gradient {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-gradient:active {
+    transform: translateY(0);
 }
