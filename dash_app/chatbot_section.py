@@ -110,7 +110,7 @@ def update_chat(_, user_input, chat_history):
     
     try:
         response = requests.get(
-            f"http://localhost:8080/complete_message/?input_string={chat_history_only_user}",
+            f"http://api:8080/complete_message/?input_string={chat_history_only_user}",
             timeout=120,
         )
     except Exception as e:
