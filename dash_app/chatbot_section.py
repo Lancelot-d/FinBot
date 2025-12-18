@@ -102,10 +102,16 @@ def update_chat(_, user_input, chat_history):
     chat_history_only_user = "\n".join(
         [msg for msg in chat_history if "**You:**" in msg][-5:]
     )
-    response = requests.get(
-        f"http://api:8080/complete_message/?input_string={chat_history_only_user}",
-        timeout=30,
-    )
+    
+    try:
+        response = requests.get(
+            f"http://localhost:8080/complete_message/?input_string={chat_history_only_user}",
+            timeout=120,
+        )
+    except requests.RequestException as e:
+        chat_history.append("**Bot:** \nSorry, there was an error processing your request.\n")
+        return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
+    
     response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
