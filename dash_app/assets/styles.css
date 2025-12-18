@@ -534,6 +534,7 @@
     flex-direction: column;
     gap: 4px;
     overflow-x: hidden;
+    padding-bottom: 60px;
 }
 
 .message-wrapper {

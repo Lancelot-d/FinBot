@@ -20,7 +20,7 @@ def get_reddit_posts() -> list[str]:
     Retrieve Reddit posts from the DAO.
     Returns a list of tuples (post_id, post_content).
     """
-    reddit_posts = DAO.get_instance().get_reddit_posts()
+    reddit_posts = DAO.get_instance(force_refresh=True).get_reddit_posts()
     reddit_posts = [(post.id, post.content_str) for post in reddit_posts]
     reddit_posts = [
         content[1]
