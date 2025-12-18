@@ -17,7 +17,7 @@ scheduler = AsyncIOScheduler(timezone=utc)
 
 
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app: FastAPI):
     """Manage the application lifespan, starting/stopping the scheduler.
 
     Args:
