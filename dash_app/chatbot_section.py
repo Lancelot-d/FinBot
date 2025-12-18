@@ -113,7 +113,8 @@ def update_chat(_, user_input, chat_history):
             f"http://localhost:8080/complete_message/?input_string={chat_history_only_user}",
             timeout=120,
         )
-    except requests.RequestException as e:
+    except Exception as e:
+        print(f"Error during request: {e}")
         chat_history.append("**Bot:** \nSorry, there was an error processing your request.\n")
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
     
