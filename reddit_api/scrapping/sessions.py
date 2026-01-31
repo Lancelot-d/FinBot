@@ -10,6 +10,6 @@ class RandomUserAgentSession(Session):
     a random user agent with each request
     """
 
-    def request(self, *args, **kwargs):
+    def request(self, *args, **kwargs) -> requests.Response:
         self.headers.update({"User-Agent": get_agent()})
         return super().request(*args, **kwargs)

@@ -50,7 +50,7 @@ class FinBotAgent:
         self._build_graph()
 
     # Node function to process the chat
-    def node_process_final_answer(self, state: State):
+    def node_process_final_answer(self, state: State) -> dict[str, list]:
         """
         Use the response from say_hello as context, but answer the initial user question.
         """
@@ -94,7 +94,7 @@ class FinBotAgent:
         response = self.llm.invoke([{"role": "user", "content": prompt}])
         return {"messages": [response]}
 
-    def node_context(self, state: State):
+    def node_context(self, state: State) -> dict[str, list]:
         """
         Node that's extract context from reddit posts stored in FAISS.
         """
@@ -182,7 +182,7 @@ class FinBotAgent:
         ]
         return {"messages": messages}
 
-    def _build_graph(self):
+    def _build_graph(self) -> None:
         """
         Build the state graph for the agent.
         """
@@ -210,7 +210,7 @@ class FinBotAgent:
         final_state = self.graph.invoke(initial_state)
         return final_state["messages"][-1].content
 
-    def estimate_tokens(self, text):
+    def estimate_tokens(self, text: str) -> int:
         """Estimate the number of tokens in the given text.
 
         Args:

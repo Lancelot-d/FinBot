@@ -3,7 +3,7 @@
 import re
 
 
-def extract_ticker_from_input(input_text: str) -> str:
+def extract_ticker_from_input(input_text: str) -> str | None:
     """
     Extracts the ticker symbol from the input text.
     """

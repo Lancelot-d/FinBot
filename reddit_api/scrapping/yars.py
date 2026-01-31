@@ -4,6 +4,7 @@ from __future__ import annotations
 import time
 import random
 import logging
+from typing import Any
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -40,7 +41,7 @@ class YARS:
         "proxys_manager",
     )
 
-    def __init__(self, timeout=5, random_user_agent=True):
+    def __init__(self, timeout: int = 5, random_user_agent: bool = True) -> None:
         self.session = (
             RandomUserAgentSession() if random_user_agent else requests.Session()
         )
@@ -51,11 +52,11 @@ class YARS:
         self.session.mount("https://", HTTPAdapter(max_retries=1))
         self.current_index = 0
 
-    def change_user_agent(self):
+    def change_user_agent(self) -> None:
         """Change to a new random user agent."""
         self.session = RandomUserAgentSession()
 
-    def fetch_sync(self, url, timeout, params=None):
+    def fetch_sync(self, url: str, timeout: int, params: dict | None = None) -> requests.Response:
         """Fetch URL synchronously with proxy rotation.
 
         Args:
@@ -89,8 +90,8 @@ class YARS:
                 )
 
     def fetch_subreddit_posts(  # pylint: disable=too-many-locals,too-many-branches
-        self, subreddit, limit=10, category="hot", time_filter="all"
-    ):
+        self, subreddit: str, limit: int = 10, category: str = "hot", time_filter: str = "all"
+    ) -> list[dict]:
         """Fetch posts from a subreddit.
 
         Args:
@@ -191,7 +192,7 @@ class YARS:
         LOGGER.info("Successfully fetched subreddit posts for %s", subreddit)
         return all_posts
 
-    def scrape_post_details(self, permalink):
+    def scrape_post_details(self, permalink: str) -> dict[str, Any] | None:
         """Scrape detailed information from a specific post.
 
         Args:
@@ -227,7 +228,7 @@ class YARS:
         LOGGER.info("Successfully scraped post: %s", title)
         return {"title": title, "body": body, "comments": comments}
 
-    def _extract_comments(self, comments):
+    def _extract_comments(self, comments: list) -> list[dict]:
         """Extract comments and replies recursively.
 
         Args:

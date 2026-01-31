@@ -67,7 +67,7 @@ def get_content() -> html.Div:
     state={},
     prevent_initial_call=True,
 )
-def update_ticker(ticker: str):
+def update_ticker(ticker: str) -> dict[str, list | str]:
     """Update ticker information including price, chart, and historical profit.
 
     Args:

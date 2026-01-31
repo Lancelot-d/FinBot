@@ -34,7 +34,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 @app.get("/complete_message/")
-async def complete_message(input_string: str):
+async def complete_message(input_string: str) -> dict[str, str]:
     """
     Example call:
     GET /complete_message/?input_string=Hello
@@ -53,7 +53,7 @@ async def complete_message(input_string: str):
 
 # every 10 hours
 @scheduler.scheduled_job("interval", seconds=36000)
-async def scrappe_and_update_faiss():
+async def scrappe_and_update_faiss() -> None:
     """Background job to scrape Reddit data and update FAISS index."""
     print("Background scrapping started")
     try:

@@ -35,7 +35,7 @@ class ProxyManager:
         if test_proxy:
             self.test_proxys()
 
-    def read_proxy_file(self) -> list:
+    def read_proxy_file(self) -> list[str]:
         """Read proxy addresses from file.
 
         Returns:
@@ -50,8 +50,8 @@ class ProxyManager:
         p: str,
         url: str = "https://www.reddit.com/",
         timeout: int = 5,
-        params: dict = None,
-    ):
+        params: dict | None = None,
+    ) -> requests.Response | None:
         """Fetch URL using a proxy.
 
         Args:
@@ -80,7 +80,7 @@ class ProxyManager:
             print(e)
             return None
 
-    def test_proxys(self) -> list[str]:
+    def test_proxys(self) -> None:
         """Test all proxies concurrently.
 
         Returns:
@@ -93,7 +93,7 @@ class ProxyManager:
             executor.map(self.fetch_with_proxy, self.proxys_unchecked)
         print("Finished Proxys Test")
 
-    def init_proxy_csv(self, proxies, filename: str = "proxy_success.csv"):
+    def init_proxy_csv(self, proxies: list[str], filename: str = "proxy_success.csv") -> None:
         """Initialize CSV file with proxy list.
 
         Args:
@@ -120,7 +120,7 @@ class ProxyManager:
 
     def update_proxy_count(
         self, proxy: str, filename: str = "static/proxy_success.csv"
-    ):
+    ) -> None:
         """Update success count for a proxy in CSV.
 
         Args:
@@ -148,7 +148,7 @@ class ProxyManager:
             ):
                 writer.writerow([key, value])
 
-    def get_sorted_proxies(self, filename: str = "static/proxy_success.csv"):
+    def get_sorted_proxies(self, filename: str = "static/proxy_success.csv") -> list[str]:
         """Get proxies sorted by success count.
 
         Args:

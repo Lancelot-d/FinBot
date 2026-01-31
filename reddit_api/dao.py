@@ -18,7 +18,7 @@ class Singleton:  # pylint: disable=too-few-public-methods
     _instances = {}
 
     @classmethod
-    def get_instance(cls, *args, **kwargs):
+    def get_instance(cls, *args, **kwargs) -> 'Singleton':
         """Get or create a singleton instance.
 
         Args:
@@ -56,7 +56,7 @@ class DAO(Singleton):
         Base.metadata.create_all(self.engine)
         self.session_maker = sessionmaker(bind=self.engine)
 
-    def add_reddit_post(self, content_str: str, title: str, author: str):
+    def add_reddit_post(self, content_str: str, title: str, author: str) -> None:
         """Add a Reddit post to the database.
 
         Args:
@@ -81,7 +81,7 @@ class DAO(Singleton):
         finally:
             session.close()
 
-    def get_reddit_posts(self):
+    def get_reddit_posts(self) -> list['RedditPost'] | None:
         """Retrieve all Reddit posts from the database.
 
         Returns:

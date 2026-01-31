@@ -8,7 +8,7 @@ from dao import DAO
 MODEL_NAME_EMBEDDING = "paraphrase-MiniLM-L3-v2"
 
 
-def embed_text(text: str, model) -> np.ndarray:
+def embed_text(text: str, model: SentenceTransformer) -> np.ndarray:
     """
     Convert text into an embedding vector using SentenceTransformers.
     """
@@ -54,7 +54,7 @@ def get_top_k_reddit_posts(user_input: str, k: int = 5) -> list[str]:
     return top_k_posts
 
 
-def batch_insert():
+def batch_insert() -> None:
     """
     Insert documents into the FAISS index in batches.
     """

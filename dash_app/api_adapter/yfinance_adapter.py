@@ -1,5 +1,7 @@
 """Yahoo Finance adapter for fetching stock data and calculating metrics."""
 
+from typing import Any
+
 import yfinance as yf
 
 
@@ -24,7 +26,7 @@ def get_ticker_price(ticker: str) -> str:
         return f"Error fetching data: {str(e)}"
 
 
-def get_ticker_history(ticker: str, period: str = "1mo") -> yf.Ticker:
+def get_ticker_history(ticker: str, period: str = "1mo") -> Any | None:
     """
     Fetch the historical data for a given ticker symbol using yfinance.
 
@@ -46,7 +48,7 @@ def get_ticker_history(ticker: str, period: str = "1mo") -> yf.Ticker:
         return None
 
 
-def get_historic_profit(ticker: str) -> str:
+def get_historic_profit(ticker: str) -> list[tuple[int, float]] | str:
     """
     Calculate the historic profit in percentage of a given ticker, combining dividend and growth.
     Args: ticker (str): The ticker symbol to calculate the profit for.
@@ -77,7 +79,7 @@ def get_historic_profit(ticker: str) -> str:
         return f"Error calculating historic profit: {str(e)}"
 
 
-def get_mean_profit(ticker: str) -> str:
+def get_mean_profit(ticker: str) -> float | str:
     """
     Calculate the mean profit in percentage of a given ticker.
     Args: ticker (str): The ticker symbol to calculate the profit for.
@@ -106,7 +108,7 @@ def get_mean_profit(ticker: str) -> str:
         return f"Error calculating mean profit: {str(e)}"
 
 
-def get_variance_profit(ticker: str) -> str:
+def get_variance_profit(ticker: str) -> float | str:
     """
     Calculate the variance of profit of a given ticker.
     Args: ticker (str): The ticker symbol to calculate the profit for.

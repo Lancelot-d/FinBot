@@ -8,7 +8,7 @@ from scrapping import yars
 DAO_INSTANCE = None  # pylint: disable=invalid-name
 
 
-def clean_post(post: list[str]):
+def clean_post(post: list[str]) -> list[str]:
     """Clean and filter Reddit posts.
 
     Args:
@@ -29,7 +29,7 @@ def clean_post(post: list[str]):
     return clear_post
 
 
-def fetch_post_details(miner: yars.YARS, permalink: str):
+def fetch_post_details(miner: yars.YARS, permalink: str) -> dict:
     """Fetch details for a specific post.
 
     Args:
@@ -43,8 +43,8 @@ def fetch_post_details(miner: yars.YARS, permalink: str):
 
 
 def process_subreddit_posts(
-    miner: yars.YARS, category: list, reddit: str = "JustBuyXEQT"
-):
+    miner: yars.YARS, category: str, reddit: str = "JustBuyXEQT"
+) -> None:
     """Process posts from a subreddit category.
 
     Args:
@@ -85,7 +85,7 @@ def process_subreddit_posts(
             )
 
 
-def get_replies(comment, post):
+def get_replies(comment: dict, post: list[str]) -> None:
     """Recursively extract all replies (sub-comments) from a comment.
 
     Args:
@@ -99,7 +99,7 @@ def get_replies(comment, post):
             get_replies(rep, post)
 
 
-def run():
+def run() -> None:
     """Run the background scraping process for all configured subreddits."""
     categories = ["hot", "top"]
     sub = [

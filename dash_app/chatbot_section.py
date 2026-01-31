@@ -88,7 +88,7 @@ clientside_callback(
     state={},
     prevent_initial_call=True,
 )
-def update_chat(_, user_input, chat_history):
+def update_chat(_: int | None, user_input: str, chat_history: list[str]) -> dict[str, list[str] | bool | str]:
     """Update the chat history with user input and bot response.
 
     Args:
@@ -129,7 +129,7 @@ def update_chat(_, user_input, chat_history):
     state={},
     prevent_initial_call=True,
 )
-def display_chat(chat_history):
+def display_chat(chat_history: list[str]) -> dict[str, html.Div]:
     """Display the chat messages with proper formatting.
 
     Args:
