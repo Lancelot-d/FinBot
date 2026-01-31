@@ -79,7 +79,7 @@ Python | FastAPI | Dash | LangChain / LangGraph | FAISS | Meta-Llama-3-8B-Instru
 - **Year:** 2025  
 
 ## PDF Report
-[Download full project report (PDF)](/PS%20-%20Assistant%20virtuel%20en%20finance%20personnelles.pdf)  
+[Download full project report (PDF)](./documentations/PS%20-%20Assistant%20virtuel%20en%20finance%20personnelles.pdf)  
 
 ## Disclaimer
 Academic prototype only. Not certified financial advice. Validate outputs with professionals before making decisions.
