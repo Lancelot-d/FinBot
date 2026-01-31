@@ -1,23 +1,55 @@
-# Commands usefull
+# Useful Commands
 
-# First thing to do after cloning 
-- uv sync 
-# Init with uv 
-- uv venv venv --python=3.10
-# Activate venv 
-- .venv\Scripts\activate
-# UV pip freeze 
-- uv pip freeze > requirements.txt
-# UV pip install 
-- uv pip install -r requirements.txt
+## Environment Setup
 
-# pipreqs
-- python -m pipreqs.pipreqs C:\SRC\FinBot --encoding=utf-8 --force --ignore .venv
+### First Time Setup (After Cloning)
+```bash
+uv sync
+```
 
-# Remove all docker files not used 
-- sudo docker system prune -a --volumes -f
+### Initialize UV Virtual Environment
+```bash
+uv venv venv --python=3.10
+```
 
-# Code smells
-- black . 
-- pylint .\dash_app\
-- pylint .\reddit_api\
+### Activate Virtual Environment
+```bash
+.venv\Scripts\activate
+```
+
+## Dependency Management
+
+### Generate Requirements
+```bash
+uv pip freeze > requirements.txt
+```
+
+### Install Requirements
+```bash
+uv pip install -r requirements.txt
+```
+
+### Generate Requirements with pipreqs
+```bash
+python -m pipreqs.pipreqs C:\SRC\FinBot --encoding=utf-8 --force --ignore .venv
+```
+
+## Docker Cleanup
+
+### Remove Unused Docker Resources
+```bash
+docker system prune -a --volumes -f
+```
+
+## Code Quality
+
+### Format Code
+```bash
+black .
+```
+
+### Lint Code
+```bash
+pylint .\dash_app\
+pylint .\reddit_api\
+```
