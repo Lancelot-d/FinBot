@@ -2,7 +2,7 @@
 
 from requests import Session
 from scrapping.agents import get_agent
-
+import requests
 
 class RandomUserAgentSession(Session):
     """
