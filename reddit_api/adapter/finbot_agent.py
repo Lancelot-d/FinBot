@@ -10,7 +10,7 @@ from langchain_together import ChatTogether
 from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
-
+from logger_config import logger
 from adapter import faiss_adapter
 
 
@@ -57,6 +57,9 @@ class FinBotAgent:
         # The first message is the user question, the last is the context_response
         user_message = state["messages"][0].content
         context_response = state["messages"][-1].content
+        
+        logger.info(f"Context response: {context_response}")
+
         prompt = f"""
         # ROLE
         You are a specialized financial advisor with expert knowledge in investments, budgeting, financial planning, wealth management, and related financial topics.
@@ -98,6 +101,8 @@ class FinBotAgent:
         top_k_posts = faiss_adapter.get_top_k_reddit_posts(
             user_input=state["messages"][0].content, k=10
         )
+        
+        logger.info(f"Retrieved {len(top_k_posts)} top Reddit posts for context.")
 
         # Process each post asynchronously
         async def process_post(post):

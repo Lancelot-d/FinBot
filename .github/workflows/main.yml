@@ -2,7 +2,7 @@
   on:
     push:
       branches:
-        - main  # Déclenchement à chaque push sur master
+        - main  # Déclenchement à chaque push sur main
   jobs:
     deploy-finbot:
       runs-on: ubuntu-latest
@@ -11,7 +11,7 @@
       - name: deploy FINBOT app
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: 204.216.109.177
+          host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
