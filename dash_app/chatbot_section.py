@@ -88,7 +88,9 @@ clientside_callback(
     state={},
     prevent_initial_call=True,
 )
-def update_chat(_: int | None, user_input: str, chat_history: list[str]) -> dict[str, list[str] | bool | str]:
+def update_chat(
+    _: int | None, user_input: str, chat_history: list[str]
+) -> dict[str, list[str] | bool | str]:
     """Update the chat history with user input and bot response.
 
     Args:
@@ -107,7 +109,7 @@ def update_chat(_: int | None, user_input: str, chat_history: list[str]) -> dict
     chat_history_only_user = "\n".join(
         [msg for msg in chat_history if "**You:**" in msg][-5:]
     )
-    
+
     try:
         response = requests.get(
             f"http://api:8080/complete_message/?input_string={chat_history_only_user}",
@@ -115,9 +117,11 @@ def update_chat(_: int | None, user_input: str, chat_history: list[str]) -> dict
         )
     except Exception as e:
         print(f"Error during request: {e}")
-        chat_history.append("**Bot:** \nSorry, there was an error processing your request.\n")
+        chat_history.append(
+            "**Bot:** \nSorry, there was an error processing your request.\n"
+        )
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
-    
+
     response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}

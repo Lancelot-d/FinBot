@@ -44,13 +44,14 @@ def get_content() -> html.Div:
             ),
             # Price display with cards
             html.Div(id="ticker-price", className="ticker-price-grid"),
-           
             # Historic profit container
             html.Div(
                 className="history-container",
                 children=[
                     html.H4("📊 Historical Performance", className="history-title"),
-                    html.Div(id="historic-profit-container", className="history-content"),
+                    html.Div(
+                        id="historic-profit-container", className="history-content"
+                    ),
                 ],
             ),
         ],
@@ -96,7 +97,7 @@ def update_ticker(ticker: str) -> dict[str, list | str]:
         last_price = yf_adapter.get_ticker_price(ticker=ticker)
         annual_return = yf_adapter.get_mean_profit(ticker=ticker)
         variance = yf_adapter.get_variance_profit(ticker=ticker)
-        
+
         ticker_info = [
             # Price Card
             html.Div(
@@ -122,7 +123,9 @@ def update_ticker(ticker: str) -> dict[str, list | str]:
                 className="metric-card metric-card-variance",
                 children=[
                     html.Div("📊 Volatility", className="metric-label"),
-                    html.Div(f"{variance}", className="metric-value metric-value-warning"),
+                    html.Div(
+                        f"{variance}", className="metric-value metric-value-warning"
+                    ),
                 ],
             ),
         ]

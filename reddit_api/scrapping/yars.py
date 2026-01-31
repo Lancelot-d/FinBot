@@ -56,7 +56,9 @@ class YARS:
         """Change to a new random user agent."""
         self.session = RandomUserAgentSession()
 
-    def fetch_sync(self, url: str, timeout: int, params: dict | None = None) -> requests.Response:
+    def fetch_sync(
+        self, url: str, timeout: int, params: dict | None = None
+    ) -> requests.Response:
         """Fetch URL synchronously with proxy rotation.
 
         Args:
@@ -90,7 +92,11 @@ class YARS:
                 )
 
     def fetch_subreddit_posts(  # pylint: disable=too-many-locals,too-many-branches
-        self, subreddit: str, limit: int = 10, category: str = "hot", time_filter: str = "all"
+        self,
+        subreddit: str,
+        limit: int = 10,
+        category: str = "hot",
+        time_filter: str = "all",
     ) -> list[dict]:
         """Fetch posts from a subreddit.
 

@@ -93,7 +93,9 @@ class ProxyManager:
             executor.map(self.fetch_with_proxy, self.proxys_unchecked)
         print("Finished Proxys Test")
 
-    def init_proxy_csv(self, proxies: list[str], filename: str = "proxy_success.csv") -> None:
+    def init_proxy_csv(
+        self, proxies: list[str], filename: str = "proxy_success.csv"
+    ) -> None:
         """Initialize CSV file with proxy list.
 
         Args:
@@ -148,7 +150,9 @@ class ProxyManager:
             ):
                 writer.writerow([key, value])
 
-    def get_sorted_proxies(self, filename: str = "static/proxy_success.csv") -> list[str]:
+    def get_sorted_proxies(
+        self, filename: str = "static/proxy_success.csv"
+    ) -> list[str]:
         """Get proxies sorted by success count.
 
         Args:

@@ -111,8 +111,13 @@ app.layout = dmc.MantineProvider(
                                         html.Div(
                                             className="section-header-content",
                                             children=[
-                                                html.Span("📊", className="section-icon"),
-                                                html.H3("Market Analytics", className="section-title"),
+                                                html.Span(
+                                                    "📊", className="section-icon"
+                                                ),
+                                                html.H3(
+                                                    "Market Analytics",
+                                                    className="section-title",
+                                                ),
                                             ],
                                         ),
                                     ],
@@ -130,8 +135,13 @@ app.layout = dmc.MantineProvider(
                                         html.Div(
                                             className="section-header-content",
                                             children=[
-                                                html.Span("🤖", className="section-icon"),
-                                                html.H3("AI Assistant", className="section-title"),
+                                                html.Span(
+                                                    "🤖", className="section-icon"
+                                                ),
+                                                html.H3(
+                                                    "AI Assistant",
+                                                    className="section-title",
+                                                ),
                                             ],
                                         ),
                                     ],
