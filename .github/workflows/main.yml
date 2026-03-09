@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  deploy-finbot:
+  deploy-with-parent-infra:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger parent infrastructure deploy
