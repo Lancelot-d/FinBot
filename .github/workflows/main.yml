@@ -2,7 +2,7 @@
   on:
     push:
       branches:
-        - main  # Déclenchement à chaque push sur main
+        - test  # Déclenchement à chaque push sur main
   jobs:
     deploy-finbot:
       runs-on: ubuntu-latest
