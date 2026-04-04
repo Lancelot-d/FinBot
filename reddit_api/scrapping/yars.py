@@ -3,7 +3,6 @@
 from __future__ import annotations
 import time
 import random
-import logging
 from typing import Any
 
 import requests
@@ -11,14 +10,9 @@ from requests.adapters import HTTPAdapter
 
 from scrapping.sessions import RandomUserAgentSession
 from scrapping.proxy_manager import ProxyManager
+from logger_config import logger
 
-# Configure logging
-logging.basicConfig(
-    filename="YARS.log",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
-LOGGER = logging.getLogger(__name__)
+LOGGER = logger
 
 
 class YARS:
@@ -84,7 +78,7 @@ class YARS:
 
             self.current_index += 1
             self.change_user_agent()
-            print(f"""Proxy {self.current_index}/{len(self.proxys)} """)
+            LOGGER.warning("Switching proxy %d/%d", self.current_index, len(self.proxys))
 
             if self.current_index >= 100:
                 raise RuntimeError(
@@ -151,11 +145,12 @@ class YARS:
                 response.raise_for_status()
                 LOGGER.info("Subreddit/user posts request successful")
             except (ValueError, RuntimeError, requests.RequestException) as e:
-                LOGGER.info("Subreddit/user posts request unsuccessful: %s", e)
+                LOGGER.warning("Subreddit/user posts request unsuccessful: %s", e)
                 if response and response.status_code != 200:
-                    print(
-                        f"Failed to fetch posts for subreddit/user {subreddit}: "
-                        f"{response.status_code}"
+                    LOGGER.error(
+                        "Failed to fetch posts for subreddit/user %s: status=%s",
+                        subreddit,
+                        response.status_code,
                     )
                     break
 
@@ -215,15 +210,14 @@ class YARS:
             response.raise_for_status()
             LOGGER.info("Post details request successful : %s", url)
         except (ValueError, RuntimeError, requests.RequestException) as e:
-            LOGGER.info("Post details request unsuccessful: %s", e)
+            LOGGER.warning("Post details request unsuccessful: %s", e)
             if response and response.status_code != 200:
-                print(f"Failed to fetch post data: {response.status_code}")
+                LOGGER.error("Failed to fetch post data: status=%s", response.status_code)
                 return None
 
         post_data = response.json()
         if not isinstance(post_data, list) or len(post_data) < 2:
-            logging.info("Unexpected post data structre")
-            print("Unexpected post data structure")
+            LOGGER.warning("Unexpected post data structure")
             return None
 
         main_post = post_data[0]["data"]["children"][0]["data"]

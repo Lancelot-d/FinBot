@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 from models import RedditPost
+from logger_config import logger
 
 Base = declarative_base()
 
@@ -40,6 +41,7 @@ class DAO(Singleton):
 
     def __init__(self) -> None:
         """Initialize DAO with Oracle database connection."""
+        logger.info("Initializing DAO and Oracle connection")
         password = os.getenv("PASSWORD")
         # Break long line into multiple lines
         dsn = (
@@ -55,6 +57,7 @@ class DAO(Singleton):
         )
         Base.metadata.create_all(self.engine)
         self.session_maker = sessionmaker(bind=self.engine)
+        logger.info("DAO initialized and database metadata ensured")
 
     def add_reddit_post(self, content_str: str, title: str, author: str) -> None:
         """Add a Reddit post to the database.
@@ -75,9 +78,10 @@ class DAO(Singleton):
             )
             session.add(post)
             session.commit()
-        except (ValueError, KeyError, AttributeError) as e:
+            logger.info("Inserted reddit post id=%s", post_id)
+        except (ValueError, KeyError, AttributeError):
             session.rollback()
-            print(e)
+            logger.exception("Failed to insert reddit post")
         finally:
             session.close()
 
@@ -90,11 +94,49 @@ class DAO(Singleton):
         session = self.session_maker()
         try:
             posts = session.query(RedditPost).all()
+            logger.info("Fetched %d reddit posts from database", len(posts))
             return posts
-        except (ValueError, KeyError, AttributeError) as e:
-            print(e)
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to fetch reddit posts")
             session.rollback()
             return None
+        finally:
+            session.close()
+
+    def get_reddit_post_ids(self) -> list[str]:
+        """Retrieve all reddit post IDs from the database."""
+        session = self.session_maker()
+        try:
+            rows = session.query(RedditPost.id).all()
+            ids = [row[0] for row in rows if row[0] is not None]
+            logger.info("Fetched %d reddit post IDs from database", len(ids))
+            return ids
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to fetch reddit post IDs")
+            session.rollback()
+            return []
+        finally:
+            session.close()
+
+    def get_reddit_posts_by_ids(self, post_ids: list[str]) -> list[tuple[str, str]]:
+        """Retrieve reddit post IDs and content for selected IDs."""
+        if not post_ids:
+            return []
+
+        session = self.session_maker()
+        try:
+            rows = (
+                session.query(RedditPost.id, RedditPost.content_str)
+                .filter(RedditPost.id.in_(post_ids))
+                .all()
+            )
+            posts = [(row[0], row[1]) for row in rows if row[0] and row[1]]
+            logger.info("Fetched %d reddit posts by ID", len(posts))
+            return posts
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to fetch reddit posts by IDs")
+            session.rollback()
+            return []
         finally:
             session.close()
 
@@ -111,8 +153,8 @@ class DAO(Singleton):
         try:
             exists = session.query(RedditPost).filter_by(id=post_id).first() is not None
             return exists
-        except (ValueError, KeyError, AttributeError) as e:
-            print(e)
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to check reddit post existence for id=%s", post_id)
             session.rollback()
             return False
         finally:

@@ -7,6 +7,7 @@ import time
 import random
 
 import requests
+from logger_config import logger
 
 
 class ProxyManager:
@@ -76,8 +77,8 @@ class ProxyManager:
             self.update_proxy_count(p)
             time.sleep(5)
             return response
-        except requests.RequestException as e:
-            print(e)
+        except requests.RequestException:
+            logger.exception("Proxy request failed via proxy=%s", p)
             return None
 
     def test_proxys(self) -> None:
@@ -86,12 +87,12 @@ class ProxyManager:
         Returns:
             List of successful proxy addresses.
         """
-        print("Started Proxys Test")
+        logger.info("Started proxy test for %d proxies", len(self.proxys_unchecked))
         with concurrent.futures.ThreadPoolExecutor(
             max_workers=self.max_workers
         ) as executor:
             executor.map(self.fetch_with_proxy, self.proxys_unchecked)
-        print("Finished Proxys Test")
+        logger.info("Finished proxy test")
 
     def init_proxy_csv(
         self, proxies: list[str], filename: str = "proxy_success.csv"
@@ -118,7 +119,7 @@ class ProxyManager:
                 if proxy not in existing_proxies:
                     writer.writerow([proxy, 0])
 
-        print("Initialized CSV with proxies.")
+        logger.info("Initialized proxy CSV with %d entries", len(proxies))
 
     def update_proxy_count(
         self, proxy: str, filename: str = "static/proxy_success.csv"

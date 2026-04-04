@@ -11,7 +11,7 @@ from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
 from logger_config import logger
-from adapter import faiss_adapter
+from adapter import vector_db_adapter
 
 
 class State(TypedDict):
@@ -96,9 +96,9 @@ class FinBotAgent:
 
     def node_context(self, state: State) -> dict[str, list]:
         """
-        Node that's extract context from reddit posts stored in FAISS.
+        Node that extracts context from reddit posts stored in vector DB.
         """
-        top_k_posts = faiss_adapter.get_top_k_reddit_posts(
+        top_k_posts = vector_db_adapter.get_top_k_reddit_posts(
             user_input=state["messages"][0].content, k=10
         )
 

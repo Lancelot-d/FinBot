@@ -3,6 +3,7 @@
 from dao import DAO
 from cleantext import clean
 from scrapping import yars
+from logger_config import logger
 
 # Module-level DAO instance (initialized in run())
 DAO_INSTANCE = None  # pylint: disable=invalid-name
@@ -52,6 +53,7 @@ def process_subreddit_posts(
         category: List of category types to scrape.
         reddit: Subreddit name.
     """
+    logger.info("Processing subreddit=%s category=%s", reddit, category)
     miner.change_user_agent()
     subreddit_posts = miner.fetch_subreddit_posts(
         reddit, limit=100, category=category, time_filter="all"
@@ -64,6 +66,9 @@ def process_subreddit_posts(
             )
         ):
             post_details = fetch_post_details(miner, post_data["permalink"])
+            if not post_details:
+                logger.warning("No post details returned for permalink=%s", post_data["permalink"])
+                continue
             post = []
 
             # Adding the post title and body
@@ -83,6 +88,7 @@ def process_subreddit_posts(
                 title=post_data["title"],
                 author=post_data["author"],
             )
+    logger.info("Finished subreddit=%s category=%s", reddit, category)
 
 
 def get_replies(comment: dict, post: list[str]) -> None:
@@ -101,6 +107,7 @@ def get_replies(comment: dict, post: list[str]) -> None:
 
 def run() -> None:
     """Run the background scraping process for all configured subreddits."""
+    logger.info("Starting background scraping run")
     categories = ["hot", "top"]
     sub = [
         "PersonalFinanceCanada",
@@ -120,6 +127,6 @@ def run() -> None:
     for s in sub:
         for category in categories:
             process_subreddit_posts(reddit=s, miner=miner, category=category)
-            print(f"""Category {category} processed""")
+            logger.info("Category processed category=%s subreddit=%s", category, s)
 
-    print("Scrap processed")
+    logger.info("Background scraping run completed")

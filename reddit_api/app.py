@@ -9,7 +9,7 @@ from pytz import utc
 import uvicorn
 
 from scrapping import background_scrapping
-from adapter import faiss_adapter
+from adapter import vector_db_adapter
 from adapter import finbot_agent
 from logger_config import logger
 
@@ -23,11 +23,15 @@ async def lifespan(app: FastAPI):
     Args:
         fastapi_app: The FastAPI application instance.
     """
-    print("Starting lifespan")
-    faiss_adapter.batch_insert()
+    logger.info("Starting application lifespan")
+    logger.info("Running initial vector index build")
+    vector_db_adapter.sync_new_posts()
     scheduler.start()
+    logger.info("Scheduler started")
     yield
+    logger.info("Shutting down scheduler")
     scheduler.shutdown()
+    logger.info("Application lifespan shutdown complete")
 
 
 app = FastAPI(lifespan=lifespan)
@@ -41,11 +45,12 @@ async def complete_message(input_string: str) -> dict[str, str]:
     """
     start_time = time.time()
     try:
+        logger.info("Received /complete_message request")
         response = finbot_agent.FinBotAgent().run(input_string)
         processing_time = time.time() - start_time
         logger.info("Request processed successfully in %.3f seconds", processing_time)
-    except (ValueError, RuntimeError) as e:
-        print(f"Error during chat invocation: {e}")
+    except (ValueError, RuntimeError):
+        logger.exception("Error during chat invocation")
         return {"error": "Failed to process the request"}
 
     return {"completed_message": f"{response}"}
@@ -53,14 +58,15 @@ async def complete_message(input_string: str) -> dict[str, str]:
 
 # every 10 hours
 @scheduler.scheduled_job("interval", seconds=36000)
-async def scrappe_and_update_faiss() -> None:
-    """Background job to scrape Reddit data and update FAISS index."""
-    print("Background scrapping started")
+async def scrape_and_update_vector_db() -> None:
+    """Background job to scrape Reddit data and incrementally update vector DB."""
+    logger.info("Background scraping job started")
     try:
         background_scrapping.run()
-        faiss_adapter.batch_insert()
-    except (ValueError, RuntimeError) as e:
-        print(f"Error during background scrapping or FAISS update : {e}")
+        vector_db_adapter.sync_new_posts()
+        logger.info("Background scraping job completed successfully")
+    except (ValueError, RuntimeError):
+        logger.exception("Error during background scraping or vector index update")
 
 
 if __name__ == "__main__":

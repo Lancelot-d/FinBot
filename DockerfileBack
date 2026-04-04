@@ -1,12 +1,17 @@
-FROM python:3.10.6-slim-bullseye
+FROM python:3.10-slim-bookworm
 
-COPY ./reddit_api /reddit_api
+WORKDIR /app
 
-WORKDIR /reddit_api
+COPY ./pyproject.toml /app/pyproject.toml
 
-RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --upgrade pip uv
+RUN uv sync --no-install-project
 
-RUN pip install --no-cache-dir -r requirements.txt
+ENV PATH="/app/.venv/bin:$PATH"
+
+COPY ./reddit_api /app/reddit_api
+
+WORKDIR /app/reddit_api
 
 EXPOSE 8080/tcp
 

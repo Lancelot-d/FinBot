@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: DockerfileFront
+    env_file:
+      - .env
     ports:
       - "8070:8070"
     restart: always
@@ -15,12 +17,32 @@ services:
     build: 
       context: .
       dockerfile: DockerfileBack
+    env_file:
+      - .env
     ports:
       - "8080:8080"
+    environment:
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
     restart: always
     networks:
       - finnet
+    depends_on:
+      - chroma
+
+  chroma:
+    image: chromadb/chroma:0.5.23
+    ports:
+      - "8000:8000"
+    restart: always
+    networks:
+      - finnet
+    volumes:
+      - chroma_data:/chroma/chroma
 
 networks:
   finnet:
     driver: bridge
+
+volumes:
+  chroma_data:
