@@ -10,6 +10,8 @@ services:
         required: false
     ports:
       - "8070:8070"
+    environment:
+      - FINBOT_API_URL=http://finbot-api:8080
     restart: always
     networks:
       - finnet

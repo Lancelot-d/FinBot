@@ -37,6 +37,12 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
+@app.get("/health")
+async def health() -> dict[str, str]:
+    """Liveness endpoint for quick connectivity checks."""
+    return {"status": "ok"}
+
+
 @app.get("/complete_message/")
 async def complete_message(input_string: str) -> dict[str, str]:
     """
