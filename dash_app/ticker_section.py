@@ -26,19 +26,11 @@ def get_content() -> html.Div:
                         placeholder="e.g., AAPL, TSLA, MSFT...",
                         debounce=500,
                         className="ticker-search-input",
-                        styles={
-                            "input": {
-                                "backgroundColor": "rgba(15, 23, 42, 0.5)",
-                                "border": "1px solid rgba(148, 163, 184, 0.3)",
-                                "borderRadius": "8px",
-                                "padding": "10px 14px",
-                                "color": "#f8fafc",
-                                "fontSize": "14px",
-                                "transition": "all 0.2s ease",
-                                "paddingLeft": "40px",
-                            },
+                        classNames={
+                            "input": "ticker-search-field",
+                            "section": "ticker-search-section",
                         },
-                        leftSection=html.Span("🔍", style={"fontSize": "16px"}),
+                        leftSection=html.Span("SYM", className="ticker-search-prefix"),
                     ),
                 ],
             ),
@@ -48,7 +40,7 @@ def get_content() -> html.Div:
             html.Div(
                 className="history-container",
                 children=[
-                    html.H4("📊 Historical Performance", className="history-title"),
+                    html.H4("Historical Performance", className="history-title"),
                     html.Div(
                         id="historic-profit-container", className="history-content"
                     ),
@@ -103,7 +95,7 @@ def update_ticker(ticker: str) -> dict[str, list | str]:
             html.Div(
                 className="metric-card metric-card-price",
                 children=[
-                    html.Div("💰 Current Price", className="metric-label"),
+                    html.Div("Current Price", className="metric-label"),
                     html.Div(f"${last_price}", className="metric-value"),
                 ],
             ),
@@ -111,7 +103,7 @@ def update_ticker(ticker: str) -> dict[str, list | str]:
             html.Div(
                 className="metric-card metric-card-return",
                 children=[
-                    html.Div("📈 Annual Return", className="metric-label"),
+                    html.Div("Annual Return", className="metric-label"),
                     html.Div(
                         f"{annual_return}%",
                         className=f"metric-value {'metric-value-positive' if float(annual_return) > 0 else 'metric-value-negative'}",
@@ -122,7 +114,7 @@ def update_ticker(ticker: str) -> dict[str, list | str]:
             html.Div(
                 className="metric-card metric-card-variance",
                 children=[
-                    html.Div("📊 Volatility", className="metric-label"),
+                    html.Div("Volatility", className="metric-label"),
                     html.Div(
                         f"{variance}", className="metric-value metric-value-warning"
                     ),

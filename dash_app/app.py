@@ -1,6 +1,7 @@
 """Main Dash application for FinBot - financial dashboard and chatbot."""
 
 import os
+import importlib
 
 import dash
 from dash import html
@@ -36,7 +37,7 @@ app.index_string = f"""
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
         
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={os.getenv("G_TAG")}"></script>
@@ -62,21 +63,25 @@ app.index_string = f"""
 
 server = app.server
 
+
+def get_header_logo() -> html.Span:
+    """Return a DashIconify logo when available, fallback to text mark otherwise."""
+    try:
+        dash_iconify_module = importlib.import_module("dash_iconify")
+        return dash_iconify_module.DashIconify(
+            icon="ph:chart-line-up-bold",
+            width=22,
+        )
+    except Exception:
+        return html.Span("FB")
+
 # App layout
 app.layout = dmc.MantineProvider(
     theme={"colorScheme": "dark"},
     children=[
         # Main Container with Professional Background
         html.Div(
-            style={
-                "display": "flex",
-                "flexDirection": "column",
-                "height": "100vh",
-                "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-                "background": "linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)",
-                "overflowY": "hidden",
-                "overflowX": "hidden",
-            },
+            className="app-shell",
             children=[
                 # Header Section with Gradient and Professional Look
                 html.Div(
@@ -86,7 +91,10 @@ app.layout = dmc.MantineProvider(
                         html.Div(
                             className="header-logo-section",
                             children=[
-                                html.Div("💲", className="header-logo-icon"),
+                                html.Div(
+                                    get_header_logo(),
+                                    className="header-logo-icon",
+                                ),
                                 dmc.Title("FinBot", order=1, className="header-title"),
                             ],
                         ),
@@ -111,9 +119,7 @@ app.layout = dmc.MantineProvider(
                                         html.Div(
                                             className="section-header-content",
                                             children=[
-                                                html.Span(
-                                                    "📊", className="section-icon"
-                                                ),
+                                                html.Span("MA", className="section-icon"),
                                                 html.H3(
                                                     "Market Analytics",
                                                     className="section-title",
@@ -135,9 +141,7 @@ app.layout = dmc.MantineProvider(
                                         html.Div(
                                             className="section-header-content",
                                             children=[
-                                                html.Span(
-                                                    "🤖", className="section-icon"
-                                                ),
+                                                html.Span("AI", className="section-icon"),
                                                 html.H3(
                                                     "AI Assistant",
                                                     className="section-title",

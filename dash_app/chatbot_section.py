@@ -28,8 +28,12 @@ def get_content() -> html.Div:
                             dmc.LoadingOverlay(
                                 visible=False,
                                 id="loading-overlay",
-                                overlayProps={"radius": "sm", "blur": 2},
-                                loaderProps={"color": "#667eea", "type": "bars"},
+                                overlayProps={
+                                    "radius": "sm",
+                                    "blur": 0,
+                                    "backgroundOpacity": 0,
+                                },
+                                loaderProps={"color": "cyan", "type": "dots"},
                                 zIndex=10,
                             ),
                             html.Div(id="chat-display", className="chat-display-inner"),
@@ -47,10 +51,7 @@ def get_content() -> html.Div:
                                 className="chat-input",
                             ),
                             dbc.Button(
-                                [
-                                    html.Span("✨", className="button-icon"),
-                                    "Send Message",
-                                ],
+                                ["Send Message"],
                                 id="send-btn",
                                 className="chat-send-button",
                             ),
