@@ -5,6 +5,7 @@ services:
       dockerfile: DockerfileFront
     env_file:
       - .env
+      - ../.env
     ports:
       - "8070:8070"
     restart: always
@@ -19,6 +20,7 @@ services:
       dockerfile: DockerfileBack
     env_file:
       - .env
+      - ../.env
     ports:
       - "8080:8080"
     environment:
