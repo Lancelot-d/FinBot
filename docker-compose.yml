@@ -1,5 +1,5 @@
 services:
-  frontend:
+  finbot-frontend:
     build:
       context: .
       dockerfile: DockerfileFront
@@ -12,9 +12,9 @@ services:
     networks:
       - finnet
     depends_on:
-      - api
+      - finbot-api
 
-  api:
+  finbot-api:
     build: 
       context: .
       dockerfile: DockerfileBack
