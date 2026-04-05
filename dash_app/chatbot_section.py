@@ -1,24 +1,11 @@
 """Chatbot section module for the FinBot dashboard."""
 
-import os
-
 import dash
 from dash import dcc, html, Input, Output, State, clientside_callback
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
-import requests
 
-
-API_BASE_URL = os.getenv("FINBOT_API_URL", "http://finbot-api:8080").rstrip("/")
-
-
-def _is_api_healthy() -> bool:
-    """Return True when backend responds on health endpoint."""
-    try:
-        response = requests.get(f"{API_BASE_URL}/health", timeout=3)
-        return response.status_code == 200
-    except requests.RequestException:
-        return False
+import api_adapter.finbot_adapter as finbot_adapter
 
 
 def get_content() -> html.Div:
@@ -125,27 +112,19 @@ def update_chat(
         [msg for msg in chat_history if "**You:**" in msg][-5:]
     )
 
-    if not _is_api_healthy():
+    if not finbot_adapter.is_api_healthy():
         chat_history.append(
             "**Bot:** \nBackend API is unavailable right now. Please retry in a few seconds.\n"
         )
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
-    try:
-        response = requests.get(
-            f"{API_BASE_URL}/complete_message/",
-            params={"input_string": chat_history_only_user},
-            timeout=120,
-        )
-        response.raise_for_status()
-    except Exception as e:
-        print(f"Error during request: {e}")
+    response_text = finbot_adapter.get_completed_message(chat_history_only_user)
+    if not response_text:
         chat_history.append(
             "**Bot:** \nSorry, there was an error processing your request.\n"
         )
         return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 
-    response_text = response.json().get("completed_message", "")
     chat_history.append(f"**Bot:** \n{response_text}\n")
     return {"chat_history": chat_history, "loading_overlay": False, "new_value": ""}
 

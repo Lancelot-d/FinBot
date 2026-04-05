@@ -1,14 +1,15 @@
 """Main Dash application for FinBot - financial dashboard and chatbot."""
 
-import os
 import importlib
+import os
 
 import dash
-from dash import html
+from dash import html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 import dash_mantine_components as dmc
 from dotenv import load_dotenv
 
+import api_adapter.finbot_adapter as finbot_adapter
 import ticker_section
 import chatbot_section
 
@@ -75,6 +76,7 @@ def get_header_logo() -> html.Span:
     except Exception:
         return html.Span("FB")
 
+
 # App layout
 app.layout = dmc.MantineProvider(
     theme={"colorScheme": "dark"},
@@ -95,12 +97,34 @@ app.layout = dmc.MantineProvider(
                                     get_header_logo(),
                                     className="header-logo-icon",
                                 ),
-                                dmc.Title("FinBot", order=1, className="header-title"),
+                                html.Div(
+                                    className="header-title-row",
+                                    children=[
+                                        dmc.Title(
+                                            "FinBot", order=1, className="header-title"
+                                        ),
+                                        html.Div(
+                                            id="reddit-post-count",
+                                            className="header-context-counter",
+                                            children=[
+                                                html.Span(
+                                                    "Reddit Posts in Context",
+                                                    className="header-context-label",
+                                                ),
+                                                html.Span(
+                                                    "--",
+                                                    id="reddit-post-count-value",
+                                                    className="header-context-value",
+                                                ),
+                                            ],
+                                        ),
+                                    ],
+                                ),
                             ],
                         ),
                         # Subtitle
                         html.Div(
-                            "Financial Intelligence Platform",
+                            "Financial Intelligence Platform with Reddit Context",
                             className="header-subtitle",
                         ),
                     ],
@@ -155,10 +179,38 @@ app.layout = dmc.MantineProvider(
                         ),
                     ],
                 ),
+                dcc.Interval(
+                    id="reddit-post-count-interval",
+                    interval=30 * 1000,
+                    n_intervals=0,
+                ),
             ],
         )
     ],
 )
+
+
+@dash.callback(
+    output={
+        "count": Output("reddit-post-count-value", "children"),
+        "counter_class": Output("reddit-post-count", "className"),
+    },
+    inputs={"_": Input("reddit-post-count-interval", "n_intervals")},
+    state={},
+)
+def update_reddit_post_counter(_: int) -> dict[str, str]:
+    """Refresh the header counter with current reddit post count."""
+    count = finbot_adapter.get_reddit_posts_count()
+    if count is None:
+        return {
+            "count": "Unavailable",
+            "counter_class": "header-context-counter header-context-counter-offline",
+        }
+
+    return {
+        "count": f"{count:,}",
+        "counter_class": "header-context-counter",
+    }
 
 if __name__ == "__main__":
     app.run(debug=True)

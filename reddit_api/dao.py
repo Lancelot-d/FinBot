@@ -118,6 +118,20 @@ class DAO(Singleton):
         finally:
             session.close()
 
+    def get_reddit_posts_count(self) -> int:
+        """Retrieve the total number of reddit posts in the database."""
+        session = self.session_maker()
+        try:
+            count = session.query(RedditPost).count()
+            logger.info("Fetched reddit post count=%d", count)
+            return count
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to fetch reddit post count")
+            session.rollback()
+            return 0
+        finally:
+            session.close()
+
     def get_reddit_posts_by_ids(self, post_ids: list[str]) -> list[tuple[str, str]]:
         """Retrieve reddit post IDs and content for selected IDs."""
         if not post_ids:

@@ -122,6 +122,57 @@ body {
     letter-spacing: 0.02em;
 }
 
+.header-title-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-context-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: linear-gradient(
+        135deg,
+        rgba(34, 211, 238, 0.16),
+        rgba(34, 211, 238, 0.06)
+    );
+    box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.08);
+}
+
+.header-context-counter-offline {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: linear-gradient(
+        135deg,
+        rgba(245, 158, 11, 0.16),
+        rgba(245, 158, 11, 0.06)
+    );
+    box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.1);
+}
+
+.header-context-label {
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.header-context-value {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.header-context-counter-offline .header-context-value {
+    color: var(--warning);
+}
+
 .header-subtitle {
     color: var(--text-secondary);
     font-size: 12px;
@@ -617,6 +668,19 @@ body {
 
     .header-title {
         font-size: 26px;
+    }
+
+    .header-title-row {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .header-context-counter {
+        padding: 4px 10px;
+    }
+
+    .header-context-value {
+        font-size: 12px;
     }
 
     .main-content {

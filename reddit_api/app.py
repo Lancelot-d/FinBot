@@ -11,6 +11,7 @@ import uvicorn
 from scrapping import background_scrapping
 from adapter import vector_db_adapter
 from adapter import finbot_agent
+from dao import DAO
 from logger_config import logger
 
 scheduler = AsyncIOScheduler(timezone=utc)
@@ -62,10 +63,23 @@ async def complete_message(input_string: str) -> dict[str, str]:
     return {"completed_message": f"{response}"}
 
 
-# every 10 hours
+@app.get("/reddit_posts/count")
+async def get_reddit_posts_count() -> dict[str, int] | dict[str, str]:
+    """Return the number of reddit posts currently stored in the database."""
+    try:
+        logger.info("Received /reddit_posts/count request")
+        count = DAO.get_instance().get_reddit_posts_count()
+        return {"count": count}
+    except (ValueError, RuntimeError):
+        logger.exception("Error while counting reddit posts")
+        return {"error": "Failed to fetch reddit post count"}
+
+
+"""
+# every 10 hours scrape new reddit posts and update vector index in the background
+
 @scheduler.scheduled_job("interval", seconds=36000)
 async def scrape_and_update_vector_db() -> None:
-    """Background job to scrape Reddit data and incrementally update vector DB."""
     logger.info("Background scraping job started")
     try:
         background_scrapping.run()
@@ -73,7 +87,7 @@ async def scrape_and_update_vector_db() -> None:
         logger.info("Background scraping job completed successfully")
     except (ValueError, RuntimeError):
         logger.exception("Error during background scraping or vector index update")
-
+"""
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8080)
