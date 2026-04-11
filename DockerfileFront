@@ -4,8 +4,11 @@ WORKDIR /app
 
 COPY ./pyproject.toml /app/pyproject.toml
 
-RUN pip install --no-cache-dir --upgrade pip uv
-RUN uv sync --no-install-project
+ENV PIP_NO_CACHE_DIR=1 \
+	UV_NO_CACHE=1
+
+RUN pip install --upgrade pip uv
+RUN uv sync --no-install-project --no-cache && rm -rf /root/.cache /tmp/*
 
 ENV PATH="/app/.venv/bin:$PATH"
 
