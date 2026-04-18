@@ -42,15 +42,9 @@ class DAO(Singleton):
     def __init__(self) -> None:
         """Initialize DAO with Oracle database connection."""
         logger.info("Initializing DAO and Oracle connection")
-        password = os.getenv("PASSWORD")
-        # Break long line into multiple lines
-        dsn = (
-            "(description= (retry_count=20)(retry_delay=3)"
-            "(address=(protocol=tcps)(port=1521)(host=adb.ca-montreal-1.oraclecloud.com))"
-            "(connect_data=(service_name=g6e3bf2bdf6f8f6_db2_high.adb.oraclecloud.com))"
-            "(security=(ssl_server_dn_match=yes)))"
-        )
-        user = os.getenv("USER")
+        password = os.getenv("ORACLE_PASSWORD")
+        dsn = os.getenv("ORACLE_DSN")
+        user = os.getenv("ORACLE_USER")
         self.engine = create_engine(
             "oracle+oracledb://:@",
             connect_args={"user": user, "password": password, "dsn": dsn},
