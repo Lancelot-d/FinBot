@@ -1,4 +1,4 @@
-"""FinBot agent using LangChain and Together API for financial advice."""
+"""FinBot agent using LangChain and OpenRouter API for financial advice."""
 
 import os
 import asyncio
@@ -6,7 +6,7 @@ import concurrent.futures
 from typing import Annotated
 
 from typing_extensions import TypedDict
-from langchain_together import ChatTogether
+from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
 from dotenv import load_dotenv
@@ -27,23 +27,26 @@ class State(TypedDict):
 class FinBotAgent:
     """
     FinBotAgent encapsulates the setup and execution of a LangChain agent
-    with custom tools and prompt, using the Together LLM API.
+    with custom tools and prompt, using the OpenRouter LLM API.
     """
 
     def __init__(
         self,
         api_key: str = None,
-        model: str = "meta-llama/Meta-Llama-3-8B-Instruct-Lite",
+        model: str = "nvidia/nemotron-3-super-120b-a12b:free",
         temperature: float = 0.0,
     ):
         load_dotenv()
-        self.api_key = api_key or os.getenv("TOGETHER_API_KEY")
+        self.api_key = api_key or os.getenv("OPEN_ROUTER_KEY")
         self.model = model
         self.temperature = temperature
 
         self.graph_builder = StateGraph(State)
-        self.llm = ChatTogether(
-            model=model, api_key=self.api_key, temperature=temperature
+        self.llm = ChatOpenAI(
+            model=model,
+            api_key=self.api_key,
+            temperature=temperature,
+            base_url="https://openrouter.ai/api/v1",
         )
         self.graph = None
 
