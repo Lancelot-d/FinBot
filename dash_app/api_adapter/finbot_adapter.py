@@ -6,6 +6,7 @@ import requests
 
 
 API_BASE_URL = os.getenv("FINBOT_API_URL", "http://finbot-api:8080").rstrip("/")
+API_TIMEOUT_SECONDS = 300
 
 
 def is_api_healthy() -> bool:
@@ -17,7 +18,9 @@ def is_api_healthy() -> bool:
         return False
 
 
-def get_completed_message(input_string: str, timeout: int = 120) -> str | None:
+def get_completed_message(
+    input_string: str, timeout: int = API_TIMEOUT_SECONDS
+) -> str | None:
     """Call backend completion endpoint and return completed message text."""
     try:
         response = requests.get(

@@ -152,7 +152,7 @@ class FinBotAgent:
         Node that extracts context from reddit posts stored in vector DB.
         """
         top_k_posts = vector_db_adapter.get_top_k_reddit_posts(
-            user_input=state["messages"][0].content, k=10
+            user_input=state["messages"][0].content, k=5
         )
 
         logger.info(f"Retrieved {len(top_k_posts)} top Reddit posts for context.")
