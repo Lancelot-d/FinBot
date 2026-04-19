@@ -9,6 +9,7 @@ from typing_extensions import TypedDict
 from langchain_openai import ChatOpenAI
 from langgraph.graph import StateGraph, START
 from langgraph.graph.message import add_messages
+from tenacity import Retrying, retry_if_exception, stop_after_attempt, wait_exponential
 from dotenv import load_dotenv
 from logger_config import logger
 from adapter import vector_db_adapter
@@ -52,6 +53,51 @@ class FinBotAgent:
 
         self._build_graph()
 
+    def _is_transient_provider_error(self, error: Exception) -> bool:
+        """Return True when the upstream provider error is likely transient."""
+        error_text = str(error)
+        transient_markers = [
+            "'code': 524",
+            '"code": 524',
+            "'code': 429",
+            '"code": 429',
+            "Provider returned error",
+            "timeout",
+            "temporar",
+            "overloaded",
+        ]
+        return any(marker.lower() in error_text.lower() for marker in transient_markers)
+
+    def _invoke_llm_with_retry(
+        self,
+        messages: list[dict[str, str]],
+        *,
+        max_attempts: int = 3,
+        base_delay_seconds: float = 1.0,
+    ):
+        """Invoke the chat model with Tenacity retries for transient failures."""
+        retrying = Retrying(
+            stop=stop_after_attempt(max_attempts),
+            wait=wait_exponential(
+                multiplier=base_delay_seconds,
+                min=base_delay_seconds,
+                max=8,
+            ),
+            retry=retry_if_exception(self._is_transient_provider_error),
+            reraise=True,
+        )
+
+        for attempt in retrying:
+            with attempt:
+                attempt_number = attempt.retry_state.attempt_number
+                if attempt_number > 1:
+                    logger.warning(
+                        "Retrying transient LLM error, attempt %s/%s",
+                        attempt_number,
+                        max_attempts,
+                    )
+                return self.llm.invoke(messages)
+
     # Node function to process the chat
     def node_process_final_answer(self, state: State) -> dict[str, list]:
         """
@@ -60,6 +106,8 @@ class FinBotAgent:
         # The first message is the user question, the last is the context_response
         user_message = state["messages"][0].content
         context_response = state["messages"][-1].content
+        if not str(context_response).strip():
+            context_response = "No supplemental Reddit context was available."
 
         logger.info(f"Context response: {context_response}")
 
@@ -94,7 +142,9 @@ class FinBotAgent:
         {user_message}
         """
 
-        response = self.llm.invoke([{"role": "user", "content": prompt}])
+        response = self._invoke_llm_with_retry(
+            [{"role": "user", "content": prompt}], max_attempts=3
+        )
         return {"messages": [response]}
 
     def node_context(self, state: State) -> dict[str, list]:
@@ -145,11 +195,24 @@ class FinBotAgent:
             - Return just fact, do not introduce yourself or the task
             ###
             """
-            response = self.llm.invoke([{"role": "user", "content": prompt}])
-            return response.content
+            try:
+                response = await asyncio.to_thread(
+                    self._invoke_llm_with_retry,
+                    [{"role": "user", "content": prompt}],
+                )
+                return response.content
+            except Exception as error:  # noqa: BLE001
+                logger.warning("Skipping one context post due to LLM error: %s", error)
+                return ""
 
         async def process_all_posts():
-            tasks = [process_post(post) for post in top_k_posts]
+            semaphore = asyncio.Semaphore(3)
+
+            async def process_post_with_limit(post):
+                async with semaphore:
+                    return await process_post(post)
+
+            tasks = [process_post_with_limit(post) for post in top_k_posts]
             return await asyncio.gather(*tasks)
 
         # Handle async processing in a sync context

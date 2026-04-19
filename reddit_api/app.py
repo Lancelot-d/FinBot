@@ -56,7 +56,7 @@ async def complete_message(input_string: str) -> dict[str, str]:
         response = finbot_agent.FinBotAgent().run(input_string)
         processing_time = time.time() - start_time
         logger.info("Request processed successfully in %.3f seconds", processing_time)
-    except (ValueError, RuntimeError):
+    except Exception:  # noqa: BLE001
         logger.exception("Error during chat invocation")
         return {"error": "Failed to process the request"}
 
