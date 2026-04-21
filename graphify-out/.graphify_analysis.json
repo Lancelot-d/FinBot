@@ -1,0 +1,345 @@
+{
+  "communities": {
+    "0": [
+      "proxy_manager_proxymanager",
+      "proxy_manager_proxymanager_fetch_with_proxy",
+      "proxy_manager_proxymanager_get_sorted_proxies",
+      "proxy_manager_proxymanager_init",
+      "proxy_manager_proxymanager_init_proxy_csv",
+      "proxy_manager_proxymanager_read_proxy_file",
+      "proxy_manager_proxymanager_test_proxys",
+      "proxy_manager_proxymanager_update_proxy_count",
+      "proxy_manager_rationale_1",
+      "proxy_manager_rationale_100",
+      "proxy_manager_rationale_127",
+      "proxy_manager_rationale_14",
+      "proxy_manager_rationale_157",
+      "proxy_manager_rationale_23",
+      "proxy_manager_rationale_40",
+      "proxy_manager_rationale_56",
+      "proxy_manager_rationale_85",
+      "reddit_api_scrapping_proxy_manager_py",
+      "reddit_api_scrapping_sessions_py",
+      "reddit_api_scrapping_yars_py",
+      "session",
+      "sessions_randomuseragentsession",
+      "sessions_rationale_1",
+      "sessions_rationale_8",
+      "yars_rationale_1",
+      "yars_rationale_19",
+      "yars_rationale_197",
+      "yars_rationale_232",
+      "yars_rationale_50",
+      "yars_rationale_56",
+      "yars_rationale_95",
+      "yars_yars",
+      "yars_yars_change_user_agent",
+      "yars_yars_extract_comments",
+      "yars_yars_fetch_subreddit_posts",
+      "yars_yars_fetch_sync",
+      "yars_yars_init",
+      "yars_yars_scrape_post_details"
+    ],
+    "1": [
+      "base",
+      "dao_dao",
+      "dao_dao_add_reddit_post",
+      "dao_dao_generate_post_id",
+      "dao_dao_get_reddit_post_ids",
+      "dao_dao_get_reddit_posts",
+      "dao_dao_get_reddit_posts_by_ids",
+      "dao_dao_get_reddit_posts_count",
+      "dao_dao_init",
+      "dao_dao_is_reddit_post_in_db",
+      "dao_rationale_1",
+      "dao_rationale_101",
+      "dao_rationale_116",
+      "dao_rationale_130",
+      "dao_rationale_152",
+      "dao_rationale_17",
+      "dao_rationale_172",
+      "dao_rationale_23",
+      "dao_rationale_38",
+      "dao_rationale_43",
+      "dao_rationale_57",
+      "dao_rationale_83",
+      "dao_singleton",
+      "models_rationale_1",
+      "models_rationale_10",
+      "models_redditpost",
+      "reddit_api_dao_py",
+      "reddit_api_models_py"
+    ],
+    "2": [
+      "app_get_reddit_posts_count",
+      "app_rationale_68",
+      "dao_get_instance",
+      "reddit_api_adapter_vector_db_adapter_py",
+      "vector_db_adapter_chunked",
+      "vector_db_adapter_chunked_ids",
+      "vector_db_adapter_embed_text",
+      "vector_db_adapter_get_collection",
+      "vector_db_adapter_get_embedding_model",
+      "vector_db_adapter_get_existing_ids",
+      "vector_db_adapter_get_reddit_posts",
+      "vector_db_adapter_get_top_k_reddit_posts",
+      "vector_db_adapter_rationale_1",
+      "vector_db_adapter_rationale_101",
+      "vector_db_adapter_rationale_106",
+      "vector_db_adapter_rationale_115",
+      "vector_db_adapter_rationale_28",
+      "vector_db_adapter_rationale_36",
+      "vector_db_adapter_rationale_42",
+      "vector_db_adapter_rationale_56",
+      "vector_db_adapter_rationale_70",
+      "vector_db_adapter_rationale_96",
+      "vector_db_adapter_sync_new_posts"
+    ],
+    "3": [
+      "finbot_agent_finbotagent",
+      "finbot_agent_finbotagent_build_graph",
+      "finbot_agent_finbotagent_estimate_tokens",
+      "finbot_agent_finbotagent_init",
+      "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "finbot_agent_finbotagent_is_transient_provider_error",
+      "finbot_agent_finbotagent_node_context",
+      "finbot_agent_finbotagent_node_process_final_answer",
+      "finbot_agent_finbotagent_run",
+      "finbot_agent_rationale_1",
+      "finbot_agent_rationale_103",
+      "finbot_agent_rationale_151",
+      "finbot_agent_rationale_19",
+      "finbot_agent_rationale_252",
+      "finbot_agent_rationale_267",
+      "finbot_agent_rationale_280",
+      "finbot_agent_rationale_29",
+      "finbot_agent_rationale_57",
+      "finbot_agent_rationale_78",
+      "finbot_agent_state",
+      "reddit_api_adapter_finbot_agent_py",
+      "typeddict"
+    ],
+    "4": [
+      "dash_app_api_adapter_yfinance_adapter_py",
+      "dash_app_ticker_section_py",
+      "ticker_section_get_content",
+      "ticker_section_rationale_1",
+      "ticker_section_rationale_11",
+      "ticker_section_rationale_64",
+      "ticker_section_update_ticker",
+      "yfinance_adapter_get_historic_profit",
+      "yfinance_adapter_get_mean_profit",
+      "yfinance_adapter_get_ticker_history",
+      "yfinance_adapter_get_ticker_price",
+      "yfinance_adapter_get_variance_profit",
+      "yfinance_adapter_rationale_1",
+      "yfinance_adapter_rationale_112",
+      "yfinance_adapter_rationale_30",
+      "yfinance_adapter_rationale_52",
+      "yfinance_adapter_rationale_83",
+      "yfinance_adapter_rationale_9"
+    ],
+    "5": [
+      "chatbot_section_display_chat",
+      "chatbot_section_get_content",
+      "chatbot_section_rationale_1",
+      "chatbot_section_rationale_12",
+      "chatbot_section_rationale_139",
+      "chatbot_section_rationale_96",
+      "chatbot_section_update_chat",
+      "dash_app_api_adapter_finbot_adapter_py",
+      "dash_app_chatbot_section_py",
+      "finbot_adapter_get_completed_message",
+      "finbot_adapter_get_reddit_posts_count",
+      "finbot_adapter_is_api_healthy",
+      "finbot_adapter_rationale_1",
+      "finbot_adapter_rationale_13",
+      "finbot_adapter_rationale_24",
+      "finbot_adapter_rationale_38"
+    ],
+    "6": [
+      "artifact_proxy_list",
+      "assistant_vpfa",
+      "author_lancelot_domart",
+      "component_dash_app",
+      "component_faiss",
+      "component_fastapi_api",
+      "course_log791",
+      "data_source_reddit",
+      "institution_ets",
+      "model_llama3_8b",
+      "ops_cicd",
+      "ops_docker",
+      "paper_finance_pdf",
+      "process_proxy_rotation",
+      "project_finbot",
+      "service_together_api"
+    ],
+    "7": [
+      "app_complete_message",
+      "app_get_header_logo",
+      "app_health",
+      "app_lifespan",
+      "app_rationale_1",
+      "app_rationale_202",
+      "app_rationale_22",
+      "app_rationale_43",
+      "app_rationale_49",
+      "app_rationale_69",
+      "app_update_reddit_post_counter",
+      "dash_app_app_py",
+      "reddit_api_app_py"
+    ],
+    "8": [
+      "background_scrapping_clean_post",
+      "background_scrapping_fetch_post_details",
+      "background_scrapping_get_replies",
+      "background_scrapping_process_subreddit_posts",
+      "background_scrapping_rationale_1",
+      "background_scrapping_rationale_109",
+      "background_scrapping_rationale_13",
+      "background_scrapping_rationale_34",
+      "background_scrapping_rationale_49",
+      "background_scrapping_rationale_95",
+      "background_scrapping_run",
+      "reddit_api_scrapping_background_scrapping_py"
+    ],
+    "9": [
+      "logger_config_configure_logging",
+      "logger_config_parse_log_level",
+      "logger_config_rationale_1",
+      "logger_config_rationale_20",
+      "logger_config_rationale_9",
+      "reddit_api_logger_config_py"
+    ],
+    "10": [
+      "agents_get_agent",
+      "agents_rationale_1",
+      "agents_rationale_7541",
+      "reddit_api_scrapping_agents_py",
+      "sessions_randomuseragentsession_request"
+    ],
+    "11": [
+      "reddit_api_utils_py",
+      "utils_extract_ticker_from_input",
+      "utils_rationale_1",
+      "utils_rationale_7"
+    ],
+    "12": [
+      "doc_contribute",
+      "tool_black",
+      "tool_pylint",
+      "tool_uv"
+    ]
+  },
+  "cohesion": {},
+  "god_nodes": [
+    {
+      "id": "dao_dao",
+      "label": "DAO",
+      "degree": 33
+    },
+    {
+      "id": "models_redditpost",
+      "label": "RedditPost",
+      "degree": 18
+    },
+    {
+      "id": "proxy_manager_proxymanager",
+      "label": "ProxyManager",
+      "degree": 18
+    },
+    {
+      "id": "sessions_randomuseragentsession",
+      "label": "RandomUserAgentSession",
+      "degree": 14
+    },
+    {
+      "id": "finbot_agent_finbotagent",
+      "label": "FinBotAgent",
+      "degree": 11
+    },
+    {
+      "id": "background_scrapping_process_subreddit_posts",
+      "label": "process_subreddit_posts()",
+      "degree": 11
+    },
+    {
+      "id": "yars_yars",
+      "label": "YARS",
+      "degree": 11
+    },
+    {
+      "id": "vector_db_adapter_sync_new_posts",
+      "label": "sync_new_posts()",
+      "degree": 10
+    },
+    {
+      "id": "ticker_section_update_ticker",
+      "label": "update_ticker()",
+      "degree": 6
+    },
+    {
+      "id": "vector_db_adapter_get_top_k_reddit_posts",
+      "label": "get_top_k_reddit_posts()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Manage the application lifespan, starting/stopping the scheduler.      Args:",
+      "target": "DAO",
+      "source_files": [
+        "reddit_api\\app.py",
+        "reddit_api\\dao.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Manage the application lifespan, starting/stopping the scheduler.      Args:` unexpectedly reaches hub `DAO`"
+    },
+    {
+      "source": "Liveness endpoint for quick connectivity checks.",
+      "target": "DAO",
+      "source_files": [
+        "reddit_api\\app.py",
+        "reddit_api\\dao.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Liveness endpoint for quick connectivity checks.` unexpectedly reaches hub `DAO`"
+    },
+    {
+      "source": "Example call:     GET /complete_message/?input_string=Hello",
+      "target": "DAO",
+      "source_files": [
+        "reddit_api\\app.py",
+        "reddit_api\\dao.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Example call:     GET /complete_message/?input_string=Hello` unexpectedly reaches hub `DAO`"
+    },
+    {
+      "source": "Return the number of reddit posts currently stored in the database.",
+      "target": "DAO",
+      "source_files": [
+        "reddit_api\\app.py",
+        "reddit_api\\dao.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Return the number of reddit posts currently stored in the database.` unexpectedly reaches hub `DAO`"
+    },
+    {
+      "source": "Vector database adapter for similarity search on Reddit posts.",
+      "target": "DAO",
+      "source_files": [
+        "reddit_api\\adapter\\vector_db_adapter.py",
+        "reddit_api\\dao.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "uses",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Vector database adapter for similarity search on Reddit posts.` unexpectedly reaches hub `DAO`"
+    }
+  ]
+}

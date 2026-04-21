@@ -98,6 +98,38 @@ class FinBotAgent:
                     )
                 return self.llm.invoke(messages)
 
+    def extract_finance_facts(self, content_str: str) -> str:
+        """Extract concise factual finance information from raw reddit content."""
+        prompt = f"""
+        You are an advanced information extraction agent.
+        Your task is to analyze the provided text and extract only factual information.
+        Remove any questions, personal information, feelings, opinions, or perceptions.
+        Keep only concise information related to finance, investments, budgeting,
+        financial planning, and wealth management.
+
+        Here is the text to analyze:
+        ###
+        {content_str[:5000]}
+        ###
+
+        Response format:
+        ###
+        - Fact 1
+        - Fact 2
+        ###
+
+        Rules:
+        ###
+        - Extract only factual information
+        - Return only bullet points
+        - Do not introduce yourself
+        ###
+        """
+        response = self._invoke_llm_with_retry(
+            [{"role": "user", "content": prompt}], max_attempts=3
+        )
+        return str(response.content).strip()
+
     # Node function to process the chat
     def node_process_final_answer(self, state: State) -> dict[str, list]:
         """

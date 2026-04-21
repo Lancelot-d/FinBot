@@ -1,0 +1,39 @@
+{
+  "files": {
+    "code": [
+      "dash_app\\app.py",
+      "dash_app\\chatbot_section.py",
+      "dash_app\\ticker_section.py",
+      "dash_app\\api_adapter\\finbot_adapter.py",
+      "dash_app\\api_adapter\\yfinance_adapter.py",
+      "reddit_api\\app.py",
+      "reddit_api\\dao.py",
+      "reddit_api\\logger_config.py",
+      "reddit_api\\models.py",
+      "reddit_api\\utils.py",
+      "reddit_api\\adapter\\finbot_agent.py",
+      "reddit_api\\adapter\\vector_db_adapter.py",
+      "reddit_api\\scrapping\\agents.py",
+      "reddit_api\\scrapping\\background_scrapping.py",
+      "reddit_api\\scrapping\\proxy_manager.py",
+      "reddit_api\\scrapping\\sessions.py",
+      "reddit_api\\scrapping\\yars.py"
+    ],
+    "document": [
+      "contribute.md",
+      "README.md",
+      "reddit_api\\static\\proxy.txt"
+    ],
+    "paper": [
+      "documentations\\PS - Assistant virtuel en finance personnelles.pdf"
+    ],
+    "image": [],
+    "video": []
+  },
+  "total_files": 21,
+  "total_words": 105960,
+  "needs_graph": true,
+  "warning": null,
+  "skipped_sensitive": [],
+  "graphifyignore_patterns": 0
+}

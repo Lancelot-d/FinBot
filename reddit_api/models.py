@@ -18,4 +18,5 @@ class RedditPost(Base):  # pylint: disable=too-few-public-methods
     __tablename__ = "reddit_posts"
     id = Column(String(100), primary_key=True)
     content_str = Column(Text)
+    extracted_information = Column(Text, nullable=True)
     date_insertion = Column(TIMESTAMP, nullable=False)

@@ -1,0 +1,4613 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L1",
+      "id": "dash_app_app_py"
+    },
+    {
+      "label": "get_header_logo()",
+      "file_type": "code",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L68",
+      "id": "app_get_header_logo"
+    },
+    {
+      "label": "update_reddit_post_counter()",
+      "file_type": "code",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L201",
+      "id": "app_update_reddit_post_counter"
+    },
+    {
+      "label": "FastAPI application for the FinBot Reddit API service.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L1",
+      "id": "app_rationale_1"
+    },
+    {
+      "label": "Return a DashIconify logo when available, fallback to text mark otherwise.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L69",
+      "id": "app_rationale_69"
+    },
+    {
+      "label": "Refresh the header counter with current reddit post count.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L202",
+      "id": "app_rationale_202"
+    },
+    {
+      "label": "chatbot_section.py",
+      "file_type": "code",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L1",
+      "id": "dash_app_chatbot_section_py"
+    },
+    {
+      "label": "get_content()",
+      "file_type": "code",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L11",
+      "id": "chatbot_section_get_content"
+    },
+    {
+      "label": "update_chat()",
+      "file_type": "code",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L93",
+      "id": "chatbot_section_update_chat"
+    },
+    {
+      "label": "display_chat()",
+      "file_type": "code",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L138",
+      "id": "chatbot_section_display_chat"
+    },
+    {
+      "label": "Chatbot section module for the FinBot dashboard.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L1",
+      "id": "chatbot_section_rationale_1"
+    },
+    {
+      "label": "Create and return the chatbot section layout.      Returns:         html.Div:",
+      "file_type": "rationale",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L12",
+      "id": "chatbot_section_rationale_12"
+    },
+    {
+      "label": "Update the chat history with user input and bot response.      Args:",
+      "file_type": "rationale",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L96",
+      "id": "chatbot_section_rationale_96"
+    },
+    {
+      "label": "Display the chat messages with proper formatting.      Args:         chat_his",
+      "file_type": "rationale",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L139",
+      "id": "chatbot_section_rationale_139"
+    },
+    {
+      "label": "ticker_section.py",
+      "file_type": "code",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L1",
+      "id": "dash_app_ticker_section_py"
+    },
+    {
+      "label": "get_content()",
+      "file_type": "code",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L10",
+      "id": "ticker_section_get_content"
+    },
+    {
+      "label": "update_ticker()",
+      "file_type": "code",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L63",
+      "id": "ticker_section_update_ticker"
+    },
+    {
+      "label": "Ticker section module for displaying stock information and charts.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L1",
+      "id": "ticker_section_rationale_1"
+    },
+    {
+      "label": "Create and return the ticker section layout.      Returns:         html.Div:",
+      "file_type": "rationale",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L11",
+      "id": "ticker_section_rationale_11"
+    },
+    {
+      "label": "Update ticker information including price, chart, and historical profit.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L64",
+      "id": "ticker_section_rationale_64"
+    },
+    {
+      "label": "finbot_adapter.py",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L1",
+      "id": "dash_app_api_adapter_finbot_adapter_py"
+    },
+    {
+      "label": "is_api_healthy()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L12",
+      "id": "finbot_adapter_is_api_healthy"
+    },
+    {
+      "label": "get_completed_message()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L21",
+      "id": "finbot_adapter_get_completed_message"
+    },
+    {
+      "label": "get_reddit_posts_count()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L37",
+      "id": "finbot_adapter_get_reddit_posts_count"
+    },
+    {
+      "label": "Adapter for FinBot backend API calls used by the Dash frontend.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L1",
+      "id": "finbot_adapter_rationale_1"
+    },
+    {
+      "label": "Return True when backend responds on the health endpoint.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L13",
+      "id": "finbot_adapter_rationale_13"
+    },
+    {
+      "label": "Call backend completion endpoint and return completed message text.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L24",
+      "id": "finbot_adapter_rationale_24"
+    },
+    {
+      "label": "Fetch the current number of reddit posts available in backend context.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L38",
+      "id": "finbot_adapter_rationale_38"
+    },
+    {
+      "label": "yfinance_adapter.py",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L1",
+      "id": "dash_app_api_adapter_yfinance_adapter_py"
+    },
+    {
+      "label": "get_ticker_price()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L8",
+      "id": "yfinance_adapter_get_ticker_price"
+    },
+    {
+      "label": "get_ticker_history()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L29",
+      "id": "yfinance_adapter_get_ticker_history"
+    },
+    {
+      "label": "get_historic_profit()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L51",
+      "id": "yfinance_adapter_get_historic_profit"
+    },
+    {
+      "label": "get_mean_profit()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L82",
+      "id": "yfinance_adapter_get_mean_profit"
+    },
+    {
+      "label": "get_variance_profit()",
+      "file_type": "code",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L111",
+      "id": "yfinance_adapter_get_variance_profit"
+    },
+    {
+      "label": "Yahoo Finance adapter for fetching stock data and calculating metrics.",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L1",
+      "id": "yfinance_adapter_rationale_1"
+    },
+    {
+      "label": "Fetch the latest price for a given ticker symbol using yfinance.      Args:",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L9",
+      "id": "yfinance_adapter_rationale_9"
+    },
+    {
+      "label": "Fetch the historical data for a given ticker symbol using yfinance.      Args:",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L30",
+      "id": "yfinance_adapter_rationale_30"
+    },
+    {
+      "label": "Calculate the historic profit in percentage of a given ticker, combining dividen",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L52",
+      "id": "yfinance_adapter_rationale_52"
+    },
+    {
+      "label": "Calculate the mean profit in percentage of a given ticker.     Args: ticker (st",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L83",
+      "id": "yfinance_adapter_rationale_83"
+    },
+    {
+      "label": "Calculate the variance of profit of a given ticker.     Args: ticker (str): The",
+      "file_type": "rationale",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L112",
+      "id": "yfinance_adapter_rationale_112"
+    },
+    {
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L1",
+      "id": "reddit_api_app_py"
+    },
+    {
+      "label": "lifespan()",
+      "file_type": "code",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L21",
+      "id": "app_lifespan"
+    },
+    {
+      "label": "health()",
+      "file_type": "code",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L42",
+      "id": "app_health"
+    },
+    {
+      "label": "complete_message()",
+      "file_type": "code",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L48",
+      "id": "app_complete_message"
+    },
+    {
+      "label": "get_reddit_posts_count()",
+      "file_type": "code",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L67",
+      "id": "app_get_reddit_posts_count"
+    },
+    {
+      "label": "Manage the application lifespan, starting/stopping the scheduler.      Args:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L22",
+      "id": "app_rationale_22"
+    },
+    {
+      "label": "Liveness endpoint for quick connectivity checks.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L43",
+      "id": "app_rationale_43"
+    },
+    {
+      "label": "Example call:     GET /complete_message/?input_string=Hello",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L49",
+      "id": "app_rationale_49"
+    },
+    {
+      "label": "Return the number of reddit posts currently stored in the database.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L68",
+      "id": "app_rationale_68"
+    },
+    {
+      "label": "dao.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L1",
+      "id": "reddit_api_dao_py"
+    },
+    {
+      "label": "Singleton",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L16",
+      "id": "dao_singleton"
+    },
+    {
+      "label": "get_instance()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L22",
+      "id": "dao_get_instance"
+    },
+    {
+      "label": "DAO",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L37",
+      "id": "dao_dao"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L42",
+      "id": "dao_dao_init"
+    },
+    {
+      "label": ".add_reddit_post()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L56",
+      "id": "dao_dao_add_reddit_post"
+    },
+    {
+      "label": ".get_reddit_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L82",
+      "id": "dao_dao_get_reddit_posts"
+    },
+    {
+      "label": ".get_reddit_post_ids()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L100",
+      "id": "dao_dao_get_reddit_post_ids"
+    },
+    {
+      "label": ".get_reddit_posts_count()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L115",
+      "id": "dao_dao_get_reddit_posts_count"
+    },
+    {
+      "label": ".get_reddit_posts_by_ids()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L129",
+      "id": "dao_dao_get_reddit_posts_by_ids"
+    },
+    {
+      "label": ".is_reddit_post_in_db()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L151",
+      "id": "dao_dao_is_reddit_post_in_db"
+    },
+    {
+      "label": ".generate_post_id()",
+      "file_type": "code",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L171",
+      "id": "dao_dao_generate_post_id"
+    },
+    {
+      "label": "Data Access Object (DAO) for managing Reddit posts in Oracle database.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L1",
+      "id": "dao_rationale_1"
+    },
+    {
+      "label": "Singleton pattern implementation for ensuring single instance.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L17",
+      "id": "dao_rationale_17"
+    },
+    {
+      "label": "Get or create a singleton instance.          Args:             force_refresh:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L23",
+      "id": "dao_rationale_23"
+    },
+    {
+      "label": "Data Access Object for Reddit posts storage and retrieval.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L38",
+      "id": "dao_rationale_38"
+    },
+    {
+      "label": "Initialize DAO with Oracle database connection.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L43",
+      "id": "dao_rationale_43"
+    },
+    {
+      "label": "Add a Reddit post to the database.          Args:             content_str: Th",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L57",
+      "id": "dao_rationale_57"
+    },
+    {
+      "label": "Retrieve all Reddit posts from the database.          Returns:             Li",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L83",
+      "id": "dao_rationale_83"
+    },
+    {
+      "label": "Retrieve all reddit post IDs from the database.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L101",
+      "id": "dao_rationale_101"
+    },
+    {
+      "label": "Retrieve the total number of reddit posts in the database.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L116",
+      "id": "dao_rationale_116"
+    },
+    {
+      "label": "Retrieve reddit post IDs and content for selected IDs.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L130",
+      "id": "dao_rationale_130"
+    },
+    {
+      "label": "Check if a Reddit post exists in the database.          Args:             pos",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L152",
+      "id": "dao_rationale_152"
+    },
+    {
+      "label": "Generate a unique post ID based on title and author.          Args:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L172",
+      "id": "dao_rationale_172"
+    },
+    {
+      "label": "logger_config.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L1",
+      "id": "reddit_api_logger_config_py"
+    },
+    {
+      "label": "_parse_log_level()",
+      "file_type": "code",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L8",
+      "id": "logger_config_parse_log_level"
+    },
+    {
+      "label": "configure_logging()",
+      "file_type": "code",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L19",
+      "id": "logger_config_configure_logging"
+    },
+    {
+      "label": "Logger configuration for the Reddit API service.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L1",
+      "id": "logger_config_rationale_1"
+    },
+    {
+      "label": "Convert log level string to a logging level constant.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L9",
+      "id": "logger_config_rationale_9"
+    },
+    {
+      "label": "Configure application-wide logging to stdout (Docker-friendly).",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L20",
+      "id": "logger_config_rationale_20"
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L1",
+      "id": "reddit_api_models_py"
+    },
+    {
+      "label": "RedditPost",
+      "file_type": "code",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L9",
+      "id": "models_redditpost"
+    },
+    {
+      "label": "Base",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "base"
+    },
+    {
+      "label": "SQLAlchemy models for Reddit data storage.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L1",
+      "id": "models_rationale_1"
+    },
+    {
+      "label": "SQLAlchemy model for Reddit posts.      Attributes:         id: Unique post i",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L10",
+      "id": "models_rationale_10"
+    },
+    {
+      "label": "utils.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L1",
+      "id": "reddit_api_utils_py"
+    },
+    {
+      "label": "extract_ticker_from_input()",
+      "file_type": "code",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L6",
+      "id": "utils_extract_ticker_from_input"
+    },
+    {
+      "label": "Utility functions for the Reddit API service.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L1",
+      "id": "utils_rationale_1"
+    },
+    {
+      "label": "Extracts the ticker symbol from the input text.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L7",
+      "id": "utils_rationale_7"
+    },
+    {
+      "label": "finbot_agent.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L1",
+      "id": "reddit_api_adapter_finbot_agent_py"
+    },
+    {
+      "label": "State",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L18",
+      "id": "finbot_agent_state"
+    },
+    {
+      "label": "TypedDict",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "typeddict"
+    },
+    {
+      "label": "FinBotAgent",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L28",
+      "id": "finbot_agent_finbotagent"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L34",
+      "id": "finbot_agent_finbotagent_init"
+    },
+    {
+      "label": "._is_transient_provider_error()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L56",
+      "id": "finbot_agent_finbotagent_is_transient_provider_error"
+    },
+    {
+      "label": "._invoke_llm_with_retry()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L71",
+      "id": "finbot_agent_finbotagent_invoke_llm_with_retry"
+    },
+    {
+      "label": ".node_process_final_answer()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L102",
+      "id": "finbot_agent_finbotagent_node_process_final_answer"
+    },
+    {
+      "label": ".node_context()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L150",
+      "id": "finbot_agent_finbotagent_node_context"
+    },
+    {
+      "label": "._build_graph()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L251",
+      "id": "finbot_agent_finbotagent_build_graph"
+    },
+    {
+      "label": ".run()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L266",
+      "id": "finbot_agent_finbotagent_run"
+    },
+    {
+      "label": ".estimate_tokens()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L279",
+      "id": "finbot_agent_finbotagent_estimate_tokens"
+    },
+    {
+      "label": "FinBot agent using LangChain and OpenRouter API for financial advice.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L1",
+      "id": "finbot_agent_rationale_1"
+    },
+    {
+      "label": "State type for the agent graph.      Attributes:         messages: List of me",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L19",
+      "id": "finbot_agent_rationale_19"
+    },
+    {
+      "label": "FinBotAgent encapsulates the setup and execution of a LangChain agent     with",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L29",
+      "id": "finbot_agent_rationale_29"
+    },
+    {
+      "label": "Return True when the upstream provider error is likely transient.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L57",
+      "id": "finbot_agent_rationale_57"
+    },
+    {
+      "label": "Invoke the chat model with Tenacity retries for transient failures.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L78",
+      "id": "finbot_agent_rationale_78"
+    },
+    {
+      "label": "Use the response from say_hello as context, but answer the initial user question",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L103",
+      "id": "finbot_agent_rationale_103"
+    },
+    {
+      "label": "Node that extracts context from reddit posts stored in vector DB.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L151",
+      "id": "finbot_agent_rationale_151"
+    },
+    {
+      "label": "Build the state graph for the agent.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L252",
+      "id": "finbot_agent_rationale_252"
+    },
+    {
+      "label": "Run the agent with the given input text.          Args:             input_tex",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L267",
+      "id": "finbot_agent_rationale_267"
+    },
+    {
+      "label": "Estimate the number of tokens in the given text.          Args:             t",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L280",
+      "id": "finbot_agent_rationale_280"
+    },
+    {
+      "label": "vector_db_adapter.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L1",
+      "id": "reddit_api_adapter_vector_db_adapter_py"
+    },
+    {
+      "label": "embed_text()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L27",
+      "id": "vector_db_adapter_embed_text"
+    },
+    {
+      "label": "get_embedding_model()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L35",
+      "id": "vector_db_adapter_get_embedding_model"
+    },
+    {
+      "label": "get_reddit_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L41",
+      "id": "vector_db_adapter_get_reddit_posts"
+    },
+    {
+      "label": "get_collection()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L55",
+      "id": "vector_db_adapter_get_collection"
+    },
+    {
+      "label": "get_top_k_reddit_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L69",
+      "id": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "label": "_chunked()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L95",
+      "id": "vector_db_adapter_chunked"
+    },
+    {
+      "label": "_chunked_ids()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L100",
+      "id": "vector_db_adapter_chunked_ids"
+    },
+    {
+      "label": "_get_existing_ids()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L105",
+      "id": "vector_db_adapter_get_existing_ids"
+    },
+    {
+      "label": "sync_new_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L114",
+      "id": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "label": "Vector database adapter for similarity search on Reddit posts.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L1",
+      "id": "vector_db_adapter_rationale_1"
+    },
+    {
+      "label": "Convert text into an embedding vector using SentenceTransformers.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L28",
+      "id": "vector_db_adapter_rationale_28"
+    },
+    {
+      "label": "Get a cached embedding model instance to avoid repeated loads.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L36",
+      "id": "vector_db_adapter_rationale_36"
+    },
+    {
+      "label": "Retrieve Reddit posts from the DAO.     Returns a list of tuples (post_id, post",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L42",
+      "id": "vector_db_adapter_rationale_42"
+    },
+    {
+      "label": "Get or create the Chroma collection that stores Reddit post embeddings.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L56",
+      "id": "vector_db_adapter_rationale_56"
+    },
+    {
+      "label": "Retrieve the top k Reddit posts from ChromaDB based on user input.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L70",
+      "id": "vector_db_adapter_rationale_70"
+    },
+    {
+      "label": "Split items into fixed-size batches.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L96",
+      "id": "vector_db_adapter_rationale_96"
+    },
+    {
+      "label": "Split IDs into fixed-size batches.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L101",
+      "id": "vector_db_adapter_rationale_101"
+    },
+    {
+      "label": "Get IDs that already exist in Chroma for a given batch.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L106",
+      "id": "vector_db_adapter_rationale_106"
+    },
+    {
+      "label": "Incrementally insert only new posts into ChromaDB.      Returns:         Numb",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L115",
+      "id": "vector_db_adapter_rationale_115"
+    },
+    {
+      "label": "agents.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L1",
+      "id": "reddit_api_scrapping_agents_py"
+    },
+    {
+      "label": "get_agent()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L7540",
+      "id": "agents_get_agent"
+    },
+    {
+      "label": "User-Agents list.  Anime no Sekai 2021  https://github.com/Animenosekai/user",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L1",
+      "id": "agents_rationale_1"
+    },
+    {
+      "label": "Return random user agent.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L7541",
+      "id": "agents_rationale_7541"
+    },
+    {
+      "label": "background_scrapping.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L1",
+      "id": "reddit_api_scrapping_background_scrapping_py"
+    },
+    {
+      "label": "clean_post()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L12",
+      "id": "background_scrapping_clean_post"
+    },
+    {
+      "label": "fetch_post_details()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L33",
+      "id": "background_scrapping_fetch_post_details"
+    },
+    {
+      "label": "process_subreddit_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L46",
+      "id": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "label": "get_replies()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L94",
+      "id": "background_scrapping_get_replies"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L108",
+      "id": "background_scrapping_run"
+    },
+    {
+      "label": "Background scraping module for collecting Reddit posts.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L1",
+      "id": "background_scrapping_rationale_1"
+    },
+    {
+      "label": "Clean and filter Reddit posts.      Args:         post: List of post text str",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L13",
+      "id": "background_scrapping_rationale_13"
+    },
+    {
+      "label": "Fetch details for a specific post.      Args:         miner: YARS instance fo",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L34",
+      "id": "background_scrapping_rationale_34"
+    },
+    {
+      "label": "Process posts from a subreddit category.      Args:         miner: YARS insta",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L49",
+      "id": "background_scrapping_rationale_49"
+    },
+    {
+      "label": "Recursively extract all replies (sub-comments) from a comment.      Args:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L95",
+      "id": "background_scrapping_rationale_95"
+    },
+    {
+      "label": "Run the background scraping process for all configured subreddits.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L109",
+      "id": "background_scrapping_rationale_109"
+    },
+    {
+      "label": "proxy_manager.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L1",
+      "id": "reddit_api_scrapping_proxy_manager_py"
+    },
+    {
+      "label": "ProxyManager",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L13",
+      "id": "proxy_manager_proxymanager"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L22",
+      "id": "proxy_manager_proxymanager_init"
+    },
+    {
+      "label": ".read_proxy_file()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L39",
+      "id": "proxy_manager_proxymanager_read_proxy_file"
+    },
+    {
+      "label": ".fetch_with_proxy()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L49",
+      "id": "proxy_manager_proxymanager_fetch_with_proxy"
+    },
+    {
+      "label": ".test_proxys()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L84",
+      "id": "proxy_manager_proxymanager_test_proxys"
+    },
+    {
+      "label": ".init_proxy_csv()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L97",
+      "id": "proxy_manager_proxymanager_init_proxy_csv"
+    },
+    {
+      "label": ".update_proxy_count()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L124",
+      "id": "proxy_manager_proxymanager_update_proxy_count"
+    },
+    {
+      "label": ".get_sorted_proxies()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L154",
+      "id": "proxy_manager_proxymanager_get_sorted_proxies"
+    },
+    {
+      "label": "Proxy manager for handling proxy rotation and testing.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L1",
+      "id": "proxy_manager_rationale_1"
+    },
+    {
+      "label": "Manage proxy rotation, testing, and success tracking.      Attributes:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L14",
+      "id": "proxy_manager_rationale_14"
+    },
+    {
+      "label": "Initialize the ProxyManager.          Args:             session: Requests ses",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L23",
+      "id": "proxy_manager_rationale_23"
+    },
+    {
+      "label": "Read proxy addresses from file.          Returns:             List of proxy a",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L40",
+      "id": "proxy_manager_rationale_40"
+    },
+    {
+      "label": "Fetch URL using a proxy.          Args:             p: Proxy address in forma",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L56",
+      "id": "proxy_manager_rationale_56"
+    },
+    {
+      "label": "Test all proxies concurrently.          Returns:             List of successf",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L85",
+      "id": "proxy_manager_rationale_85"
+    },
+    {
+      "label": "Initialize CSV file with proxy list.          Args:             proxies: List",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L100",
+      "id": "proxy_manager_rationale_100"
+    },
+    {
+      "label": "Update success count for a proxy in CSV.          Args:             proxy: Pr",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L127",
+      "id": "proxy_manager_rationale_127"
+    },
+    {
+      "label": "Get proxies sorted by success count.          Args:             filename: CSV",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L157",
+      "id": "proxy_manager_rationale_157"
+    },
+    {
+      "label": "sessions.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L1",
+      "id": "reddit_api_scrapping_sessions_py"
+    },
+    {
+      "label": "RandomUserAgentSession",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L7",
+      "id": "sessions_randomuseragentsession"
+    },
+    {
+      "label": "Session",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "session"
+    },
+    {
+      "label": ".request()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L13",
+      "id": "sessions_randomuseragentsession_request"
+    },
+    {
+      "label": "Custom session classes for web scraping with random user agents.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L1",
+      "id": "sessions_rationale_1"
+    },
+    {
+      "label": "Session class (inherited from requests.Session) which passes     a random user",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L8",
+      "id": "sessions_rationale_8"
+    },
+    {
+      "label": "yars.py",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L1",
+      "id": "reddit_api_scrapping_yars_py"
+    },
+    {
+      "label": "YARS",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L18",
+      "id": "yars_yars"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L38",
+      "id": "yars_yars_init"
+    },
+    {
+      "label": ".change_user_agent()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L49",
+      "id": "yars_yars_change_user_agent"
+    },
+    {
+      "label": ".fetch_sync()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L53",
+      "id": "yars_yars_fetch_sync"
+    },
+    {
+      "label": ".fetch_subreddit_posts()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L88",
+      "id": "yars_yars_fetch_subreddit_posts"
+    },
+    {
+      "label": ".scrape_post_details()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L196",
+      "id": "yars_yars_scrape_post_details"
+    },
+    {
+      "label": "._extract_comments()",
+      "file_type": "code",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L231",
+      "id": "yars_yars_extract_comments"
+    },
+    {
+      "label": "YARS (Yet Another Reddit Scraper) - Reddit scraping with proxy support.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L1",
+      "id": "yars_rationale_1"
+    },
+    {
+      "label": "Reddit scraper with proxy rotation and user agent randomization.      Attribut",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L19",
+      "id": "yars_rationale_19"
+    },
+    {
+      "label": "Change to a new random user agent.",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L50",
+      "id": "yars_rationale_50"
+    },
+    {
+      "label": "Fetch URL synchronously with proxy rotation.          Args:             url:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L56",
+      "id": "yars_rationale_56"
+    },
+    {
+      "label": "Fetch posts from a subreddit.          Args:             subreddit: Name of t",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L95",
+      "id": "yars_rationale_95"
+    },
+    {
+      "label": "Scrape detailed information from a specific post.          Args:",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L197",
+      "id": "yars_rationale_197"
+    },
+    {
+      "label": "Extract comments and replies recursively.          Args:             comments",
+      "file_type": "rationale",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L232",
+      "id": "yars_rationale_232"
+    },
+    {
+      "label": "FinBot",
+      "file_type": "document",
+      "id": "project_finbot"
+    },
+    {
+      "label": "Virtual Personal Finance Assistant",
+      "file_type": "document",
+      "id": "assistant_vpfa"
+    },
+    {
+      "label": "LOG791 Special Project",
+      "file_type": "document",
+      "id": "course_log791"
+    },
+    {
+      "label": "ETS",
+      "file_type": "document",
+      "id": "institution_ets"
+    },
+    {
+      "label": "Lancelot Domart",
+      "file_type": "document",
+      "id": "author_lancelot_domart"
+    },
+    {
+      "label": "Reddit Finance Discussions",
+      "file_type": "document",
+      "id": "data_source_reddit"
+    },
+    {
+      "label": "FastAPI Backend API",
+      "file_type": "code",
+      "id": "component_fastapi_api"
+    },
+    {
+      "label": "Dash Web Application",
+      "file_type": "code",
+      "id": "component_dash_app"
+    },
+    {
+      "label": "FAISS Semantic Search Index",
+      "file_type": "code",
+      "id": "component_faiss"
+    },
+    {
+      "label": "Meta-Llama-3-8B-Instruct",
+      "file_type": "document",
+      "id": "model_llama3_8b"
+    },
+    {
+      "label": "Together API",
+      "file_type": "document",
+      "id": "service_together_api"
+    },
+    {
+      "label": "GitHub Actions CI/CD",
+      "file_type": "document",
+      "id": "ops_cicd"
+    },
+    {
+      "label": "Docker Deployment",
+      "file_type": "document",
+      "id": "ops_docker"
+    },
+    {
+      "label": "Contribution Commands Guide",
+      "file_type": "document",
+      "id": "doc_contribute"
+    },
+    {
+      "label": "uv",
+      "file_type": "code",
+      "id": "tool_uv"
+    },
+    {
+      "label": "black formatter",
+      "file_type": "code",
+      "id": "tool_black"
+    },
+    {
+      "label": "pylint",
+      "file_type": "code",
+      "id": "tool_pylint"
+    },
+    {
+      "label": "Proxy Endpoint List",
+      "file_type": "document",
+      "id": "artifact_proxy_list"
+    },
+    {
+      "label": "Proxy Rotation and Filtering",
+      "file_type": "document",
+      "id": "process_proxy_rotation"
+    },
+    {
+      "label": "PS - Assistant virtuel en finance personnelles (PDF Report)",
+      "file_type": "paper",
+      "id": "paper_finance_pdf"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "dash_app_app_py",
+      "_tgt": "app_get_header_logo",
+      "source": "dash_app_app_py",
+      "target": "app_get_header_logo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "_src": "dash_app_app_py",
+      "_tgt": "app_update_reddit_post_counter",
+      "source": "dash_app_app_py",
+      "target": "app_update_reddit_post_counter"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "app_rationale_1",
+      "_tgt": "dash_app_app_py",
+      "source": "dash_app_app_py",
+      "target": "app_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "app_rationale_69",
+      "_tgt": "app_get_header_logo",
+      "source": "app_get_header_logo",
+      "target": "app_rationale_69"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\app.py",
+      "source_location": "L202",
+      "weight": 1.0,
+      "_src": "app_rationale_202",
+      "_tgt": "app_update_reddit_post_counter",
+      "source": "app_update_reddit_post_counter",
+      "target": "app_rationale_202"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\app.py",
+      "source_location": "L203",
+      "weight": 1.0,
+      "_src": "app_update_reddit_post_counter",
+      "_tgt": "dao_dao_get_reddit_posts_count",
+      "source": "app_update_reddit_post_counter",
+      "target": "dao_dao_get_reddit_posts_count"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "app_rationale_1",
+      "_tgt": "reddit_api_app_py",
+      "source": "app_rationale_1",
+      "target": "reddit_api_app_py"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "_src": "app_rationale_1",
+      "_tgt": "dao_dao",
+      "source": "app_rationale_1",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "dash_app_chatbot_section_py",
+      "_tgt": "chatbot_section_get_content",
+      "source": "dash_app_chatbot_section_py",
+      "target": "chatbot_section_get_content"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "dash_app_chatbot_section_py",
+      "_tgt": "chatbot_section_update_chat",
+      "source": "dash_app_chatbot_section_py",
+      "target": "chatbot_section_update_chat"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "_src": "dash_app_chatbot_section_py",
+      "_tgt": "chatbot_section_display_chat",
+      "source": "dash_app_chatbot_section_py",
+      "target": "chatbot_section_display_chat"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "chatbot_section_rationale_1",
+      "_tgt": "dash_app_chatbot_section_py",
+      "source": "dash_app_chatbot_section_py",
+      "target": "chatbot_section_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "chatbot_section_rationale_12",
+      "_tgt": "chatbot_section_get_content",
+      "source": "chatbot_section_get_content",
+      "target": "chatbot_section_rationale_12"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "chatbot_section_rationale_96",
+      "_tgt": "chatbot_section_update_chat",
+      "source": "chatbot_section_update_chat",
+      "target": "chatbot_section_rationale_96"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "chatbot_section_update_chat",
+      "_tgt": "finbot_adapter_is_api_healthy",
+      "source": "chatbot_section_update_chat",
+      "target": "finbot_adapter_is_api_healthy"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "chatbot_section_update_chat",
+      "_tgt": "finbot_adapter_get_completed_message",
+      "source": "chatbot_section_update_chat",
+      "target": "finbot_adapter_get_completed_message"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\chatbot_section.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_src": "chatbot_section_rationale_139",
+      "_tgt": "chatbot_section_display_chat",
+      "source": "chatbot_section_display_chat",
+      "target": "chatbot_section_rationale_139"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "dash_app_ticker_section_py",
+      "_tgt": "ticker_section_get_content",
+      "source": "dash_app_ticker_section_py",
+      "target": "ticker_section_get_content"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "dash_app_ticker_section_py",
+      "_tgt": "ticker_section_update_ticker",
+      "source": "dash_app_ticker_section_py",
+      "target": "ticker_section_update_ticker"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "ticker_section_rationale_1",
+      "_tgt": "dash_app_ticker_section_py",
+      "source": "dash_app_ticker_section_py",
+      "target": "ticker_section_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "ticker_section_rationale_11",
+      "_tgt": "ticker_section_get_content",
+      "source": "ticker_section_get_content",
+      "target": "ticker_section_rationale_11"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "ticker_section_rationale_64",
+      "_tgt": "ticker_section_update_ticker",
+      "source": "ticker_section_update_ticker",
+      "target": "ticker_section_rationale_64"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "ticker_section_update_ticker",
+      "_tgt": "yfinance_adapter_get_historic_profit",
+      "source": "ticker_section_update_ticker",
+      "target": "yfinance_adapter_get_historic_profit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_src": "ticker_section_update_ticker",
+      "_tgt": "yfinance_adapter_get_ticker_price",
+      "source": "ticker_section_update_ticker",
+      "target": "yfinance_adapter_get_ticker_price"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "ticker_section_update_ticker",
+      "_tgt": "yfinance_adapter_get_mean_profit",
+      "source": "ticker_section_update_ticker",
+      "target": "yfinance_adapter_get_mean_profit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "dash_app\\ticker_section.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "ticker_section_update_ticker",
+      "_tgt": "yfinance_adapter_get_variance_profit",
+      "source": "ticker_section_update_ticker",
+      "target": "yfinance_adapter_get_variance_profit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_finbot_adapter_py",
+      "_tgt": "finbot_adapter_is_api_healthy",
+      "source": "dash_app_api_adapter_finbot_adapter_py",
+      "target": "finbot_adapter_is_api_healthy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_finbot_adapter_py",
+      "_tgt": "finbot_adapter_get_completed_message",
+      "source": "dash_app_api_adapter_finbot_adapter_py",
+      "target": "finbot_adapter_get_completed_message"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_finbot_adapter_py",
+      "_tgt": "finbot_adapter_get_reddit_posts_count",
+      "source": "dash_app_api_adapter_finbot_adapter_py",
+      "target": "finbot_adapter_get_reddit_posts_count"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "finbot_adapter_rationale_1",
+      "_tgt": "dash_app_api_adapter_finbot_adapter_py",
+      "source": "dash_app_api_adapter_finbot_adapter_py",
+      "target": "finbot_adapter_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "finbot_adapter_rationale_13",
+      "_tgt": "finbot_adapter_is_api_healthy",
+      "source": "finbot_adapter_is_api_healthy",
+      "target": "finbot_adapter_rationale_13"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "finbot_adapter_rationale_24",
+      "_tgt": "finbot_adapter_get_completed_message",
+      "source": "finbot_adapter_get_completed_message",
+      "target": "finbot_adapter_rationale_24"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\finbot_adapter.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "finbot_adapter_rationale_38",
+      "_tgt": "finbot_adapter_get_reddit_posts_count",
+      "source": "finbot_adapter_get_reddit_posts_count",
+      "target": "finbot_adapter_rationale_38"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_yfinance_adapter_py",
+      "_tgt": "yfinance_adapter_get_ticker_price",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_get_ticker_price"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_yfinance_adapter_py",
+      "_tgt": "yfinance_adapter_get_ticker_history",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_get_ticker_history"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_yfinance_adapter_py",
+      "_tgt": "yfinance_adapter_get_historic_profit",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_get_historic_profit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_yfinance_adapter_py",
+      "_tgt": "yfinance_adapter_get_mean_profit",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_get_mean_profit"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "dash_app_api_adapter_yfinance_adapter_py",
+      "_tgt": "yfinance_adapter_get_variance_profit",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_get_variance_profit"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_1",
+      "_tgt": "dash_app_api_adapter_yfinance_adapter_py",
+      "source": "dash_app_api_adapter_yfinance_adapter_py",
+      "target": "yfinance_adapter_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_9",
+      "_tgt": "yfinance_adapter_get_ticker_price",
+      "source": "yfinance_adapter_get_ticker_price",
+      "target": "yfinance_adapter_rationale_9"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_30",
+      "_tgt": "yfinance_adapter_get_ticker_history",
+      "source": "yfinance_adapter_get_ticker_history",
+      "target": "yfinance_adapter_rationale_30"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_52",
+      "_tgt": "yfinance_adapter_get_historic_profit",
+      "source": "yfinance_adapter_get_historic_profit",
+      "target": "yfinance_adapter_rationale_52"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_83",
+      "_tgt": "yfinance_adapter_get_mean_profit",
+      "source": "yfinance_adapter_get_mean_profit",
+      "target": "yfinance_adapter_rationale_83"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "dash_app\\api_adapter\\yfinance_adapter.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "_src": "yfinance_adapter_rationale_112",
+      "_tgt": "yfinance_adapter_get_variance_profit",
+      "source": "yfinance_adapter_get_variance_profit",
+      "target": "yfinance_adapter_rationale_112"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "reddit_api_app_py",
+      "_tgt": "app_lifespan",
+      "source": "reddit_api_app_py",
+      "target": "app_lifespan"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "reddit_api_app_py",
+      "_tgt": "app_health",
+      "source": "reddit_api_app_py",
+      "target": "app_health"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_src": "reddit_api_app_py",
+      "_tgt": "app_complete_message",
+      "source": "reddit_api_app_py",
+      "target": "app_complete_message"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "_src": "reddit_api_app_py",
+      "_tgt": "app_get_reddit_posts_count",
+      "source": "reddit_api_app_py",
+      "target": "app_get_reddit_posts_count"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "app_rationale_22",
+      "_tgt": "app_lifespan",
+      "source": "app_lifespan",
+      "target": "app_rationale_22"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "app_lifespan",
+      "_tgt": "vector_db_adapter_sync_new_posts",
+      "source": "app_lifespan",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "app_rationale_43",
+      "_tgt": "app_health",
+      "source": "app_health",
+      "target": "app_rationale_43"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "app_rationale_49",
+      "_tgt": "app_complete_message",
+      "source": "app_complete_message",
+      "target": "app_rationale_49"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "app_complete_message",
+      "_tgt": "background_scrapping_run",
+      "source": "app_complete_message",
+      "target": "background_scrapping_run"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "app_complete_message",
+      "_tgt": "finbot_agent_finbotagent",
+      "source": "app_complete_message",
+      "target": "finbot_agent_finbotagent"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "app_rationale_68",
+      "_tgt": "app_get_reddit_posts_count",
+      "source": "app_get_reddit_posts_count",
+      "target": "app_rationale_68"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "app_get_reddit_posts_count",
+      "_tgt": "dao_get_instance",
+      "source": "app_get_reddit_posts_count",
+      "target": "dao_get_instance"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "_src": "app_rationale_22",
+      "_tgt": "dao_dao",
+      "source": "app_rationale_22",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "_src": "app_rationale_43",
+      "_tgt": "dao_dao",
+      "source": "app_rationale_43",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "_src": "app_rationale_49",
+      "_tgt": "dao_dao",
+      "source": "app_rationale_49",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\app.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "_src": "app_rationale_68",
+      "_tgt": "dao_dao",
+      "source": "app_rationale_68",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "reddit_api_dao_py",
+      "_tgt": "dao_singleton",
+      "source": "reddit_api_dao_py",
+      "target": "dao_singleton"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "reddit_api_dao_py",
+      "_tgt": "dao_get_instance",
+      "source": "reddit_api_dao_py",
+      "target": "dao_get_instance"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "reddit_api_dao_py",
+      "_tgt": "dao_dao",
+      "source": "reddit_api_dao_py",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "dao_rationale_1",
+      "_tgt": "reddit_api_dao_py",
+      "source": "reddit_api_dao_py",
+      "target": "dao_rationale_1"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_singleton",
+      "source": "dao_singleton",
+      "target": "dao_dao"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "dao_rationale_17",
+      "_tgt": "dao_singleton",
+      "source": "dao_singleton",
+      "target": "dao_rationale_17"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_singleton",
+      "_tgt": "models_redditpost",
+      "source": "dao_singleton",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_get_reddit_posts",
+      "_tgt": "dao_get_instance",
+      "source": "dao_get_instance",
+      "target": "vector_db_adapter_get_reddit_posts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "dao_get_instance",
+      "source": "dao_get_instance",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "background_scrapping_run",
+      "_tgt": "dao_get_instance",
+      "source": "dao_get_instance",
+      "target": "background_scrapping_run"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_init",
+      "source": "dao_dao",
+      "target": "dao_dao_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_add_reddit_post",
+      "source": "dao_dao",
+      "target": "dao_dao_add_reddit_post"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_get_reddit_posts",
+      "source": "dao_dao",
+      "target": "dao_dao_get_reddit_posts"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_get_reddit_post_ids",
+      "source": "dao_dao",
+      "target": "dao_dao_get_reddit_post_ids"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_get_reddit_posts_count",
+      "source": "dao_dao",
+      "target": "dao_dao_get_reddit_posts_count"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_get_reddit_posts_by_ids",
+      "source": "dao_dao",
+      "target": "dao_dao_get_reddit_posts_by_ids"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_is_reddit_post_in_db",
+      "source": "dao_dao",
+      "target": "dao_dao_is_reddit_post_in_db"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L171",
+      "weight": 1.0,
+      "_src": "dao_dao",
+      "_tgt": "dao_dao_generate_post_id",
+      "source": "dao_dao",
+      "target": "dao_dao_generate_post_id"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "dao_rationale_38",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "dao_rationale_38"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_dao",
+      "_tgt": "models_redditpost",
+      "source": "dao_dao",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_1",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_1"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_28",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_28"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_36",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_36"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_42",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_42"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_56",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_56"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_70",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_70"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_96",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_96"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_101",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_101"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_106",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_106"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "_src": "vector_db_adapter_rationale_115",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "vector_db_adapter_rationale_115"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_1",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_1"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_13",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_13"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_34",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_34"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_49",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_49"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_95",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_95"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L3",
+      "weight": 0.8,
+      "_src": "background_scrapping_rationale_109",
+      "_tgt": "dao_dao",
+      "source": "dao_dao",
+      "target": "background_scrapping_rationale_109"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "dao_rationale_43",
+      "_tgt": "dao_dao_init",
+      "source": "dao_dao_init",
+      "target": "dao_rationale_43"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "dao_dao_add_reddit_post",
+      "_tgt": "dao_dao_generate_post_id",
+      "source": "dao_dao_add_reddit_post",
+      "target": "dao_dao_generate_post_id"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "dao_rationale_57",
+      "_tgt": "dao_dao_add_reddit_post",
+      "source": "dao_dao_add_reddit_post",
+      "target": "dao_rationale_57"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "dao_dao_add_reddit_post",
+      "_tgt": "models_redditpost",
+      "source": "dao_dao_add_reddit_post",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "dao_dao_add_reddit_post",
+      "source": "dao_dao_add_reddit_post",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "dao_rationale_83",
+      "_tgt": "dao_dao_get_reddit_posts",
+      "source": "dao_dao_get_reddit_posts",
+      "target": "dao_rationale_83"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "dao_rationale_101",
+      "_tgt": "dao_dao_get_reddit_post_ids",
+      "source": "dao_dao_get_reddit_post_ids",
+      "target": "dao_rationale_101"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "dao_dao_get_reddit_post_ids",
+      "source": "dao_dao_get_reddit_post_ids",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "_src": "dao_rationale_116",
+      "_tgt": "dao_dao_get_reddit_posts_count",
+      "source": "dao_dao_get_reddit_posts_count",
+      "target": "dao_rationale_116"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "dao_rationale_130",
+      "_tgt": "dao_dao_get_reddit_posts_by_ids",
+      "source": "dao_dao_get_reddit_posts_by_ids",
+      "target": "dao_rationale_130"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "dao_dao_get_reddit_posts_by_ids",
+      "source": "dao_dao_get_reddit_posts_by_ids",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_src": "dao_rationale_152",
+      "_tgt": "dao_dao_is_reddit_post_in_db",
+      "source": "dao_dao_is_reddit_post_in_db",
+      "target": "dao_rationale_152"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "dao_dao_is_reddit_post_in_db",
+      "source": "dao_dao_is_reddit_post_in_db",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L172",
+      "weight": 1.0,
+      "_src": "dao_rationale_172",
+      "_tgt": "dao_dao_generate_post_id",
+      "source": "dao_dao_generate_post_id",
+      "target": "dao_rationale_172"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "dao_dao_generate_post_id",
+      "source": "dao_dao_generate_post_id",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_1",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_1",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_17",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_17",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_23",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_23",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_38",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_38",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_43",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_43",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_57",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_57",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_83",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_83",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_101",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_101",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_116",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_116",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_130",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_130",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_152",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_152",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\dao.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "_src": "dao_rationale_172",
+      "_tgt": "models_redditpost",
+      "source": "dao_rationale_172",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "reddit_api_logger_config_py",
+      "_tgt": "logger_config_parse_log_level",
+      "source": "reddit_api_logger_config_py",
+      "target": "logger_config_parse_log_level"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "reddit_api_logger_config_py",
+      "_tgt": "logger_config_configure_logging",
+      "source": "reddit_api_logger_config_py",
+      "target": "logger_config_configure_logging"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "logger_config_rationale_1",
+      "_tgt": "reddit_api_logger_config_py",
+      "source": "reddit_api_logger_config_py",
+      "target": "logger_config_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "logger_config_rationale_9",
+      "_tgt": "logger_config_parse_log_level",
+      "source": "logger_config_parse_log_level",
+      "target": "logger_config_rationale_9"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\logger_config.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "logger_config_rationale_20",
+      "_tgt": "logger_config_configure_logging",
+      "source": "logger_config_configure_logging",
+      "target": "logger_config_rationale_20"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "reddit_api_models_py",
+      "_tgt": "models_redditpost",
+      "source": "reddit_api_models_py",
+      "target": "models_redditpost"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "models_rationale_1",
+      "_tgt": "reddit_api_models_py",
+      "source": "reddit_api_models_py",
+      "target": "models_rationale_1"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "models_redditpost",
+      "_tgt": "base",
+      "source": "models_redditpost",
+      "target": "base"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\models.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_src": "models_rationale_10",
+      "_tgt": "models_redditpost",
+      "source": "models_redditpost",
+      "target": "models_rationale_10"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "reddit_api_utils_py",
+      "_tgt": "utils_extract_ticker_from_input",
+      "source": "reddit_api_utils_py",
+      "target": "utils_extract_ticker_from_input"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "utils_rationale_1",
+      "_tgt": "reddit_api_utils_py",
+      "source": "reddit_api_utils_py",
+      "target": "utils_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\utils.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "utils_rationale_7",
+      "_tgt": "utils_extract_ticker_from_input",
+      "source": "utils_extract_ticker_from_input",
+      "target": "utils_rationale_7"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_finbot_agent_py",
+      "_tgt": "finbot_agent_state",
+      "source": "reddit_api_adapter_finbot_agent_py",
+      "target": "finbot_agent_state"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_finbot_agent_py",
+      "_tgt": "finbot_agent_finbotagent",
+      "source": "reddit_api_adapter_finbot_agent_py",
+      "target": "finbot_agent_finbotagent"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_1",
+      "_tgt": "reddit_api_adapter_finbot_agent_py",
+      "source": "reddit_api_adapter_finbot_agent_py",
+      "target": "finbot_agent_rationale_1"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "finbot_agent_state",
+      "_tgt": "typeddict",
+      "source": "finbot_agent_state",
+      "target": "typeddict"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_19",
+      "_tgt": "finbot_agent_state",
+      "source": "finbot_agent_state",
+      "target": "finbot_agent_rationale_19"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_init",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_is_transient_provider_error",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_is_transient_provider_error"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_invoke_llm_with_retry"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_node_process_final_answer",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_node_process_final_answer"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L150",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_node_context",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_node_context"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_build_graph",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_build_graph"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L266",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_run",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_run"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L279",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent",
+      "_tgt": "finbot_agent_finbotagent_estimate_tokens",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_finbotagent_estimate_tokens"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_29",
+      "_tgt": "finbot_agent_finbotagent",
+      "source": "finbot_agent_finbotagent",
+      "target": "finbot_agent_rationale_29"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent_init",
+      "_tgt": "finbot_agent_finbotagent_build_graph",
+      "source": "finbot_agent_finbotagent_init",
+      "target": "finbot_agent_finbotagent_build_graph"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_57",
+      "_tgt": "finbot_agent_finbotagent_is_transient_provider_error",
+      "source": "finbot_agent_finbotagent_is_transient_provider_error",
+      "target": "finbot_agent_rationale_57"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent_node_process_final_answer",
+      "_tgt": "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "source": "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "target": "finbot_agent_finbotagent_node_process_final_answer"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_78",
+      "_tgt": "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "source": "finbot_agent_finbotagent_invoke_llm_with_retry",
+      "target": "finbot_agent_rationale_78"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_103",
+      "_tgt": "finbot_agent_finbotagent_node_process_final_answer",
+      "source": "finbot_agent_finbotagent_node_process_final_answer",
+      "target": "finbot_agent_rationale_103"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent_node_context",
+      "_tgt": "finbot_agent_finbotagent_run",
+      "source": "finbot_agent_finbotagent_node_context",
+      "target": "finbot_agent_finbotagent_run"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L151",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_151",
+      "_tgt": "finbot_agent_finbotagent_node_context",
+      "source": "finbot_agent_finbotagent_node_context",
+      "target": "finbot_agent_rationale_151"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_src": "finbot_agent_finbotagent_node_context",
+      "_tgt": "vector_db_adapter_get_top_k_reddit_posts",
+      "source": "finbot_agent_finbotagent_node_context",
+      "target": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L252",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_252",
+      "_tgt": "finbot_agent_finbotagent_build_graph",
+      "source": "finbot_agent_finbotagent_build_graph",
+      "target": "finbot_agent_rationale_252"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L267",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_267",
+      "_tgt": "finbot_agent_finbotagent_run",
+      "source": "finbot_agent_finbotagent_run",
+      "target": "finbot_agent_rationale_267"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\finbot_agent.py",
+      "source_location": "L280",
+      "weight": 1.0,
+      "_src": "finbot_agent_rationale_280",
+      "_tgt": "finbot_agent_finbotagent_estimate_tokens",
+      "source": "finbot_agent_finbotagent_estimate_tokens",
+      "target": "finbot_agent_rationale_280"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_embed_text",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_embed_text"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_get_embedding_model",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_get_embedding_model"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_get_reddit_posts",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_get_reddit_posts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_get_collection",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_get_collection"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_get_top_k_reddit_posts",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_chunked",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_chunked"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_chunked_ids",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_chunked_ids"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_get_existing_ids",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_get_existing_ids"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_src": "reddit_api_adapter_vector_db_adapter_py",
+      "_tgt": "vector_db_adapter_sync_new_posts",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_1",
+      "_tgt": "reddit_api_adapter_vector_db_adapter_py",
+      "source": "reddit_api_adapter_vector_db_adapter_py",
+      "target": "vector_db_adapter_rationale_1"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_get_top_k_reddit_posts",
+      "_tgt": "vector_db_adapter_embed_text",
+      "source": "vector_db_adapter_embed_text",
+      "target": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_28",
+      "_tgt": "vector_db_adapter_embed_text",
+      "source": "vector_db_adapter_embed_text",
+      "target": "vector_db_adapter_rationale_28"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_get_top_k_reddit_posts",
+      "_tgt": "vector_db_adapter_get_embedding_model",
+      "source": "vector_db_adapter_get_embedding_model",
+      "target": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "vector_db_adapter_get_embedding_model",
+      "source": "vector_db_adapter_get_embedding_model",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_36",
+      "_tgt": "vector_db_adapter_get_embedding_model",
+      "source": "vector_db_adapter_get_embedding_model",
+      "target": "vector_db_adapter_rationale_36"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_42",
+      "_tgt": "vector_db_adapter_get_reddit_posts",
+      "source": "vector_db_adapter_get_reddit_posts",
+      "target": "vector_db_adapter_rationale_42"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_get_top_k_reddit_posts",
+      "_tgt": "vector_db_adapter_get_collection",
+      "source": "vector_db_adapter_get_collection",
+      "target": "vector_db_adapter_get_top_k_reddit_posts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "vector_db_adapter_get_collection",
+      "source": "vector_db_adapter_get_collection",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_56",
+      "_tgt": "vector_db_adapter_get_collection",
+      "source": "vector_db_adapter_get_collection",
+      "target": "vector_db_adapter_rationale_56"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_70",
+      "_tgt": "vector_db_adapter_get_top_k_reddit_posts",
+      "source": "vector_db_adapter_get_top_k_reddit_posts",
+      "target": "vector_db_adapter_rationale_70"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_96",
+      "_tgt": "vector_db_adapter_chunked",
+      "source": "vector_db_adapter_chunked",
+      "target": "vector_db_adapter_rationale_96"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "vector_db_adapter_chunked_ids",
+      "source": "vector_db_adapter_chunked_ids",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_101",
+      "_tgt": "vector_db_adapter_chunked_ids",
+      "source": "vector_db_adapter_chunked_ids",
+      "target": "vector_db_adapter_rationale_101"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_sync_new_posts",
+      "_tgt": "vector_db_adapter_get_existing_ids",
+      "source": "vector_db_adapter_get_existing_ids",
+      "target": "vector_db_adapter_sync_new_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_106",
+      "_tgt": "vector_db_adapter_get_existing_ids",
+      "source": "vector_db_adapter_get_existing_ids",
+      "target": "vector_db_adapter_rationale_106"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\adapter\\vector_db_adapter.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "_src": "vector_db_adapter_rationale_115",
+      "_tgt": "vector_db_adapter_sync_new_posts",
+      "source": "vector_db_adapter_sync_new_posts",
+      "target": "vector_db_adapter_rationale_115"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L7540",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_agents_py",
+      "_tgt": "agents_get_agent",
+      "source": "reddit_api_scrapping_agents_py",
+      "target": "agents_get_agent"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "agents_rationale_1",
+      "_tgt": "reddit_api_scrapping_agents_py",
+      "source": "reddit_api_scrapping_agents_py",
+      "target": "agents_rationale_1"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\agents.py",
+      "source_location": "L7541",
+      "weight": 1.0,
+      "_src": "agents_rationale_7541",
+      "_tgt": "agents_get_agent",
+      "source": "agents_get_agent",
+      "target": "agents_rationale_7541"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "sessions_randomuseragentsession_request",
+      "_tgt": "agents_get_agent",
+      "source": "agents_get_agent",
+      "target": "sessions_randomuseragentsession_request"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_background_scrapping_py",
+      "_tgt": "background_scrapping_clean_post",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_clean_post"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_background_scrapping_py",
+      "_tgt": "background_scrapping_fetch_post_details",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_fetch_post_details"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_background_scrapping_py",
+      "_tgt": "background_scrapping_process_subreddit_posts",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_background_scrapping_py",
+      "_tgt": "background_scrapping_get_replies",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_get_replies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_background_scrapping_py",
+      "_tgt": "background_scrapping_run",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_run"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_1",
+      "_tgt": "reddit_api_scrapping_background_scrapping_py",
+      "source": "reddit_api_scrapping_background_scrapping_py",
+      "target": "background_scrapping_rationale_1"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "background_scrapping_clean_post",
+      "source": "background_scrapping_clean_post",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_13",
+      "_tgt": "background_scrapping_clean_post",
+      "source": "background_scrapping_clean_post",
+      "target": "background_scrapping_rationale_13"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "background_scrapping_fetch_post_details",
+      "source": "background_scrapping_fetch_post_details",
+      "target": "background_scrapping_process_subreddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_34",
+      "_tgt": "background_scrapping_fetch_post_details",
+      "source": "background_scrapping_fetch_post_details",
+      "target": "background_scrapping_rationale_34"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "background_scrapping_fetch_post_details",
+      "_tgt": "yars_yars_scrape_post_details",
+      "source": "background_scrapping_fetch_post_details",
+      "target": "yars_yars_scrape_post_details"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "background_scrapping_get_replies",
+      "source": "background_scrapping_process_subreddit_posts",
+      "target": "background_scrapping_get_replies"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "_src": "background_scrapping_run",
+      "_tgt": "background_scrapping_process_subreddit_posts",
+      "source": "background_scrapping_process_subreddit_posts",
+      "target": "background_scrapping_run"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_49",
+      "_tgt": "background_scrapping_process_subreddit_posts",
+      "source": "background_scrapping_process_subreddit_posts",
+      "target": "background_scrapping_rationale_49"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "yars_yars_change_user_agent",
+      "source": "background_scrapping_process_subreddit_posts",
+      "target": "yars_yars_change_user_agent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "background_scrapping_process_subreddit_posts",
+      "_tgt": "yars_yars_fetch_subreddit_posts",
+      "source": "background_scrapping_process_subreddit_posts",
+      "target": "yars_yars_fetch_subreddit_posts"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_95",
+      "_tgt": "background_scrapping_get_replies",
+      "source": "background_scrapping_get_replies",
+      "target": "background_scrapping_rationale_95"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "background_scrapping_rationale_109",
+      "_tgt": "background_scrapping_run",
+      "source": "background_scrapping_run",
+      "target": "background_scrapping_rationale_109"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\background_scrapping.py",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "background_scrapping_run",
+      "_tgt": "yars_yars",
+      "source": "background_scrapping_run",
+      "target": "yars_yars"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_proxy_manager_py",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "reddit_api_scrapping_proxy_manager_py",
+      "target": "proxy_manager_proxymanager"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_1",
+      "_tgt": "reddit_api_scrapping_proxy_manager_py",
+      "source": "reddit_api_scrapping_proxy_manager_py",
+      "target": "proxy_manager_rationale_1"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_init",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_read_proxy_file",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_read_proxy_file"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_fetch_with_proxy",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_fetch_with_proxy"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_test_proxys",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_test_proxys"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_init_proxy_csv",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_init_proxy_csv"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_update_proxy_count",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_update_proxy_count"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager",
+      "_tgt": "proxy_manager_proxymanager_get_sorted_proxies",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_proxymanager_get_sorted_proxies"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_14",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "proxy_manager_rationale_14"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_yars",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_yars"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_1",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_1"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_19",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_19"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_50",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_50"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_56",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_56"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_95",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_95"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_197",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_197"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "_src": "yars_rationale_232",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_rationale_232"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "yars_yars_init",
+      "_tgt": "proxy_manager_proxymanager",
+      "source": "proxy_manager_proxymanager",
+      "target": "yars_yars_init"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager_init",
+      "_tgt": "proxy_manager_proxymanager_read_proxy_file",
+      "source": "proxy_manager_proxymanager_init",
+      "target": "proxy_manager_proxymanager_read_proxy_file"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager_init",
+      "_tgt": "proxy_manager_proxymanager_init_proxy_csv",
+      "source": "proxy_manager_proxymanager_init",
+      "target": "proxy_manager_proxymanager_init_proxy_csv"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager_init",
+      "_tgt": "proxy_manager_proxymanager_test_proxys",
+      "source": "proxy_manager_proxymanager_init",
+      "target": "proxy_manager_proxymanager_test_proxys"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_23",
+      "_tgt": "proxy_manager_proxymanager_init",
+      "source": "proxy_manager_proxymanager_init",
+      "target": "proxy_manager_rationale_23"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_40",
+      "_tgt": "proxy_manager_proxymanager_read_proxy_file",
+      "source": "proxy_manager_proxymanager_read_proxy_file",
+      "target": "proxy_manager_rationale_40"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_src": "proxy_manager_proxymanager_fetch_with_proxy",
+      "_tgt": "proxy_manager_proxymanager_update_proxy_count",
+      "source": "proxy_manager_proxymanager_fetch_with_proxy",
+      "target": "proxy_manager_proxymanager_update_proxy_count"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_56",
+      "_tgt": "proxy_manager_proxymanager_fetch_with_proxy",
+      "source": "proxy_manager_proxymanager_fetch_with_proxy",
+      "target": "proxy_manager_rationale_56"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "_src": "yars_yars_fetch_sync",
+      "_tgt": "proxy_manager_proxymanager_fetch_with_proxy",
+      "source": "proxy_manager_proxymanager_fetch_with_proxy",
+      "target": "yars_yars_fetch_sync"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_85",
+      "_tgt": "proxy_manager_proxymanager_test_proxys",
+      "source": "proxy_manager_proxymanager_test_proxys",
+      "target": "proxy_manager_rationale_85"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_100",
+      "_tgt": "proxy_manager_proxymanager_init_proxy_csv",
+      "source": "proxy_manager_proxymanager_init_proxy_csv",
+      "target": "proxy_manager_rationale_100"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_127",
+      "_tgt": "proxy_manager_proxymanager_update_proxy_count",
+      "source": "proxy_manager_proxymanager_update_proxy_count",
+      "target": "proxy_manager_rationale_127"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\proxy_manager.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "_src": "proxy_manager_rationale_157",
+      "_tgt": "proxy_manager_proxymanager_get_sorted_proxies",
+      "source": "proxy_manager_proxymanager_get_sorted_proxies",
+      "target": "proxy_manager_rationale_157"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_src": "yars_yars_init",
+      "_tgt": "proxy_manager_proxymanager_get_sorted_proxies",
+      "source": "proxy_manager_proxymanager_get_sorted_proxies",
+      "target": "yars_yars_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_sessions_py",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "reddit_api_scrapping_sessions_py",
+      "target": "sessions_randomuseragentsession"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "sessions_rationale_1",
+      "_tgt": "reddit_api_scrapping_sessions_py",
+      "source": "reddit_api_scrapping_sessions_py",
+      "target": "sessions_rationale_1"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "sessions_randomuseragentsession",
+      "_tgt": "session",
+      "source": "sessions_randomuseragentsession",
+      "target": "session"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "sessions_randomuseragentsession",
+      "_tgt": "sessions_randomuseragentsession_request",
+      "source": "sessions_randomuseragentsession",
+      "target": "sessions_randomuseragentsession_request"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\sessions.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "sessions_rationale_8",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "sessions_rationale_8"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_yars",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_yars"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_1",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_1"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_19",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_19"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_50",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_50"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_56",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_56"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_95",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_95"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_197",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_197"
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "_src": "yars_rationale_232",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_rationale_232"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "yars_yars_init",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_yars_init"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_src": "yars_yars_change_user_agent",
+      "_tgt": "sessions_randomuseragentsession",
+      "source": "sessions_randomuseragentsession",
+      "target": "yars_yars_change_user_agent"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_src": "yars_yars_init",
+      "_tgt": "session",
+      "source": "session",
+      "target": "yars_yars_init"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "reddit_api_scrapping_yars_py",
+      "_tgt": "yars_yars",
+      "source": "reddit_api_scrapping_yars_py",
+      "target": "yars_yars"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_src": "yars_rationale_1",
+      "_tgt": "reddit_api_scrapping_yars_py",
+      "source": "reddit_api_scrapping_yars_py",
+      "target": "yars_rationale_1"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_init",
+      "source": "yars_yars",
+      "target": "yars_yars_init"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_change_user_agent",
+      "source": "yars_yars",
+      "target": "yars_yars_change_user_agent"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_fetch_sync",
+      "source": "yars_yars",
+      "target": "yars_yars_fetch_sync"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_fetch_subreddit_posts",
+      "source": "yars_yars",
+      "target": "yars_yars_fetch_subreddit_posts"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L196",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_scrape_post_details",
+      "source": "yars_yars",
+      "target": "yars_yars_scrape_post_details"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L231",
+      "weight": 1.0,
+      "_src": "yars_yars",
+      "_tgt": "yars_yars_extract_comments",
+      "source": "yars_yars",
+      "target": "yars_yars_extract_comments"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "yars_rationale_19",
+      "_tgt": "yars_yars",
+      "source": "yars_yars",
+      "target": "yars_rationale_19"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "yars_yars_fetch_sync",
+      "_tgt": "yars_yars_change_user_agent",
+      "source": "yars_yars_change_user_agent",
+      "target": "yars_yars_fetch_sync"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "yars_rationale_50",
+      "_tgt": "yars_yars_change_user_agent",
+      "source": "yars_yars_change_user_agent",
+      "target": "yars_rationale_50"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "yars_yars_fetch_subreddit_posts",
+      "_tgt": "yars_yars_fetch_sync",
+      "source": "yars_yars_fetch_sync",
+      "target": "yars_yars_fetch_subreddit_posts"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "_src": "yars_yars_scrape_post_details",
+      "_tgt": "yars_yars_fetch_sync",
+      "source": "yars_yars_fetch_sync",
+      "target": "yars_yars_scrape_post_details"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "yars_rationale_56",
+      "_tgt": "yars_yars_fetch_sync",
+      "source": "yars_yars_fetch_sync",
+      "target": "yars_rationale_56"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L95",
+      "weight": 1.0,
+      "_src": "yars_rationale_95",
+      "_tgt": "yars_yars_fetch_subreddit_posts",
+      "source": "yars_yars_fetch_subreddit_posts",
+      "target": "yars_rationale_95"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L227",
+      "weight": 1.0,
+      "_src": "yars_yars_scrape_post_details",
+      "_tgt": "yars_yars_extract_comments",
+      "source": "yars_yars_scrape_post_details",
+      "target": "yars_yars_extract_comments"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_src": "yars_rationale_197",
+      "_tgt": "yars_yars_scrape_post_details",
+      "source": "yars_yars_scrape_post_details",
+      "target": "yars_rationale_197"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "reddit_api\\scrapping\\yars.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "_src": "yars_rationale_232",
+      "_tgt": "yars_yars_extract_comments",
+      "source": "yars_yars_extract_comments",
+      "target": "yars_rationale_232"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "assistant_vpfa",
+      "source": "project_finbot",
+      "target": "assistant_vpfa"
+    },
+    {
+      "relation": "automates delivery with",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "ops_cicd",
+      "source": "project_finbot",
+      "target": "ops_cicd"
+    },
+    {
+      "relation": "deploys using",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "ops_docker",
+      "source": "project_finbot",
+      "target": "ops_docker"
+    },
+    {
+      "relation": "was created for",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "course_log791",
+      "source": "project_finbot",
+      "target": "course_log791"
+    },
+    {
+      "relation": "was authored by",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "author_lancelot_domart",
+      "source": "project_finbot",
+      "target": "author_lancelot_domart"
+    },
+    {
+      "relation": "is described in",
+      "confidence": "EXTRACTED",
+      "_src": "project_finbot",
+      "_tgt": "paper_finance_pdf",
+      "source": "project_finbot",
+      "target": "paper_finance_pdf"
+    },
+    {
+      "relation": "uses data from",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "data_source_reddit",
+      "source": "assistant_vpfa",
+      "target": "data_source_reddit"
+    },
+    {
+      "relation": "exposes via",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "component_fastapi_api",
+      "source": "assistant_vpfa",
+      "target": "component_fastapi_api"
+    },
+    {
+      "relation": "provides interface through",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "component_dash_app",
+      "source": "assistant_vpfa",
+      "target": "component_dash_app"
+    },
+    {
+      "relation": "uses semantic search with",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "component_faiss",
+      "source": "assistant_vpfa",
+      "target": "component_faiss"
+    },
+    {
+      "relation": "generates responses with",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "model_llama3_8b",
+      "source": "assistant_vpfa",
+      "target": "model_llama3_8b"
+    },
+    {
+      "relation": "collects data using",
+      "confidence": "EXTRACTED",
+      "_src": "assistant_vpfa",
+      "_tgt": "process_proxy_rotation",
+      "source": "assistant_vpfa",
+      "target": "process_proxy_rotation"
+    },
+    {
+      "relation": "likely details architecture of",
+      "confidence": "INFERRED",
+      "_src": "paper_finance_pdf",
+      "_tgt": "assistant_vpfa",
+      "source": "assistant_vpfa",
+      "target": "paper_finance_pdf"
+    },
+    {
+      "relation": "is offered by",
+      "confidence": "EXTRACTED",
+      "_src": "course_log791",
+      "_tgt": "institution_ets",
+      "source": "course_log791",
+      "target": "institution_ets"
+    },
+    {
+      "relation": "is accessed via",
+      "confidence": "EXTRACTED",
+      "_src": "model_llama3_8b",
+      "_tgt": "service_together_api",
+      "source": "model_llama3_8b",
+      "target": "service_together_api"
+    },
+    {
+      "relation": "documents environment setup with",
+      "confidence": "EXTRACTED",
+      "_src": "doc_contribute",
+      "_tgt": "tool_uv",
+      "source": "doc_contribute",
+      "target": "tool_uv"
+    },
+    {
+      "relation": "documents formatting with",
+      "confidence": "EXTRACTED",
+      "_src": "doc_contribute",
+      "_tgt": "tool_black",
+      "source": "doc_contribute",
+      "target": "tool_black"
+    },
+    {
+      "relation": "documents linting with",
+      "confidence": "EXTRACTED",
+      "_src": "doc_contribute",
+      "_tgt": "tool_pylint",
+      "source": "doc_contribute",
+      "target": "tool_pylint"
+    },
+    {
+      "relation": "supplies endpoints for",
+      "confidence": "EXTRACTED",
+      "_src": "artifact_proxy_list",
+      "_tgt": "process_proxy_rotation",
+      "source": "artifact_proxy_list",
+      "target": "process_proxy_rotation"
+    }
+  ]
+}

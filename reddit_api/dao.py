@@ -4,7 +4,7 @@ import os
 import hashlib
 
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 from models import RedditPost
@@ -50,8 +50,27 @@ class DAO(Singleton):
             connect_args={"user": user, "password": password, "dsn": dsn},
         )
         Base.metadata.create_all(self.engine)
+        self._ensure_extracted_information_column()
         self.session_maker = sessionmaker(bind=self.engine)
         logger.info("DAO initialized and database metadata ensured")
+
+    def _ensure_extracted_information_column(self) -> None:
+        """Ensure reddit_posts.extracted_information exists for existing databases."""
+        query = text(
+            """
+            SELECT COUNT(*)
+            FROM user_tab_columns
+            WHERE table_name = 'REDDIT_POSTS'
+              AND column_name = 'EXTRACTED_INFORMATION'
+            """
+        )
+        alter = text("ALTER TABLE reddit_posts ADD (extracted_information CLOB)")
+
+        with self.engine.begin() as connection:
+            exists = int(connection.execute(query).scalar() or 0)
+            if exists == 0:
+                connection.execute(alter)
+                logger.info("Added missing column reddit_posts.extracted_information")
 
     def add_reddit_post(self, content_str: str, title: str, author: str) -> None:
         """Add a Reddit post to the database.
@@ -145,6 +164,49 @@ class DAO(Singleton):
             logger.exception("Failed to fetch reddit posts by IDs")
             session.rollback()
             return []
+        finally:
+            session.close()
+
+    def get_reddit_posts_missing_extracted_information(
+        self, limit: int = 100
+    ) -> list[tuple[str, str]]:
+        """Fetch posts where extracted_information is still null."""
+        session = self.session_maker()
+        try:
+            rows = (
+                session.query(RedditPost.id, RedditPost.content_str)
+                .filter(RedditPost.extracted_information.is_(None))
+                .filter(RedditPost.content_str.isnot(None))
+                .limit(max(limit, 1))
+                .all()
+            )
+            return [(row[0], row[1]) for row in rows if row[0] and row[1]]
+        except (ValueError, KeyError, AttributeError):
+            logger.exception("Failed to fetch posts missing extracted_information")
+            session.rollback()
+            return []
+        finally:
+            session.close()
+
+    def update_reddit_post_extracted_information(
+        self, post_id: str, extracted_information: str
+    ) -> bool:
+        """Persist extracted_information for a post ID."""
+        session = self.session_maker()
+        try:
+            updated_rows = (
+                session.query(RedditPost)
+                .filter(RedditPost.id == post_id)
+                .update({RedditPost.extracted_information: extracted_information})
+            )
+            session.commit()
+            return updated_rows > 0
+        except (ValueError, KeyError, AttributeError):
+            logger.exception(
+                "Failed to update extracted_information for reddit post id=%s", post_id
+            )
+            session.rollback()
+            return False
         finally:
             session.close()
 
