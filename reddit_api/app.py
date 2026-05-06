@@ -125,9 +125,11 @@ async def get_reddit_posts_count() -> dict[str, int] | dict[str, str]:
         return {"error": "Failed to fetch reddit post count"}
 
 
+"""
+Background job to extract information from reddit posts that haven't been processed yet.
 @scheduler.scheduled_job("interval", seconds=120, max_instances=1, coalesce=True)
 async def backfill_extracted_information() -> None:
-    """Background job to fill extracted_information for rows where it is null."""
+    
     logger.info("Background extracted_information job started")
     try:
         updated_count = await asyncio.to_thread(_run_extraction_batch)
@@ -139,7 +141,7 @@ async def backfill_extracted_information() -> None:
         logger.exception("Error during extracted_information background job")
 
 
-"""
+
 # every 10 hours scrape new reddit posts and update vector index in the background
 
 @scheduler.scheduled_job("interval", seconds=36000)
